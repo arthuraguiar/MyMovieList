@@ -2,7 +2,9 @@ package com.example.mymovieslist
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.viewModels
+import com.example.mymovieslist.core.extensions.observe
 import com.example.mymovieslist.presentation.MainViewModel
 
 class MainActivity : AppCompatActivity() {
@@ -12,5 +14,12 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        setOpObserver()
+    }
+
+    private fun setOpObserver() {
+        viewModel.screenState.observe(this) {
+            Log.d("", "setOpObserver: $it")
+        }
     }
 }

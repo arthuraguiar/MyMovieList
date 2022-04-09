@@ -1,6 +1,17 @@
 package com.example.mymovieslist.presentation
 
-import androidx.lifecycle.ViewModel
+import com.example.mymovieslist.core.viewmodel.BaseViewModel
+import com.example.mymovieslist.domain.usecase.GetPopularMoviesListUseCase
 
-class MainViewModel: ViewModel() {
+class MainViewModel(
+    private val getPopularMoviesListUseCase: GetPopularMoviesListUseCase = GetPopularMoviesListUseCase()
+) : BaseViewModel<MainState>(MainState()) {
+    init {
+        getPopularMovies()
+    }
+
+    private fun getPopularMovies() {
+        val movies = getPopularMoviesListUseCase()
+        setState { it.copy(moviesList = movies, isEmptyState = movies.isEmpty()) }
+    }
 }
