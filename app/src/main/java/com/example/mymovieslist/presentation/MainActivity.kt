@@ -1,17 +1,16 @@
-package com.example.mymovieslist
+package com.example.mymovieslist.presentation
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.activity.viewModels
 import com.example.mymovieslist.core.extensions.observe
 import com.example.mymovieslist.databinding.ActivityMainBinding
-import com.example.mymovieslist.presentation.MainViewModel
 import com.example.mymovieslist.presentation.adapter.MoviesAdapter
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private val viewModel: MainViewModel by viewModels()
+    private val viewModel: MainViewModel by viewModel()
     private val moviesAdapter = MoviesAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {

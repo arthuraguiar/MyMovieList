@@ -4,7 +4,7 @@ import com.example.mymovieslist.core.viewmodel.BaseViewModel
 import com.example.mymovieslist.domain.usecase.GetPopularMoviesListUseCase
 
 class MainViewModel(
-    private val getPopularMoviesListUseCase: GetPopularMoviesListUseCase = GetPopularMoviesListUseCase()
+    private val getPopularMoviesListUseCase: GetPopularMoviesListUseCase
 ) : BaseViewModel<MainState>(MainState()) {
     init {
         getPopularMovies()
