@@ -7,10 +7,10 @@ class MovieRepositoryImpl : MovieRepository {
     override fun getPopularMoviesList(): List<Movie> {
         return listOf(
             Movie(
-                title = "TuQ0iU5X",
-                originalLanguage = "RQg8VV19",
+                title = "Moana",
+                originalLanguage = "eng",
                 releaseDate = "2022-03-30",
-                posterUrl = "7w4FgXU",
+                posterUrl = """https:/image.tmdb.org/t/p/original/6DrHO1jr3qVrViUO6s6kFiAGM7.jpg""",
             )
         )
     }

@@ -5,6 +5,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.example.mymovieslist.R
 import com.example.mymovieslist.databinding.MovieCardItemBinding
 import com.example.mymovieslist.domain.model.Movie
 
@@ -30,8 +32,17 @@ class MoviesAdapter : ListAdapter<Movie, MoviesAdapter.MovieViewHolder>(DiffCall
         fun bind(movie: Movie) {
             binding.apply {
                 movieTitleTv.text = movie.title
-                movieReleaseDateTv.text = movie.title
+                movieReleaseDateTv.text = movie.releaseDate
+                inflateImage(movie.posterUrl)
             }
+        }
+
+        private fun inflateImage(imageUrl: String) {
+            Glide.with(binding.bannerImageView)
+                .load(imageUrl)
+                .centerCrop()
+                .error(R.drawable.icon_film)
+                .into(binding.bannerImageView)
         }
     }
 
