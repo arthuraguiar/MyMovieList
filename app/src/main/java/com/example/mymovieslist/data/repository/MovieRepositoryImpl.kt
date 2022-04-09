@@ -9,7 +9,7 @@ class MovieRepositoryImpl : MovieRepository {
             Movie(
                 title = "TuQ0iU5X",
                 originalLanguage = "RQg8VV19",
-                overview = "Ac3GB3rJ",
+                releaseDate = "2022-03-30",
                 posterUrl = "7w4FgXU",
             )
         )
