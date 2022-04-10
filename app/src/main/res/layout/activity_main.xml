@@ -18,12 +18,16 @@
         tools:listitem="@layout/movie_card_item" />
 
     <include
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
         android:id="@+id/emptyStateLayout"
         android:visibility="gone"
         layout="@layout/empty_state_layout"
         />
 
     <include
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
         android:id="@+id/errorLayout"
         android:visibility="gone"
         layout="@layout/error_state_layout"
