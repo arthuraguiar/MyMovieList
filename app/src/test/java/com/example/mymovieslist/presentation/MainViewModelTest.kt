@@ -1,0 +1,85 @@
+package com.example.mymovieslist.presentation
+
+import app.cash.turbine.test
+import com.example.CoroutinesTestRule
+import com.example.mymovieslist.domain.usecase.GetPopularMoviesListUseCase
+import com.example.mymovieslist.stubs.popularMoviesList
+import io.mockk.every
+import io.mockk.mockk
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.flowOf
+import kotlinx.coroutines.test.runTest
+import org.junit.Assert.assertEquals
+import org.junit.Rule
+import org.junit.Test
+import kotlin.time.ExperimentalTime
+
+@ExperimentalCoroutinesApi
+@ExperimentalTime
+class MainViewModelTest {
+
+    @get: Rule
+    val coroutinesTestRule = CoroutinesTestRule()
+    private val useCase: GetPopularMoviesListUseCase = mockk(relaxed = true)
+    private lateinit var viewModel: MainViewModel
+
+
+    @Test
+    fun `init should get popular movies list with data`() = runTest {
+        // Given
+        val initState = MainState()
+        val successState = MainState(moviesList = popularMoviesList, isLoading = true)
+        every { useCase.invoke() } returns flowOf(popularMoviesList)
+
+        // When
+        viewModel = MainViewModel(useCase)
+
+        // Then
+        viewModel.screenState.test{
+            assertEquals(expectItem(), initState)
+            assertEquals(expectItem(), initState.copy(isLoading = true))
+            assertEquals(expectItem(), successState)
+            assertEquals(expectItem(), successState.copy(isLoading = false))
+        }
+    }
+
+    @Test
+    fun `init should get empty popular movies list`() = runTest {
+        // Given
+        val initState = MainState()
+        val successState = MainState(moviesList = emptyList(), isLoading = true, isEmptyState = true)
+        every { useCase.invoke() } returns flowOf(emptyList())
+
+        // When
+        viewModel = MainViewModel(useCase)
+
+        // Then
+        viewModel.screenState.test{
+            assertEquals(expectItem(), initState)
+            assertEquals(expectItem(), initState.copy(isLoading = true))
+            assertEquals(expectItem(), successState)
+            assertEquals(expectItem(), successState.copy(isLoading = false))
+        }
+    }
+
+    @Test
+    fun `init should show error layout when error occurred`() = runTest {
+        // Given
+        val initState = MainState()
+        val errorState = MainState(isErrorState = true)
+        every { useCase.invoke() } returns flow{ throw Throwable()}
+
+        // When
+        viewModel = MainViewModel(useCase)
+
+        // Then
+        viewModel.screenState.test{
+            assertEquals(expectItem(), initState)
+            assertEquals(expectItem(), initState.copy(isLoading = true))
+            assertEquals(expectItem(), initState.copy(isLoading = false))
+            assertEquals(expectItem(), errorState)
+        }
+    }
+
+}

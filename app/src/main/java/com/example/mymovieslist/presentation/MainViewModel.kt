@@ -1,6 +1,5 @@
 package com.example.mymovieslist.presentation
 
-import android.util.Log
 import androidx.lifecycle.viewModelScope
 import com.example.mymovieslist.core.viewmodel.BaseViewModel
 import com.example.mymovieslist.domain.usecase.GetPopularMoviesListUseCase
@@ -10,8 +9,6 @@ import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.onCompletion
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
-
-const val TAG = "MainViewModel"
 
 class MainViewModel(
     private val getPopularMoviesListUseCase: GetPopularMoviesListUseCase
@@ -36,7 +33,6 @@ class MainViewModel(
     }
 
     private fun handleError(throwable: Throwable) {
-        Log.d(TAG, "handleError: $throwable ")
         setState { it.getErrorState() }
     }
 }
