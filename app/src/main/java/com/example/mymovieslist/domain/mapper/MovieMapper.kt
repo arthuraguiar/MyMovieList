@@ -7,7 +7,7 @@ import com.example.mymovieslist.data.model.MovieResponse
 import com.example.mymovieslist.domain.model.Movie
 
 class MovieMapper(
-    private val resourceProvider: ResourceProvider
+    resourceProvider: ResourceProvider
 ){
 
     private val basePosterUrl = resourceProvider.getStringResource(R.string.poster_base_url)

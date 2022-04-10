@@ -2,6 +2,7 @@ package com.example.mymovieslist.stubs
 
 import com.example.mymovieslist.data.model.FetchPopularMoviesResponse
 import com.example.mymovieslist.data.model.MovieResponse
+import com.example.mymovieslist.domain.model.Movie
 import io.mockk.mockk
 import retrofit2.HttpException
 import java.net.SocketTimeoutException
@@ -15,7 +16,16 @@ val fetchPopularMoviesResponse = FetchPopularMoviesResponse(
             title = "UiMXAVh8",
             releaseDate = "r94",
             originalLanguage = "14SXz5pI",
-            posterPath = "bY3jI0",
+            posterPath = "/bY3jI0",
         )
+    )
+)
+
+val popularMoviesList = listOf(
+    Movie(
+        title = "UiMXAVh8",
+        releaseDate = "r94",
+        originalLanguage = "14SXz5pI",
+        posterUrl = "https://image.tmdb.org/t/p/original/bY3jI0",
     )
 )
