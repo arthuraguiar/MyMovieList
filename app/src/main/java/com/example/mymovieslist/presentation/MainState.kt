@@ -22,4 +22,11 @@ data class MainState(
             isErrorState = true
         )
     }
+
+    fun getLoadingState(isLoading: Boolean): MainState{
+        return this.copy(
+            isLoading = isLoading,
+            isErrorState = false,
+        )
+    }
 }

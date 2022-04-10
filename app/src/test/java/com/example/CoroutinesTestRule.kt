@@ -12,11 +12,11 @@ import org.junit.runners.model.Statement
 @ExperimentalCoroutinesApi
 class CoroutinesTestRule : TestRule {
 
-    val testCoroutineDispatcher = StandardTestDispatcher()
+    val standardTestDispatcher = StandardTestDispatcher()
 
     override fun apply(base: Statement?, description: Description?) = object : Statement() {
         override fun evaluate() {
-            Dispatchers.setMain(testCoroutineDispatcher)
+            Dispatchers.setMain(standardTestDispatcher)
 
             base?.evaluate()
 
