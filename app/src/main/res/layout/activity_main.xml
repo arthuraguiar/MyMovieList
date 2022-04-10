@@ -17,4 +17,21 @@
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:listitem="@layout/movie_card_item" />
 
+    <include
+        android:id="@+id/emptyStateLayout"
+        android:visibility="gone"
+        layout="@layout/empty_state_layout"
+        />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:visibility="gone"
+        />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

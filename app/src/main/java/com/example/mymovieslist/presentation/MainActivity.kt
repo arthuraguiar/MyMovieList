@@ -2,6 +2,8 @@ package com.example.mymovieslist.presentation
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.core.view.isVisible
+import com.example.mymovieslist.BuildConfig
 import com.example.mymovieslist.core.extensions.observe
 import com.example.mymovieslist.databinding.ActivityMainBinding
 import com.example.mymovieslist.presentation.adapter.MoviesAdapter
@@ -17,7 +19,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         setUpRecyclerView()
         setOpObserver()
     }
@@ -30,8 +31,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setOpObserver() {
-        viewModel.screenState.observe(this) {
-            moviesAdapter.submitList(it.moviesList)
+        viewModel.screenState.observe(this) { state ->
+            moviesAdapter.submitList(state.moviesList)
+            binding.progressBar.isVisible = state.isEmptyState
+            binding.progressBar.isVisible = state.isLoading
         }
     }
 }
