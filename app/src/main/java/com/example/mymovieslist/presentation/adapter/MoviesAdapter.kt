@@ -32,9 +32,16 @@ class MoviesAdapter : ListAdapter<Movie, MoviesAdapter.MovieViewHolder>(DiffCall
         fun bind(movie: Movie) {
             binding.apply {
                 movieTitleTv.text = movie.title
-                movieReleaseDateTv.text = movie.releaseDate
+                movieReleaseDateTv.text = getReleaseDate(movie.releaseDate)
                 inflateImage(movie.posterUrl)
             }
+        }
+
+        private fun getReleaseDate(releaseDate: String): String {
+            return if (releaseDate.isEmpty())
+                binding.root.context.resources.getString(R.string.not_available_yet)
+            else
+                releaseDate
         }
 
         private fun inflateImage(imageUrl: String) {
