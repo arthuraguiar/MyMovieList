@@ -1,5 +1,6 @@
 package com.example.mymovieslist.presentation
 
+import android.util.Log
 import androidx.lifecycle.viewModelScope
 import com.example.mymovieslist.core.viewmodel.BaseViewModel
 import com.example.mymovieslist.domain.usecase.GetPopularMoviesListUseCase
@@ -10,6 +11,8 @@ import kotlinx.coroutines.flow.onCompletion
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
 
+const val TAG = "MainViewModel"
+
 class MainViewModel(
     private val getPopularMoviesListUseCase: GetPopularMoviesListUseCase
 ) : BaseViewModel<MainState>(MainState()) {
@@ -17,14 +20,23 @@ class MainViewModel(
         getPopularMovies()
     }
 
-    private fun getPopularMovies()  = viewModelScope.launch {
+    private fun getPopularMovies() = viewModelScope.launch {
         getPopularMoviesListUseCase()
             .flowOn(Dispatchers.IO)
             .onStart { setState { it.copy(isLoading = true) } }
             .onCompletion { setState { it.copy(isLoading = false) } }
-            .catch {  }
-            .collect{movies ->
-                setState { it.copy(moviesList = movies, isEmptyState = movies.isEmpty()) }
+            .catch { handleError(it) }
+            .collect { movies ->
+                setState { it.getSuccessState(movies) }
             }
+    }
+
+    fun onRetryButtonClicked() {
+        getPopularMovies()
+    }
+
+    private fun handleError(throwable: Throwable) {
+        Log.d(TAG, "handleError: $throwable ")
+        setState { it.getErrorState() }
     }
 }

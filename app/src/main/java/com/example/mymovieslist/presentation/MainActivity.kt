@@ -21,6 +21,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         setUpRecyclerView()
         setOpObserver()
+        setUpListeners()
     }
 
     private fun setUpRecyclerView() {
@@ -35,6 +36,14 @@ class MainActivity : AppCompatActivity() {
             moviesAdapter.submitList(state.moviesList)
             binding.progressBar.isVisible = state.isEmptyState
             binding.progressBar.isVisible = state.isLoading
+            binding.errorLayout.root.isVisible = state.isErrorState
+            binding.emptyStateLayout.root.isVisible = state.isEmptyState
+        }
+    }
+
+    private fun setUpListeners(){
+        binding.apply {
+            errorLayout.retryButton.setOnClickListener { viewModel.onRetryButtonClicked() }
         }
     }
 }

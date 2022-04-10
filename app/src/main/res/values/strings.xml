@@ -3,4 +3,6 @@
     <string name="ops_no_results_found">Ops! No Results Found</string>
     <string name="poster_base_url">https://image.tmdb.org/t/p/original</string>
     <string name="not_available_yet">not available yet</string>
+    <string name="ops_something_went_wrong">Ops... Something Went Wrong</string>
+    <string name="retry">Retry</string>
 </resources>

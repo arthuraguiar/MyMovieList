@@ -5,6 +5,7 @@
       <map>
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1447587354409318" />
         <entry key="app/src/main/res/layout/empty_state_layout.xml" value="0.21145833333333333" />
+        <entry key="app/src/main/res/layout/error_state_layout.xml" value="0.29270833333333335" />
         <entry key="app/src/main/res/layout/movie_card_item.xml" value="0.25555555555555554" />
         <entry key="app/src/main/res/layout/teste_arthur.xml" value="0.259375" />
       </map>
