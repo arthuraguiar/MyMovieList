@@ -3,7 +3,6 @@ package com.example.mymovieslist.presentation
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.core.view.isVisible
-import com.example.mymovieslist.BuildConfig
 import com.example.mymovieslist.core.extensions.observe
 import com.example.mymovieslist.databinding.ActivityMainBinding
 import com.example.mymovieslist.presentation.adapter.MoviesAdapter
