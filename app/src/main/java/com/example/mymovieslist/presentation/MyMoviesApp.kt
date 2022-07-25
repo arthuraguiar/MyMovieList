@@ -107,7 +107,7 @@ private fun MakeList(moviesList: List<Movie>) {
                     .padding(top = 4.dp, bottom = 4.dp)
             ) {
                 InflateImage(posterUrl = movie.posterUrl)
-                Column(modifier = Modifier.padding(start = 8.dp)) {
+                Column(modifier = Modifier.padding(start = 16.dp)) {
                     Text(text = movie.title)
                     Text(
                         modifier = Modifier.padding(top = 4.dp),
@@ -122,7 +122,7 @@ private fun MakeList(moviesList: List<Movie>) {
 @Composable
 private fun InflateImage(posterUrl: String) =
     CoilImage(
-        modifier = Modifier.aspectRatio(0.8f),
+        modifier = Modifier.width(120.dp).height(80.dp),
         imageModel = posterUrl,
         contentScale = ContentScale.Crop,
         error = ImageBitmap.imageResource(id = R.drawable.icon_film),
