@@ -40,12 +40,7 @@ import com.skydoves.landscapist.coil.CoilImage
 
 @Composable
 fun MyMoviesApp(uiState: MainState, tryAgain: () -> Unit) {
-    val systemUiController = rememberSystemUiController()
-    val darkIcons = MaterialTheme.colors.isLight
-
-    SideEffect {
-        systemUiController.setSystemBarsColor(Color.Transparent, darkIcons = darkIcons)
-    }
+    StatusBarIcons()
 
     Scaffold(
         topBar = {
@@ -61,14 +56,16 @@ fun MyMoviesApp(uiState: MainState, tryAgain: () -> Unit) {
             HandleState(state = uiState, tryAgain)
         }
     }
+}
 
-    /*{ state ->
-        moviesAdapter.submitList(state.moviesList)
-        binding.progressBar.isVisible = state.isEmptyState
-        binding.progressBar.isVisible = state.isLoading
-        binding.errorLayout.root.isVisible = state.isErrorState
-        binding.emptyStateLayout.root.isVisible = state.isEmptyState
-    }*/
+@Composable
+private fun StatusBarIcons() {
+    val systemUiController = rememberSystemUiController()
+    val darkIcons = MaterialTheme.colors.isLight
+
+    SideEffect {
+        systemUiController.setSystemBarsColor(Color.Transparent, darkIcons = darkIcons)
+    }
 }
 
 @Composable
@@ -101,20 +98,25 @@ private fun MakeList(moviesList: List<Movie>) {
             .fillMaxWidth()
     ) {
         items(items = moviesList) { movie ->
-            Row(
-                Modifier
-                    .height(50.dp)
-                    .padding(top = 4.dp, bottom = 4.dp)
-            ) {
-                InflateImage(posterUrl = movie.posterUrl)
-                Column(modifier = Modifier.padding(start = 16.dp)) {
-                    Text(text = movie.title)
-                    Text(
-                        modifier = Modifier.padding(top = 4.dp),
-                        text = movie.releaseDate
-                    )
-                }
-            }
+            MovieView(movie)
+        }
+    }
+}
+
+@Composable
+private fun MovieView(movie: Movie) {
+    Row(
+        Modifier
+            .height(50.dp)
+            .padding(top = 4.dp, bottom = 4.dp)
+    ) {
+        InflateImage(posterUrl = movie.posterUrl)
+        Column(modifier = Modifier.padding(start = 16.dp)) {
+            Text(text = movie.title)
+            Text(
+                modifier = Modifier.padding(top = 4.dp),
+                text = movie.releaseDate
+            )
         }
     }
 }
@@ -122,7 +124,9 @@ private fun MakeList(moviesList: List<Movie>) {
 @Composable
 private fun InflateImage(posterUrl: String) =
     CoilImage(
-        modifier = Modifier.width(120.dp).height(80.dp),
+        modifier = Modifier
+            .width(120.dp)
+            .height(80.dp),
         imageModel = posterUrl,
         contentScale = ContentScale.Crop,
         error = ImageBitmap.imageResource(id = R.drawable.icon_film),
