@@ -7,7 +7,7 @@ plugins {
 apply plugin: 'kotlinx-serialization'
 
 android {
-    compileSdk 31
+    compileSdk 32
 
     defaultConfig {
         applicationId "com.example.mymovieslist"
@@ -68,8 +68,6 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.4.1'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.1'
     implementation 'androidx.lifecycle:lifecycle-process:2.4.1'
-    implementation 'com.github.bumptech.glide:glide:4.13.0'
-    annotationProcessor 'com.github.bumptech.glide:compiler:4.13.0'
     implementation 'io.insert-koin:koin-android:3.1.6'
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:0.8.0'
@@ -82,6 +80,9 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:4.13.2'
 
+    implementation "com.github.skydoves:landscapist-glide:1.5.3"
+    implementation "com.google.accompanist:accompanist-swiperefresh:0.24.13-rc"
+    implementation "com.google.accompanist:accompanist-systemuicontroller:0.24.13-rc"
     implementation "com.google.android.material:compose-theme-adapter:1.1.1"
     // Integration with activities
     implementation 'androidx.activity:activity-compose:1.5.0'
