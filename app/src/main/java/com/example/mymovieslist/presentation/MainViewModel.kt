@@ -1,19 +1,22 @@
 package com.example.mymovieslist.presentation
 
 import androidx.lifecycle.viewModelScope
+import com.example.mymovieslist.core.di.IoDispatcher
 import com.example.mymovieslist.core.viewmodel.BaseViewModel
 import com.example.mymovieslist.domain.usecase.GetPopularMoviesListUseCase
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.onCompletion
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
 
-class MainViewModel(
+@HiltViewModel
+class MainViewModel @Inject constructor(
     private val getPopularMoviesListUseCase: GetPopularMoviesListUseCase,
-    private val dispatcher: CoroutineDispatcher = Dispatchers.IO
+    @IoDispatcher private val dispatcher: CoroutineDispatcher
 ) : BaseViewModel<MainState>(MainState()) {
     init {
         getPopularMovies()
