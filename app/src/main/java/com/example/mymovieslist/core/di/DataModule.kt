@@ -8,7 +8,6 @@ import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import javax.inject.Singleton
 import kotlinx.serialization.ExperimentalSerializationApi
 
 @ExperimentalSerializationApi
@@ -16,13 +15,11 @@ import kotlinx.serialization.ExperimentalSerializationApi
 @Module
 abstract class DataModule {
 
-    @Singleton
     @Binds
     abstract fun bindMoviesDataSource(
         moviesDataSourceImpl: MoviesDataSourceImpl
     ): MoviesDataSource
 
-    @Singleton
     @Binds
     abstract fun bindMovieRepository(
         movieRepositoryImpl: MovieRepositoryImpl

@@ -8,6 +8,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import javax.inject.Singleton
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.json.Json
 import okhttp3.MediaType
@@ -18,11 +19,13 @@ import retrofit2.Retrofit
 @Module
 object NetworkModule {
 
+    @Singleton
     @Provides
     fun provideOkHttpClient(authInterceptor: AuthInterceptor): OkHttpClient {
         return OkHttpClient().newBuilder().addInterceptor(authInterceptor).build()
     }
 
+    @Singleton
     @Provides
     @ExperimentalSerializationApi
     fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
@@ -32,6 +35,7 @@ object NetworkModule {
             .addConverterFactory(json.asConverterFactory(contentType)).build()
     }
 
+    @Singleton
     @Provides
     fun provideMovieService(retrofit: Retrofit): MovieService {
         return retrofit.create(MovieService::class.java)
