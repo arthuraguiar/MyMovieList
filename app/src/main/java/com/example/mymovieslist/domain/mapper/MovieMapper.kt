@@ -5,10 +5,9 @@ import com.example.mymovieslist.core.resource.ResourceProvider
 import com.example.mymovieslist.data.model.FetchPopularMoviesResponse
 import com.example.mymovieslist.data.model.MovieResponse
 import com.example.mymovieslist.domain.model.Movie
+import javax.inject.Inject
 
-class MovieMapper(
-    resourceProvider: ResourceProvider
-){
+class MovieMapper @Inject constructor(resourceProvider: ResourceProvider) {
 
     private val basePosterUrl = resourceProvider.getStringResource(R.string.poster_base_url)
 
