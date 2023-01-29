@@ -1,8 +1,13 @@
 package com.example.mymovieslist.presentation
 
+import android.content.res.Configuration.UI_MODE_NIGHT_YES
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -13,6 +18,7 @@ import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material.Button
 import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
@@ -20,21 +26,29 @@ import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.material.TextButton
 import androidx.compose.material.TopAppBar
+import androidx.compose.material.darkColors
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.Alignment.Companion
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.imageResource
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.mymovieslist.R
+import com.example.mymovieslist.R.drawable
+import com.example.mymovieslist.core.components.RetryScreen
 import com.example.mymovieslist.domain.model.Movie
+import com.example.theme.MyMoviesTheme
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
+import com.skydoves.landscapist.ImageBySource
 import com.skydoves.landscapist.coil.CoilImage
 
 @Composable
@@ -62,21 +76,8 @@ private fun StatusBarIcons() {
 private fun HandleState(state: MainState, tryAgain: () -> Unit) {
     when {
         state.isLoading -> ShowLoading()
-        state.moviesList.isEmpty() -> TryAgain(tryAgain)
+        state.moviesList.isEmpty() -> RetryScreen(tryAgain)
         state.moviesList.isNotEmpty() -> MakeList(state.moviesList)
-    }
-}
-
-@Composable
-fun TryAgain(tryAgain: () -> Unit) {
-    TextButton(
-        onClick = tryAgain,
-        modifier = Modifier.fillMaxSize()
-    ) {
-        Text(
-            stringResource(id = R.string.retry),
-            textAlign = TextAlign.Center
-        )
     }
 }
 
@@ -133,10 +134,10 @@ private fun ShowLoading() {
     }
 }
 
-@Preview
+@Preview("Article screen (dark)", uiMode = UI_MODE_NIGHT_YES)
 @Composable
 fun MainPreview() {
-    MaterialTheme {
+    MyMoviesTheme {
         HandleState(state = MainState(), {})
     }
 }

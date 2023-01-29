@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.example.compose.jetsurvey.theme
+package com.example.theme
 
 import androidx.compose.ui.graphics.Color
 
