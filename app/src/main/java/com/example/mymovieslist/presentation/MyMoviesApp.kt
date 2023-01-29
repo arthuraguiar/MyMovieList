@@ -37,21 +37,11 @@ import com.example.mymovieslist.domain.model.Movie
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import com.skydoves.landscapist.coil.CoilImage
 
-
 @Composable
 fun MyMoviesApp(uiState: MainState, tryAgain: () -> Unit) {
     StatusBarIcons()
 
-    Scaffold(
-        topBar = {
-            TopAppBar(
-                title = {
-                    Text(text = "MyMovieApp")
-                },
-                navigationIcon = {}
-            )
-        }
-    ) { padding ->
+    Scaffold { padding ->
         Box(modifier = Modifier.padding(padding)) {
             HandleState(state = uiState, tryAgain)
         }
