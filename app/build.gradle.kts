@@ -50,7 +50,7 @@ android {
                 "proguard-rules.pro"
             )
             buildConfigField("String", "API_URL", "\"https://api.themoviedb.org/3/movie/\"")
-            buildConfigField("String", "API_KEY", "getApiKey()")
+            buildConfigField("String", "API_KEY", getApiKey())
         }
         getByName("debug") {
             isMinifyEnabled = false
