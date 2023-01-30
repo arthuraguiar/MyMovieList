@@ -17,15 +17,17 @@
 package com.example.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
-import androidx.compose.material3.MaterialTheme
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material3.MaterialTheme.shapes
+import androidx.compose.material3.MaterialTheme.typography
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
+import androidx.compose.material.darkColors
+import androidx.compose.material.lightColors
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
+import androidx.compose.ui.graphics.Color
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
-
-const val stronglyDeemphasizedAlpha = 0.6f
-const val slightlyDeemphasizedAlpha = 0.87f
 
 private val LightColors = lightColorScheme(
     primary = md_theme_light_primary,
@@ -87,16 +89,50 @@ private val DarkColors = darkColorScheme(
     surfaceTint = md_theme_dark_surfaceTint,
 )
 
+private val LightColorPalette = lightColors(
+    primary = md_theme_light_primary,
+    secondary = md_theme_light_secondary,
+    background = md_theme_light_background,
+    surface = md_theme_light_surface,
+    onPrimary = md_theme_light_onPrimary,
+    onSecondary = md_theme_light_onSecondary,
+    onBackground = md_theme_light_onBackground,
+    onSurface = md_theme_light_onSurface
+)
+
+private val DarkColorPalette = darkColors(
+    primary = md_theme_dark_primary,
+    secondary = md_theme_dark_secondary,
+    background = md_theme_dark_inversePrimary,
+    surface = md_theme_dark_surface,
+    onPrimary = md_theme_dark_onPrimary,
+    onSecondary = md_theme_dark_onSecondary,
+    onBackground = md_theme_dark_onBackground,
+    onSurface = md_theme_dark_onSurface
+)
+
+@Composable
+fun MyMoviesTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Composable() () -> Unit) {
+    val colors = if (darkTheme) {
+        DarkColorPalette
+    } else {
+        LightColorPalette
+    }
+
+    MaterialTheme(
+        colors = colors,
+        content = content
+    )
+}
+
+/*
+
 @Composable
 fun MyMoviesTheme(
     useDarkTheme: Boolean = isSystemInDarkTheme(),
     content: @Composable () -> Unit
 ) {
-    val colors = if (!useDarkTheme) {
-        LightColors
-    } else {
-        DarkColors
-    }
+    val colors = if (useDarkTheme) DarkColors else LightColors
 
     val systemUiController = rememberSystemUiController()
     DisposableEffect(systemUiController, useDarkTheme) {
@@ -115,3 +151,4 @@ fun MyMoviesTheme(
         content = content,
     )
 }
+*/

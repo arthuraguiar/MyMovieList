@@ -4,6 +4,7 @@ import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -70,12 +71,14 @@ private fun HandleState(state: MainState, modifier: Modifier, tryAgain: () -> Un
 @Composable
 private fun MakeList(moviesList: List<Movie>, modifier: Modifier = Modifier) {
     LazyColumn(
+        verticalArrangement = Arrangement.spacedBy(8.dp),
+        contentPadding = PaddingValues(vertical = 16.dp),
         modifier = modifier
-            .padding(vertical = 4.dp, horizontal = 8.dp)
             .fillMaxSize()
+            .padding(horizontal = 16.dp)
     ) {
         items(items = moviesList) { movie ->
-            MovieView(movie, modifier = Modifier.padding(8.dp))
+            MovieView(movie)
         }
     }
 }
@@ -83,7 +86,7 @@ private fun MakeList(moviesList: List<Movie>, modifier: Modifier = Modifier) {
 @Composable
 private fun MovieView(movie: Movie, modifier: Modifier = Modifier) {
     Surface(
-        shape = MaterialTheme.shapes.small,
+        shape = MaterialTheme.shapes.medium,
         modifier = modifier
             .fillMaxWidth()
     ) {
@@ -129,7 +132,6 @@ fun MainPreview() {
         HandleState(state = MainState(), Modifier, {})
     }
 }
-
 
 @Preview(uiMode = UI_MODE_NIGHT_YES)
 @Composable
