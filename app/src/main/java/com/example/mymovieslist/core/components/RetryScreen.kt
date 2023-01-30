@@ -38,9 +38,12 @@ fun RetryScreen(tryAgain: () -> Unit) {
             Image(
                 painterResource(drawable.error_drawable),
                 contentDescription = "",
-                contentScale = ContentScale.Inside
+                contentScale = ContentScale.Crop
             )
-            Text(text = stringResource(id = string.ops_something_went_wrong))
+            Text(
+                modifier = Modifier.padding(8.dp),
+                text = stringResource(id = string.ops_something_went_wrong)
+            )
         }
         Spacer(modifier = Modifier.weight(1f))
         Button(modifier = Modifier.fillMaxWidth(), onClick = tryAgain) {
@@ -52,7 +55,7 @@ fun RetryScreen(tryAgain: () -> Unit) {
     }
 }
 
-@Preview("Retry screen")
+@Preview("Retry screen", uiMode = Configuration.UI_MODE_NIGHT_NO)
 @Preview("Retry screen (dark)", uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Composable
 fun RetryScreenPreview() {
