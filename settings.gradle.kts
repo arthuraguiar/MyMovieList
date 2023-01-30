@@ -8,3 +8,4 @@ dependencyResolutionManagement {
 }
 rootProject.name = "MyMoviesList"
 include (":app")
+include(":theme")
