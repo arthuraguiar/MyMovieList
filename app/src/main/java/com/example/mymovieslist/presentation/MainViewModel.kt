@@ -27,7 +27,7 @@ class MainViewModel @Inject constructor(
             .flowOn(dispatcher)
             .onStart { setState { it.getLoadingState(isLoading = true) } }
             .onCompletion { setState { it.getLoadingState(isLoading = false) } }
-            .catch { handleError(it) }
+            .catch { handleError() }
             .collect { movies ->
                 setState { it.getSuccessState(movies) }
             }
@@ -37,7 +37,7 @@ class MainViewModel @Inject constructor(
         getPopularMovies()
     }
 
-    private fun handleError(throwable: Throwable) {
+    private fun handleError() {
         setState { it.getErrorState() }
     }
 }
