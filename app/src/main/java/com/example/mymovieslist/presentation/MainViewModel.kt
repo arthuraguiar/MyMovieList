@@ -1,5 +1,6 @@
 package com.example.mymovieslist.presentation
 
+import android.util.Log
 import androidx.lifecycle.viewModelScope
 import com.example.mymovieslist.core.di.IoDispatcher
 import com.example.mymovieslist.core.viewmodel.BaseViewModel
@@ -38,6 +39,7 @@ class MainViewModel @Inject constructor(
     }
 
     private fun handleError(throwable: Throwable) {
+        Log.d("MainViewModelTAG", "handleError: ${throwable.localizedMessage} ")
         setState { it.getErrorState() }
     }
 }
