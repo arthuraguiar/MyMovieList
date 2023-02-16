@@ -1,6 +1,5 @@
 package com.example.mymovieslist.presentation
 
-import android.util.Log
 import androidx.lifecycle.viewModelScope
 import com.example.mymovieslist.core.di.IoDispatcher
 import com.example.mymovieslist.core.viewmodel.BaseViewModel
@@ -28,7 +27,7 @@ class MainViewModel @Inject constructor(
             .flowOn(dispatcher)
             .onStart { setState { it.getLoadingState(isLoading = true) } }
             .onCompletion { setState { it.getLoadingState(isLoading = false) } }
-            .catch { handleError(it) }
+            .catch { handleError() }
             .collect { movies ->
                 setState { it.getSuccessState(movies) }
             }
@@ -38,8 +37,7 @@ class MainViewModel @Inject constructor(
         getPopularMovies()
     }
 
-    private fun handleError(throwable: Throwable) {
-        Log.d("MainViewModelTAG", "handleError: ${throwable.localizedMessage} ")
+    private fun handleError() {
         setState { it.getErrorState() }
     }
 }
