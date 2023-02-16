@@ -60,7 +60,7 @@ private fun HandleState(state: MainState, modifier: Modifier, tryAgain: () -> Un
     when {
         state.isLoading -> ShowLoading()
         state.moviesList.isEmpty() -> RetryScreen(tryAgain)
-        state.moviesList.isNotEmpty() -> MakeList(state.moviesList, modifier)
+        else -> MakeList(state.moviesList, modifier)
     }
 }
 
@@ -125,7 +125,7 @@ private fun ShowLoading() {
 @Composable
 fun MainPreview() {
     MyMoviesTheme {
-        HandleState(state = MainState(), Modifier, {})
+        HandleState(state = MainState(), Modifier) {}
     }
 }
 
