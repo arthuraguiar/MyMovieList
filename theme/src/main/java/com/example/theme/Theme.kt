@@ -32,13 +32,17 @@ import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
 private val DarkColorPalette = darkColors(
     primary = md_theme_dark_primary,
+    primaryVariant = Color(0xFF3700B3),
     secondary = md_theme_dark_secondary,
-    background = md_theme_dark_inversePrimary,
+    secondaryVariant = md_theme_dark_secondary,
+    background = md_theme_dark_background,
     surface = md_theme_dark_surface,
-    onPrimary = md_theme_dark_onPrimary,
+    error = Color(0xFFCF6679),
+    onPrimary = Color(0xFFCF6679),
     onSecondary = md_theme_dark_onSecondary,
     onBackground = md_theme_dark_onBackground,
-    onSurface = md_theme_dark_onSurface
+    onSurface = md_theme_dark_onSurface,
+    onError = Color.Black
 )
 
 @Composable
