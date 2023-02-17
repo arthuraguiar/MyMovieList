@@ -85,5 +85,4 @@ class MainViewModelTest {
             cancelAndIgnoreRemainingEvents()
         }
     }
-
 }
