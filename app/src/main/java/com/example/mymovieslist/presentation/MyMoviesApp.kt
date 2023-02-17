@@ -40,9 +40,9 @@ import com.skydoves.landscapist.coil.CoilImage
 fun MyMoviesApp(uiState: MainState, tryAgain: () -> Unit) {
     StatusBarIcons()
 
-    Scaffold(content = { paddingValues ->
+    Scaffold(){ paddingValues ->
         HandleState(state = uiState, modifier = Modifier.padding(paddingValues), tryAgain)
-    })
+    }
 }
 
 @Composable

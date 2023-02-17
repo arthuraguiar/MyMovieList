@@ -54,9 +54,8 @@ class MovieRepositoryTest {
 
         // Then
         result.test {
-            assertEquals(expectItem(), expected)
-            expectComplete()
+            assertEquals(awaitItem(), expected)
+            awaitComplete()
         }
     }
-
 }

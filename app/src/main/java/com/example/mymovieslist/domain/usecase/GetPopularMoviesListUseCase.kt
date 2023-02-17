@@ -8,9 +8,7 @@ import kotlinx.coroutines.flow.Flow
 class GetPopularMoviesListUseCase @Inject constructor(
     private val movieRepository: MovieRepository
 ) {
-
     operator fun invoke(): Flow<List<Movie>> {
         return movieRepository.getPopularMoviesList()
     }
-
 }

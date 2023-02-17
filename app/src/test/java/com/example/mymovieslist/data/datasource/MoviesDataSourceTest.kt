@@ -43,7 +43,7 @@ class MoviesDataSourceTest {
 
             // Then
             result.test {
-                val error = expectError()
+                val error = awaitError()
                 assertEquals(error, expected)
             }
         }
@@ -63,7 +63,7 @@ class MoviesDataSourceTest {
 
             // Then
             result.test {
-                val error = expectError()
+                val error = awaitError()
                 assertEquals(error, expected)
             }
         }
@@ -82,11 +82,10 @@ class MoviesDataSourceTest {
 
             // Then
             result.test {
-                assertEquals(expectItem(), expected)
-                expectComplete()
+                assertEquals(awaitItem(), expected)
+                awaitComplete()
             }
         }
-
 }
 
 
