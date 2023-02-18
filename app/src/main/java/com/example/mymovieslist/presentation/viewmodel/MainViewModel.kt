@@ -1,9 +1,10 @@
-package com.example.mymovieslist.presentation
+package com.example.mymovieslist.presentation.viewmodel
 
 import androidx.lifecycle.viewModelScope
 import com.example.mymovieslist.core.di.IoDispatcher
 import com.example.mymovieslist.core.viewmodel.BaseViewModel
 import com.example.mymovieslist.domain.usecase.GetPopularMoviesListUseCase
+import com.example.mymovieslist.presentation.MainState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.CoroutineDispatcher

@@ -1,10 +1,12 @@
 package com.example.theme
 
-import androidx.compose.material.Typography
+import androidx.compose.material3.Typography
+import androidx.compose.ui.text.PlatformTextStyle
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.LineHeightStyle
 import androidx.compose.ui.unit.sp
 
 val MontserratFontFamily = FontFamily(
@@ -15,122 +17,64 @@ val MontserratFontFamily = FontFamily(
     )
 )
 
+val defaultTextStyle = TextStyle(
+    fontFamily = MontserratFontFamily,
+    platformStyle = PlatformTextStyle(
+        includeFontPadding = false
+    ),
+    lineHeightStyle = LineHeightStyle(
+        alignment = LineHeightStyle.Alignment.Center,
+        trim = LineHeightStyle.Trim.None
+    )
+)
+
 val Typography = Typography(
-    defaultFontFamily = MontserratFontFamily,
-
-    h1 = TextStyle(
-        fontFamily = MontserratFontFamily,
-        fontWeight = FontWeight.W400,
-        fontSize = 57.sp,
-        lineHeight = 64.sp,
-        letterSpacing = (-0.25).sp,
+    displayLarge = defaultTextStyle.copy(
+        fontSize = 57.sp, lineHeight = 64.sp, letterSpacing = (-0.25).sp
     ),
-
-    // Display Medium - Montserrat 45/52 . 0px
-    h2 = TextStyle(
-        fontFamily = MontserratFontFamily,
-        fontWeight = FontWeight.W400,
-        fontSize = 45.sp,
-        lineHeight = 52.sp,
-        letterSpacing = 0.sp,
+    displayMedium = defaultTextStyle.copy(
+        fontSize = 45.sp, lineHeight = 52.sp, letterSpacing = 0.sp
     ),
-
-    // Display Small - Montserrat 36/44 . 0px
-    h3 = TextStyle(
-        fontFamily = MontserratFontFamily,
-        fontWeight = FontWeight.W400,
-        fontSize = 36.sp,
-        lineHeight = 44.sp,
-        letterSpacing = 0.sp,
+    displaySmall = defaultTextStyle.copy(
+        fontSize = 36.sp, lineHeight = 44.sp, letterSpacing = 0.sp
     ),
-
-    // Headline Large - Montserrat 32/40 . 0px
-    h4 = TextStyle(
-        fontFamily = MontserratFontFamily,
-        fontWeight = FontWeight.W400,
-        fontSize = 32.sp,
-        lineHeight = 40.sp,
-        letterSpacing = 0.sp,
+    headlineLarge = defaultTextStyle.copy(
+        fontSize = 32.sp, lineHeight = 40.sp, letterSpacing = 0.sp
     ),
-
-    // Headline Medium - Montserrat 28/36 . 0px
-    h5 = TextStyle(
-        fontFamily = MontserratFontFamily,
-        fontWeight = FontWeight.W400,
-        fontSize = 28.sp,
-        lineHeight = 36.sp,
-        letterSpacing = 0.sp,
+    headlineMedium = defaultTextStyle.copy(
+        fontSize = 28.sp, lineHeight = 36.sp, letterSpacing = 0.sp
     ),
-
-    // Headline Small - Montserrat 24/32 . 0px
-    h6 = TextStyle(
-        fontFamily = MontserratFontFamily,
-        fontWeight = FontWeight.W400,
-        fontSize = 24.sp,
-        lineHeight = 32.sp,
-        letterSpacing = 0.sp,
+    headlineSmall = defaultTextStyle.copy(
+        fontSize = 24.sp, lineHeight = 32.sp, letterSpacing = 0.sp
     ),
-
-    // Title Large - Montserrat 22/28 . 0px
-    subtitle1 = TextStyle(
-        fontFamily = MontserratFontFamily,
-        fontWeight = FontWeight.W400,
-        fontSize = 22.sp,
-        lineHeight = 28.sp,
-        letterSpacing = 0.sp,
+    titleLarge = defaultTextStyle.copy(
+        fontSize = 22.sp, lineHeight = 28.sp, letterSpacing = 0.sp
     ),
-
-    // Title Medium - Montserrat 16/24 . 0.15px
-    subtitle2 = TextStyle(
-        fontFamily = MontserratFontFamily,
-        fontWeight = FontWeight.W500,
+    titleMedium = defaultTextStyle.copy(
         fontSize = 16.sp,
         lineHeight = 24.sp,
         letterSpacing = 0.15.sp,
+        fontWeight = FontWeight.Medium
     ),
-
-    // Title Small - Montserrat 14/20 . 0.1px
-    body1 = TextStyle(
-        fontFamily = MontserratFontFamily,
-        fontWeight = FontWeight.W500,
-        fontSize = 14.sp,
-        lineHeight = 20.sp,
-        letterSpacing = 0.1.sp,
+    titleSmall = defaultTextStyle.copy(
+        fontSize = 14.sp, lineHeight = 20.sp, letterSpacing = 0.1.sp, fontWeight = FontWeight.Medium
     ),
-
-    // Label Large - Montserrat 14/20 . 0.1px
-    body2 = TextStyle(
-        fontFamily = MontserratFontFamily,
-        fontWeight = FontWeight.W500,
-        fontSize = 14.sp,
-        lineHeight = 20.sp,
-        letterSpacing = 0.1.sp,
+    labelLarge = defaultTextStyle.copy(
+        fontSize = 14.sp, lineHeight = 20.sp, letterSpacing = 0.1.sp, fontWeight = FontWeight.Medium
     ),
-
-    // Label Medium - Montserrat 12/16 . 0.5px
-    button = TextStyle(
-        fontFamily = MontserratFontFamily,
-        fontWeight = FontWeight.W500,
-        fontSize = 12.sp,
-        lineHeight = 16.sp,
-        letterSpacing = 0.5.sp,
+    labelMedium = defaultTextStyle.copy(
+        fontSize = 12.sp, lineHeight = 16.sp, letterSpacing = 0.5.sp, fontWeight = FontWeight.Medium
     ),
-
-    // Label Small - Montserrat 11/16 . 0.5px
-    caption = TextStyle(
-        fontFamily = MontserratFontFamily,
-        fontWeight = FontWeight.W500,
-        fontSize = 11.sp,
-        lineHeight = 16.sp,
-        letterSpacing = 0.5.sp,
+    labelSmall = defaultTextStyle.copy(
+        fontSize = 11.sp, lineHeight = 16.sp, letterSpacing = 0.5.sp, fontWeight = FontWeight.Medium
     ),
-
-    // Body Large - Montserrat 16/24 . 0.5px
-    overline = TextStyle(
-        fontFamily = MontserratFontFamily,
-        fontWeight = FontWeight.W400,
-        fontSize = 16.sp,
-        lineHeight = 24.sp,
-        letterSpacing = 0.5.sp,
+    bodyLarge = defaultTextStyle.copy(
+        fontSize = 16.sp, lineHeight = 24.sp, letterSpacing = 0.5.sp
+    ),
+    bodyMedium = defaultTextStyle.copy(
+        fontSize = 14.sp, lineHeight = 20.sp, letterSpacing = 0.25.sp
+    ),
+    bodySmall = defaultTextStyle.copy(
+        fontSize = 12.sp, lineHeight = 16.sp, letterSpacing = 0.4.sp
     ),
 )
