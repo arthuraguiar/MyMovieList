@@ -91,7 +91,7 @@ dependencies {
 
     implementation(project(mapOf("path" to ":theme")))
 
-    implementation("com.github.skydoves:landscapist-coil:1.5.0")
+    implementation("io.coil-kt:coil-compose:2.2.2")
     implementation("com.google.accompanist:accompanist-swiperefresh:0.28.0")
     implementation("com.google.accompanist:accompanist-systemuicontroller:0.28.0")
 

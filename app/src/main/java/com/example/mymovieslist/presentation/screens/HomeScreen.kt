@@ -1,18 +1,29 @@
 package com.example.mymovieslist.presentation.screens
 
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.paddingFromBaseline
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.layout.wrapContentSize
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.GridCells.Adaptive
+import androidx.compose.foundation.lazy.grid.GridCells.Fixed
+import androidx.compose.foundation.lazy.grid.LazyHorizontalGrid
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material.Card
 import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.MaterialTheme
@@ -22,19 +33,23 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.Color.Companion
-import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.imageResource
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.mymovieslist.R.drawable
+import coil.compose.AsyncImage
+import coil.compose.SubcomposeAsyncImage
+import coil.request.ImageRequest
+import com.example.mymovieslist.R
 import com.example.mymovieslist.core.components.RetryScreen
 import com.example.mymovieslist.domain.model.Movie
+import com.example.mymovieslist.domain.model.MovieSection
 import com.example.mymovieslist.presentation.viewmodel.MainViewModel
 import com.example.theme.MyMoviesTheme
-import com.skydoves.landscapist.coil.CoilImage
+import com.example.theme.md_theme_dark_onSurface
+import kotlin.text.Typography.section
+import kotlinx.serialization.json.JsonNull.content
 
 @Composable
 fun HomeScreen(viewModel: MainViewModel) {
@@ -43,33 +58,53 @@ fun HomeScreen(viewModel: MainViewModel) {
     when {
         state.isLoading -> ShowLoading()
         state.moviesList.isEmpty() -> RetryScreen(viewModel::onRetryButtonClicked)
-        else -> MakeList(state.moviesList)
+        else -> MakeList(makeMovieSection(state.moviesList))
     }
 }
 
 @Composable
-private fun MakeList(moviesList: List<Movie>) {
-    Column {
-        Text(
-            modifier = Modifier.padding(start = 16.dp, top = 8.dp),
-            style = MaterialTheme.typography.h4,
-            color = Color.White,
-            text = "Popular",
-        )
-        LazyVerticalGrid(
-            columns = Adaptive(128.dp),
-            contentPadding = PaddingValues(
-                start = 12.dp,
-                top = 16.dp,
-                end = 12.dp,
-                bottom = 16.dp
-            ),
-            content = {
-                items(moviesList) { movie ->
-                    MovieView(movie)
-                }
+private fun MakeList(movieSectionList: List<MovieSection>) {
+    LazyColumn {
+        items(movieSectionList) { section ->
+            HomeSection(title = section.title) {
+                MovieHorizontalGrid(section.movies)
             }
+        }
+    }
+}
+
+@Composable
+private fun MovieHorizontalGrid(movies: List<Movie>) {
+    LazyHorizontalGrid(
+        rows = Fixed(2),
+        contentPadding = PaddingValues(horizontal = 16.dp),
+        horizontalArrangement = Arrangement.spacedBy(8.dp),
+        verticalArrangement = Arrangement.spacedBy(8.dp),
+        modifier = Modifier.height(400.dp)
+    ) {
+
+        items(movies) { movie ->
+            MovieView(movie)
+        }
+    }
+}
+
+@Composable
+fun HomeSection(
+    title: String,
+    modifier: Modifier = Modifier,
+    content: @Composable () -> Unit
+) {
+    Column(modifier) {
+        Text(
+            text = title,
+            style = MaterialTheme.typography.h5,
+            color = md_theme_dark_onSurface,
+            modifier = Modifier
+                .paddingFromBaseline(top = 40.dp, bottom = 16.dp)
+                .padding(horizontal = 16.dp)
         )
+        content()
     }
 }
 
@@ -83,16 +118,29 @@ private fun MovieView(movie: Movie) {
     ) {
         InflateImage(posterUrl = movie.posterUrl)
     }
-
 }
 
 @Composable
 private fun InflateImage(posterUrl: String) =
-    CoilImage(
-        modifier = Modifier.size(height = 200.dp, width = 140.dp),
-        imageModel = posterUrl,
-        contentScale = ContentScale.Crop,
-        error = ImageBitmap.imageResource(id = drawable.icon_film),
+    SubcomposeAsyncImage(
+        model = ImageRequest.Builder(LocalContext.current)
+            .data(posterUrl)
+            .crossfade(true)
+            .build(),
+        contentDescription = null,
+        contentScale = ContentScale.Fit,
+        loading = {
+            Box(
+                modifier = Modifier.fillMaxSize(),
+                contentAlignment = Alignment.Center,
+            ) {
+                Image(
+                    painter = painterResource(id = R.drawable.icon_film),
+                    contentDescription = null
+                )
+                CircularProgressIndicator()
+            }
+        }
     )
 
 @Composable
@@ -110,15 +158,43 @@ private fun ShowLoading() {
 @Composable
 fun MovieListPreview() {
     MyMoviesTheme {
+        val movieList = (0..10).map {
+            Movie(
+                title = "Puss in Boots: The Last Wish",
+                originalLanguage = "en",
+                releaseDate = "2022-12-07",
+                posterUrl = "https://image.tmdb.org/t/p/original/kuf6dutpsT0vSVehic3EZIqkOBt.jpg"
+            )
+        }
         MakeList(
-            (0..10).map {
-                Movie(
-                    title = "Puss in Boots: The Last Wish",
-                    originalLanguage = "en",
-                    releaseDate = "2022-12-07",
-                    posterUrl = "https://image.tmdb.org/t/p/original/kuf6dutpsT0vSVehic3EZIqkOBt.jpg"
+            listOf(
+                MovieSection(
+                    "Popular",
+                    movieList
+                ),
+                MovieSection(
+                    "Action",
+                    movieList
                 )
-            }
+            )
         )
     }
 }
+
+
+//TODO map other api endpoints
+private fun makeMovieSection(movies: List<Movie>) =
+    mutableListOf(
+        MovieSection(
+            "Popular",
+            movies
+        ),
+        MovieSection(
+            "Action",
+            movies.reversed()
+        ),
+        MovieSection(
+            "Animation",
+            movies.sortedBy { it.title }
+        )
+    )

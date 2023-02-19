@@ -50,10 +50,7 @@ private fun RenderBottomBar(
     selectedDestination: String,
     navigateToTopLevelDestination: (MainDestination) -> Unit
 ) {
-    NavigationBar(
-        Modifier.fillMaxWidth(),
-        containerColor = MaterialTheme.colorScheme.inverseOnSurface
-    ) {
+    NavigationBar {
         bottomMenu.forEach { destination ->
             NavigationBarItem(
                 selected = selectedDestination == destination.route,
