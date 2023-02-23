@@ -3,6 +3,7 @@ package com.example.mymovieslist.presentation
 import app.cash.turbine.test
 import com.example.CoroutinesTestRule
 import com.example.mymovieslist.domain.usecase.GetPopularMoviesListUseCase
+import com.example.mymovieslist.presentation.viewmodel.MainViewModel
 import com.example.mymovieslist.stubs.popularMoviesList
 import io.mockk.coEvery
 import io.mockk.mockk
