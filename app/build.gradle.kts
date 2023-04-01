@@ -80,6 +80,7 @@ dependencies {
 
     implementation("com.google.dagger:hilt-android:2.38.1")
     implementation(project(mapOf("path" to ":theme")))
+    implementation(project(mapOf("path" to ":core:common")))
     kapt("com.google.dagger:hilt-android-compiler:2.38.1")
 
 
