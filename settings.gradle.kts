@@ -3,9 +3,10 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
-        jcenter() // Warning: this repository is going to shut down soon
     }
 }
 rootProject.name = "MyMoviesList"
 include (":app")
 include(":theme")
+include(":core:common")
+include(":core:domain")
