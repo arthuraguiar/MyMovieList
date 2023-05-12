@@ -90,6 +90,9 @@ dependencies {
     kapt("com.google.dagger:hilt-android-compiler:2.43.2")
 
     implementation(project(mapOf("path" to ":theme")))
+    implementation(project(mapOf("path" to ":core:common")))
+    implementation(project(mapOf("path" to ":core:domain")))
+    kapt("com.google.dagger:hilt-android-compiler:2.38.1")
 
     implementation("io.coil-kt:coil-compose:2.2.2")
     implementation("com.google.accompanist:accompanist-swiperefresh:0.28.0")
