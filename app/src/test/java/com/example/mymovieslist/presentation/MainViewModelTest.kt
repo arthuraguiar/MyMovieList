@@ -3,6 +3,7 @@ package com.example.mymovieslist.presentation
 import app.cash.turbine.test
 import com.example.CoroutinesTestRule
 import com.example.mymovieslist.domain.usecase.GetPopularMoviesListUseCase
+import com.example.mymovieslist.presentation.viewmodel.MainViewModel
 import com.example.mymovieslist.stubs.popularMoviesList
 import io.mockk.coEvery
 import io.mockk.mockk
@@ -37,10 +38,10 @@ class MainViewModelTest {
 
         // Then
         viewModel.screenState.test {
-            assertEquals(expectItem(), initState)
-            assertEquals(expectItem(), initState.copy(isLoading = true))
-            assertEquals(expectItem(), initState.copy(isLoading = false))
-            assertEquals(expectItem(), errorState)
+            assertEquals(awaitItem(), initState)
+            assertEquals(awaitItem(), initState.copy(isLoading = true))
+            assertEquals(awaitItem(), initState.copy(isLoading = false))
+            assertEquals(awaitItem(), errorState)
             cancelAndIgnoreRemainingEvents()
         }
     }
@@ -57,10 +58,10 @@ class MainViewModelTest {
 
         // Then
         viewModel.screenState.test {
-            assertEquals(expectItem(), initState)
-            assertEquals(expectItem(), initState.copy(isLoading = true))
-            assertEquals(expectItem(), successState)
-            assertEquals(expectItem(), successState.copy(isLoading = false))
+            assertEquals(awaitItem(), initState)
+            assertEquals(awaitItem(), initState.copy(isLoading = true))
+            assertEquals(awaitItem(), successState)
+            assertEquals(awaitItem(), successState.copy(isLoading = false))
             cancelAndIgnoreRemainingEvents()
         }
     }
@@ -78,12 +79,11 @@ class MainViewModelTest {
 
         // Then
         viewModel.screenState.test {
-            assertEquals(expectItem(), initState)
-            assertEquals(expectItem(), initState.copy(isLoading = true))
-            assertEquals(expectItem(), successState)
-            assertEquals(expectItem(), successState.copy(isLoading = false))
+            assertEquals(awaitItem(), initState)
+            assertEquals(awaitItem(), initState.copy(isLoading = true))
+            assertEquals(awaitItem(), successState)
+            assertEquals(awaitItem(), successState.copy(isLoading = false))
             cancelAndIgnoreRemainingEvents()
         }
     }
-
 }
