@@ -1,8 +1,8 @@
 package com.example.mymovieslist.data.datasource
 
 import app.cash.turbine.test
+import com.example.domain.RequestExceptions
 import com.example.mymovieslist.data.network.MovieService
-import com.example.mymovieslist.domain.model.RequestExceptions
 import com.example.mymovieslist.stubs.fetchPopularMoviesResponse
 import com.example.mymovieslist.stubs.httpException
 import com.example.mymovieslist.stubs.socketTimeoutException
