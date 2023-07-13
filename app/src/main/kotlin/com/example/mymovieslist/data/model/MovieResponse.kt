@@ -5,6 +5,8 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class MovieResponse(
+    @SerialName("id")
+    val id: Int,
     @SerialName("title")
     val title: String,
     @SerialName("release_date")

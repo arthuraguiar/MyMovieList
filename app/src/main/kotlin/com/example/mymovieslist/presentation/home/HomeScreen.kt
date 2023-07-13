@@ -21,8 +21,6 @@ import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
@@ -36,10 +34,8 @@ import com.example.mymovieslist.R
 import com.example.mymovieslist.core.components.RetryScreen
 import com.example.mymovieslist.domain.model.Movie
 import com.example.mymovieslist.domain.model.MovieSection
-import com.example.mymovieslist.presentation.viewmodel.MainViewModel
 import com.example.theme.MyMoviesTheme
 import com.example.theme.md_theme_dark_onSurface
-import kotlinx.serialization.json.JsonNull.content
 
 @Composable
 fun HomeScreen(
@@ -153,6 +149,7 @@ fun MovieListPreview() {
     MyMoviesTheme {
         val movieList = (0..10).map {
             Movie(
+                id = it,
                 title = "Puss in Boots: The Last Wish",
                 originalLanguage = "en",
                 releaseDate = "2022-12-07",

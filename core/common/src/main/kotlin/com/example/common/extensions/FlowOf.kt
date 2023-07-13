@@ -1,6 +1,6 @@
 package com.example.common.extensions
 
-import com.example.domain.RequestExceptions
+import com.example.domain.exceptions.RequestExceptions
 import java.io.InterruptedIOException
 import java.net.ConnectException
 import java.net.SocketException

@@ -1,4 +1,4 @@
-package com.example.domain
+package com.example.domain.exceptions
 
 sealed class RequestExceptions : Throwable() {
     object NoConnectionException : RequestExceptions()

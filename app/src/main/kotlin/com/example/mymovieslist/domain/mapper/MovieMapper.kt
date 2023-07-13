@@ -17,6 +17,7 @@ class MovieMapper @Inject constructor(resourceProvider: ResourceProvider) {
 
     private fun MovieResponse.toMovieEntity(): Movie{
         return Movie(
+            id = this.id,
             title = this.title,
             releaseDate = this.releaseDate,
             originalLanguage = this.originalLanguage,
