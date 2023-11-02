@@ -14,14 +14,13 @@ class CoroutinesTestRule : TestRule {
 
     val standardTestDispatcher = StandardTestDispatcher()
 
-    override fun apply(base: Statement?, description: Description?) = object : Statement() {
+    override fun apply(base: Statement, description: Description): Statement = object : Statement() {
         override fun evaluate() {
             Dispatchers.setMain(standardTestDispatcher)
 
-            base?.evaluate()
+            base.evaluate()
 
             Dispatchers.resetMain()
         }
     }
-
 }

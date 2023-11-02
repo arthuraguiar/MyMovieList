@@ -1,17 +1,25 @@
-// Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
     repositories {
         google()
         mavenCentral()
+
+        maven {
+            url = uri("https://plugins.gradle.org/m2/")
+        }
+        maven {
+            url = uri("https://dl.google.com/dl/android/maven2")
+        }
     }
     dependencies {
-        classpath ("com.android.tools.build:gradle:8.0.1")
-        classpath ("org.jetbrains.kotlin:kotlin-gradle-plugin:1.8.21")
-        classpath ("org.jetbrains.kotlin:kotlin-serialization:1.7.0")
-        classpath ("com.google.dagger:hilt-android-gradle-plugin:2.44")
-        // NOTE: Do not place your application dependencies here; they belong
-        // in the individual module build.gradle files
+        classpath (libs.build.logic.android.gradlePlugin)
+        classpath (libs.build.logic.kotlin.gradlePlugin)
+        classpath (libs.kotlin.serialization)
+        classpath (libs.hilt.android.plugin)
     }
+}
+
+plugins {
+    alias(libs.plugins.ksp) apply false
 }
 
 tasks.register("clean",Delete::class){
