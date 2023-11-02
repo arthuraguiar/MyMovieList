@@ -30,7 +30,8 @@ dependencies {
     implementation(libs.retrofit)
     implementation(libs.kotlinx.coroutines.android)
     implementation(project(mapOf("path" to ":core:domain")))
+
     testImplementation(libs.junit)
-    androidTestImplementation("androidx.test.ext:junit:1.1.5")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+    androidTestImplementation(libs.androidx.junit)
+    androidTestImplementation(libs.androidx.espresso.core)
 }
