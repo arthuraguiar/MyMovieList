@@ -1,27 +1,19 @@
-package com.example.mymovieslist.presentation.screens
+package com.example.mymovieslist.presentation.home
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.paddingFromBaseline
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.LazyRow
-import androidx.compose.foundation.lazy.grid.GridCells
-import androidx.compose.foundation.lazy.grid.GridCells.Adaptive
 import androidx.compose.foundation.lazy.grid.GridCells.Fixed
 import androidx.compose.foundation.lazy.grid.LazyHorizontalGrid
-import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.Card
@@ -38,7 +30,6 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import coil.compose.AsyncImage
 import coil.compose.SubcomposeAsyncImage
 import coil.request.ImageRequest
 import com.example.mymovieslist.R
@@ -48,17 +39,19 @@ import com.example.mymovieslist.domain.model.MovieSection
 import com.example.mymovieslist.presentation.viewmodel.MainViewModel
 import com.example.theme.MyMoviesTheme
 import com.example.theme.md_theme_dark_onSurface
-import kotlin.text.Typography.section
 import kotlinx.serialization.json.JsonNull.content
 
 @Composable
-fun HomeScreen(viewModel: MainViewModel) {
-    val state by viewModel.screenState.collectAsState()
+fun HomeScreen(
+    loading: Boolean,
+    movieList: List<Movie>,
+    retry: () -> Unit
+) {
 
     when {
-        state.isLoading -> ShowLoading()
-        state.moviesList.isEmpty() -> RetryScreen(viewModel::onRetryButtonClicked)
-        else -> MakeList(makeMovieSection(state.moviesList))
+        loading -> ShowLoading()
+        movieList.isEmpty() -> RetryScreen(retry)
+        else -> MakeList(makeMovieSection(movieList))
     }
 }
 
@@ -180,7 +173,6 @@ fun MovieListPreview() {
         )
     }
 }
-
 
 //TODO map other api endpoints
 private fun makeMovieSection(movies: List<Movie>) =
