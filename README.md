@@ -17,5 +17,6 @@ run on an Android device (virtual or not)
  - Retrofit
  - Github Actions for build & test
  - Kodiak automerge
+ - Build Logic plugin for denpendy management
 
 <img src="https://user-images.githubusercontent.com/34826500/219980278-afc99c69-1a43-41ec-a71b-b2dd8ffa9629.png" width="400">
