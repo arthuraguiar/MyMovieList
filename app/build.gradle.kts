@@ -5,7 +5,7 @@ import java.util.Properties
 plugins {
     id("com.android.application")
     kotlin("android")
-    id("gohorse.android.hilt")
+    id("config.android.hilt")
     kotlin("plugin.serialization")
 }
 

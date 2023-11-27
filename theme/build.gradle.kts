@@ -1,5 +1,5 @@
 plugins {
-    id("gohorse.android.library")
+    id("config.android.library")
     id("org.jetbrains.kotlin.android")
 }
 

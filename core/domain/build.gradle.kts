@@ -1,5 +1,5 @@
 plugins {
-    id("gohorse.android.library")
+    id("config.android.library")
     id("org.jetbrains.kotlin.android")
 }
 
@@ -25,8 +25,6 @@ android {
 }
 
 dependencies {
-    implementation(libs.retrofit)
-
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

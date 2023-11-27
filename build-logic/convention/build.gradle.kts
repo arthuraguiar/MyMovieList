@@ -2,7 +2,7 @@ plugins {
     `kotlin-dsl`
 }
 
-group = "br.com.gohorse.buildlogic"
+group = "br.com.config.buildlogic"
 
 java {
     sourceCompatibility = JavaVersion.VERSION_17
@@ -19,12 +19,12 @@ gradlePlugin {
     plugins {
 
         register("androidLibrary") {
-            id = "gohorse.android.library"
+            id = "config.android.library"
             implementationClass = "AndroidLibraryConventionPlugin"
         }
 
         register("androidHilt") {
-            id = "gohorse.android.hilt"
+            id = "config.android.hilt"
             implementationClass = "AndroidHiltConventionPlugin"
         }
     }
