@@ -11,19 +11,19 @@ sealed class BottomNavItem(
     val title: String,
     val route: String,
 ) {
-    object Home : BottomNavItem(
+    data object Home : BottomNavItem(
         title = "home",
         route = "home",
         icon = Icons.Outlined.Home,
     )
 
-    object Search : BottomNavItem(
+    data object Search : BottomNavItem(
         title = "search",
         route = "search",
         icon = Icons.Outlined.Search,
     )
 
-    object Favorite : BottomNavItem(
+    data object Favorite : BottomNavItem(
         title = "favorite",
         route = "favorite",
         icon = Icons.Outlined.Favorite,
