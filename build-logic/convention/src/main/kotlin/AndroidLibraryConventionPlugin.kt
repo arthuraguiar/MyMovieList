@@ -1,4 +1,4 @@
-import br.com.gohorse.configureKotlinAndroid
+import config.configureKotlinAndroid
 import com.android.build.gradle.LibraryExtension
 import org.gradle.api.Plugin
 import org.gradle.api.Project
