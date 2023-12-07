@@ -15,6 +15,8 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "MyMoviesList"
+
+enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 include (":app")
 include(":theme")
 include(":core:common")

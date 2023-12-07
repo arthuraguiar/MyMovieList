@@ -86,9 +86,9 @@ dependencies {
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.lifecycle.viewmodel.compose)
 
-    implementation(project(mapOf("path" to ":theme")))
-    implementation(project(mapOf("path" to ":core:common")))
-    implementation(project(mapOf("path" to ":core:domain")))
+    implementation(projects.theme)
+    implementation(projects.core.domain)
+    implementation(projects.core.common)
 
     implementation(libs.coil)
     implementation(libs.accompanist.swiperefresh)
