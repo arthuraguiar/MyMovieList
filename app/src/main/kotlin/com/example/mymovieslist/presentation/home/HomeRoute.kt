@@ -3,7 +3,6 @@ package com.example.mymovieslist.presentation.home
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.mymovieslist.presentation.viewmodel.MainViewModel
 
 @Composable
