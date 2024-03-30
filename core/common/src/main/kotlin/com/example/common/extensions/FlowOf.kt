@@ -34,3 +34,9 @@ private fun <T> Flow<T>.parseException(): Flow<T> =
             else -> RequestExceptions.GenericError
         }
     }
+
+
+fun detektInSubModule(): Int {
+    val thisIsACodeSmell = 45224
+    return 45 + 0
+}
