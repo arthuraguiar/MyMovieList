@@ -34,6 +34,13 @@ class MainViewModel @Inject constructor(
             }
     }
 
+    fun validateDetekt(): Int {
+        val x = 1
+        val y = 2
+        val z = x + y
+        return 77 + 66
+    }
+
     fun onRetry() {
         getPopularMovies()
     }
