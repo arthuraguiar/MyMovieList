@@ -19,6 +19,7 @@ class MainViewModel @Inject constructor(
     private val getPopularMoviesListUseCase: GetPopularMoviesListUseCase,
     @IoDispatcher private val dispatcher: CoroutineDispatcher
 ) : BaseViewModel<MainState>(MainState()) {
+
     init {
         getPopularMovies()
     }
@@ -32,13 +33,6 @@ class MainViewModel @Inject constructor(
             .collect { movies ->
                 setState { it.getSuccessState(movies) }
             }
-    }
-
-    fun validateDetekt(): Int {
-        val x = 1
-        val y = 2
-        val z = x + y
-        return 77 + 66
     }
 
     fun onRetry() {
