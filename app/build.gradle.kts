@@ -1,12 +1,9 @@
-import java.io.FileInputStream
-import java.io.FileNotFoundException
-import java.util.Properties
-
 plugins {
     id("com.android.application")
     kotlin("android")
     id("config.android.hilt")
     kotlin("plugin.serialization")
+    alias(libs.plugins.secrets)
 }
 
 android {
@@ -37,7 +34,7 @@ android {
     }
 
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.3"
+        kotlinCompilerExtensionVersion = "1.5.11"
     }
 
     buildTypes {
@@ -47,17 +44,17 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
-            buildConfigField("String", "API_URL", "\"https://api.themoviedb.org/3/movie/\"")
-            buildConfigField("String", "API_KEY", getApiKey())
         }
         getByName("debug") {
             isMinifyEnabled = false
-            buildConfigField("String", "API_URL", "\"https://api.themoviedb.org/3/movie/\"")
             isDebuggable = true
-            buildConfigField("String", "API_KEY", getApiKey())
         }
     }
     namespace = "com.example.mymovieslist"
+}
+
+secrets {
+    defaultPropertiesFileName = "secrets.defaults.properties"
 }
 
 dependencies {
@@ -100,19 +97,6 @@ dependencies {
     testImplementation(libs.androidx.core.testing)
     testImplementation(libs.turbine)
     testImplementation(libs.junit)
-    androidTestImplementation("androidx.compose.ui:ui-test-junit4")
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-}
-
-fun getApiKey(): String {
-    val fl = rootProject.file("gradle.properties")
-
-    if (fl.exists()) {
-        val properties = Properties()
-        properties.load(FileInputStream(fl))
-        return properties.getProperty("API_KEY")
-    } else {
-        throw FileNotFoundException()
-    }
 }
