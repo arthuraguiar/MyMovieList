@@ -12,6 +12,7 @@ dependencies {
 
     implementation(libs.kotlinx.coroutines.android)
     implementation(projects.core.dataRemote)
+    implementation(projects.core.dataLocal)
     implementation(projects.core.domain)
     testImplementation(libs.mockk)
     testImplementation(libs.kotlinx.coroutines.test)

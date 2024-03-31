@@ -4,7 +4,7 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity
+@Entity(tableName = "movie_entity")
 data class MovieEntity(
     @PrimaryKey
     @ColumnInfo("title")
@@ -17,5 +17,8 @@ data class MovieEntity(
     val releaseDate: String,
 
     @ColumnInfo("poster_url")
-    val posterUrl: String
+    val posterUrl: String,
+
+    @ColumnInfo("page")
+    val page: Int
 )
