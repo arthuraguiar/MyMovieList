@@ -1,6 +1,11 @@
 name: Android Build & Test
 
-on: pull_request
+on:
+  workflow_dispatch:
+  pull_request:
+    branches:
+      - master
+      - develop
 
 jobs:
   build:
