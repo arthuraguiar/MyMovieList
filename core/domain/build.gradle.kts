@@ -1,7 +1,7 @@
 plugins {
-    id("config.android.library")
+    alias(libs.plugins.config.android.library)
     id("org.jetbrains.kotlin.android")
-    id("config.android.hilt")
+    alias(libs.plugins.config.android.hilt)
 }
 
 android {

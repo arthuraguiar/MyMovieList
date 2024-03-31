@@ -1,5 +1,5 @@
 plugins {
-    id("config.android.library")
+    alias(libs.plugins.config.android.library)
     id("org.jetbrains.kotlin.android")
 }
 
