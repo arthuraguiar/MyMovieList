@@ -1,21 +1,19 @@
-package com.example.mymovieslist.domain.mapper
+package com.example.mymovieslist.data.mapper
 
-import com.example.mymovieslist.R
-import com.example.mymovieslist.core.resource.ResourceProvider
 import com.example.mymovieslist.data_remote.network.datasource.model.FetchPopularMoviesResponse
 import com.example.mymovieslist.data_remote.network.datasource.model.MovieResponse
-import com.example.mymovieslist.domain.model.Movie
+import com.example.domain.model.Movie
 import javax.inject.Inject
 
-class MovieMapper @Inject constructor(resourceProvider: ResourceProvider) {
+class MovieMapper @Inject constructor() {
 
-    private val basePosterUrl = resourceProvider.getStringResource(R.string.poster_base_url)
+    private val basePosterUrl = "https://image.tmdb.org/t/p/original"
 
     fun toMovieList(moviesResponse: FetchPopularMoviesResponse): List<Movie> {
         return moviesResponse.results.map { it.toMovieEntity() }
     }
 
-    private fun MovieResponse.toMovieEntity(): Movie{
+    private fun MovieResponse.toMovieEntity(): Movie {
         return Movie(
             title = this.title,
             releaseDate = this.releaseDate,

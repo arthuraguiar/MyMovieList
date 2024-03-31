@@ -1,8 +1,9 @@
-package com.example.mymovieslist.domain.usecase
+package com.example.mymovieslist.usecase
 
 import app.cash.turbine.test
-import com.example.mymovieslist.domain.repository.MovieRepository
-import com.example.mymovieslist.stubs.popularMoviesList
+import com.example.domain.model.Movie
+import com.example.domain.repository.MovieRepository
+import com.example.domain.usecase.GetPopularMoviesListUseCase
 import io.mockk.every
 import io.mockk.mockk
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -23,10 +24,10 @@ class GetPopularMoviesListUseCaseTest {
     fun `invoke should return list with movies`() = runTest {
         // Given
         val expected = popularMoviesList
-        every { repository.getPopularMoviesList() } returns flowOf(popularMoviesList)
+        every { repository.getPopularMoviesList(1) } returns flowOf(popularMoviesList)
 
         // When
-        val result = getPopularMoviesListUseCase.invoke()
+        val result = getPopularMoviesListUseCase.invoke(1)
 
         // Then
         result.test {
@@ -35,3 +36,12 @@ class GetPopularMoviesListUseCaseTest {
         }
     }
 }
+
+private val popularMoviesList = listOf(
+    Movie(
+        title = "UiMXAVh8",
+        releaseDate = "r94",
+        originalLanguage = "14SXz5pI",
+        posterUrl = "https://image.tmdb.org/t/p/original/bY3jI0",
+    )
+)
