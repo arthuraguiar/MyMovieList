@@ -25,7 +25,9 @@ import com.example.mymovieslist.R.string
 import com.example.theme.MyMoviesTheme
 
 @Composable
-fun RetryScreen(tryAgain: () -> Unit) {
+fun RetryScreen(showRetry: Boolean, tryAgain: () -> Unit) {
+    if (!showRetry) return
+
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -60,6 +62,6 @@ fun RetryScreen(tryAgain: () -> Unit) {
 @Composable
 fun RetryScreenPreview() {
     MyMoviesTheme {
-        RetryScreen {}
+        RetryScreen(false) {}
     }
 }

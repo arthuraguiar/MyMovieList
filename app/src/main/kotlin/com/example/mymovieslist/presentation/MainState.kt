@@ -7,7 +7,8 @@ data class MainState(
     val isLoading: Boolean = false,
     val moviesList: List<Movie> = emptyList(),
     val isEmptyState: Boolean = false,
-    val isErrorState: Boolean = false
+    val isErrorState: Boolean = false,
+    val canPaginate: Boolean = true
 ) : ScreenState {
     fun getSuccessState(moviesList: List<Movie>): MainState {
         return this.copy(

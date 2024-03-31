@@ -12,10 +12,15 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.paddingFromBaseline
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.grid.GridCells.Fixed
+import androidx.compose.foundation.lazy.grid.LazyGridState
 import androidx.compose.foundation.lazy.grid.LazyHorizontalGrid
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.foundation.lazy.grid.rememberLazyGridState
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material.Card
 import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.MaterialTheme
@@ -41,22 +46,36 @@ import com.example.theme.md_theme_dark_onSurface
 fun HomeScreen(
     loading: Boolean,
     movieList: List<Movie>,
+    listState: LazyGridState = rememberLazyGridState(),
     retry: () -> Unit
 ) {
+    ScreenLoading(show = loading)
 
-    when {
-        loading -> ShowLoading()
-        movieList.isEmpty() -> RetryScreen(retry)
-        else -> MakeList(makeMovieSection(movieList))
-    }
+    RetryScreen(movieList.isEmpty() && !loading, retry)
+
+    MakeList(listState, movieList)
 }
 
 @Composable
-private fun MakeList(movieSectionList: List<MovieSection>) {
-    LazyColumn {
-        items(movieSectionList) { section ->
-            HomeSection(title = section.title) {
-                MovieHorizontalGrid(section.movies)
+private fun MakeList(listState: LazyGridState, movieList: List<Movie>) {
+    Column {
+        Text(
+            text = "Popular",
+            style = MaterialTheme.typography.h5,
+            color = md_theme_dark_onSurface,
+            modifier = Modifier
+                .paddingFromBaseline(top = 40.dp, bottom = 16.dp)
+                .padding(horizontal = 16.dp)
+        )
+        LazyVerticalGrid(
+            state = listState,
+            columns = Fixed(2),
+            contentPadding = PaddingValues(horizontal = 16.dp),
+            horizontalArrangement = Arrangement.spacedBy(8.dp),
+            verticalArrangement = Arrangement.spacedBy(8.dp),
+        ) {
+            items(movieList) { movie ->
+                MovieView(movie = movie)
             }
         }
     }
@@ -133,7 +152,9 @@ private fun InflateImage(posterUrl: String) =
     )
 
 @Composable
-private fun ShowLoading() {
+private fun ScreenLoading(show: Boolean = false) {
+    if (!show) return
+
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -143,32 +164,6 @@ private fun ShowLoading() {
     }
 }
 
-@Preview
-@Composable
-fun MovieListPreview() {
-    MyMoviesTheme {
-        val movieList = (0..10).map {
-            Movie(
-                title = "Puss in Boots: The Last Wish",
-                originalLanguage = "en",
-                releaseDate = "2022-12-07",
-                posterUrl = "https://image.tmdb.org/t/p/original/kuf6dutpsT0vSVehic3EZIqkOBt.jpg"
-            )
-        }
-        MakeList(
-            listOf(
-                MovieSection(
-                    "Popular",
-                    movieList
-                ),
-                MovieSection(
-                    "Action",
-                    movieList
-                )
-            )
-        )
-    }
-}
 
 //TODO map other api endpoints
 private fun makeMovieSection(movies: List<Movie>) =

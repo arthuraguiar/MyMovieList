@@ -1,6 +1,8 @@
 package com.example.mymovieslist.presentation.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.viewModelScope
+import com.example.domain.model.Movie
 import com.example.mymovieslist.core.di.IoDispatcher
 import com.example.mymovieslist.core.viewmodel.BaseViewModel
 import com.example.domain.usecase.GetPopularMoviesListUseCase
@@ -14,6 +16,8 @@ import kotlinx.coroutines.flow.onCompletion
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
 
+private const val PAGE_SIZE = 20
+
 @HiltViewModel
 class MainViewModel @Inject constructor(
     private val getPopularMoviesListUseCase: GetPopularMoviesListUseCase,
@@ -21,19 +25,31 @@ class MainViewModel @Inject constructor(
 ) : BaseViewModel<MainState>(MainState()) {
 
     private var page: Int = 1
+
     init {
         getPopularMovies()
     }
 
-    private fun getPopularMovies() = viewModelScope.launch {
+    fun getPopularMovies() = viewModelScope.launch {
         getPopularMoviesListUseCase(page)
             .flowOn(dispatcher)
-            .onStart { setState { it.getLoadingState(isLoading = true) } }
-            .onCompletion { setState { it.getLoadingState(isLoading = false) } }
+            .onStart { setState { copy(isLoading = true) } }
+            .onCompletion { setState { copy(isLoading = false) } }
             .catch { handleError() }
             .collect { movies ->
-                setState { it.getSuccessState(movies) }
+                handleSuccess(movies)
             }
+    }
+
+    private fun handleSuccess(newList: List<Movie>) {
+        page++
+        setState {
+            copy(
+                isLoading = false,
+                moviesList = moviesList + newList,
+                canPaginate = newList.size == PAGE_SIZE
+            )
+        }
     }
 
     fun onRetry() {
@@ -41,6 +57,8 @@ class MainViewModel @Inject constructor(
     }
 
     private fun handleError() {
-        setState { it.getErrorState() }
+        setState {
+            getErrorState()
+        }
     }
 }
