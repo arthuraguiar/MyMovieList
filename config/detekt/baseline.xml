@@ -39,7 +39,7 @@
     <ID>FinalNewline:MovieService.kt$com.example.mymovieslist.data.network.MovieService.kt</ID>
     <ID>FinalNewline:MoviesDataSource.kt$com.example.mymovieslist.data.datasource.MoviesDataSource.kt</ID>
     <ID>FinalNewline:MoviesDataSourceImpl.kt$com.example.mymovieslist.data.datasource.MoviesDataSourceImpl.kt</ID>
-    <ID>FinalNewline:NetworkModule.kt$com.example.mymovieslist.core.di.NetworkModule.kt</ID>
+    <ID>FinalNewline:NetworkModule.kt$com.example.mymovieslist.data_remote.network.di.NetworkModule.kt</ID>
     <ID>FinalNewline:ResourceProvider.kt$com.example.mymovieslist.core.resource.ResourceProvider.kt</ID>
     <ID>FinalNewline:RetryScreen.kt$com.example.mymovieslist.core.components.RetryScreen.kt</ID>
     <ID>FinalNewline:ScreenState.kt$com.example.mymovieslist.core.viewmodel.state.ScreenState.kt</ID>
@@ -110,7 +110,7 @@
     <ID>NewLineAtEndOfFile:MovieService.kt$com.example.mymovieslist.data.network.MovieService.kt</ID>
     <ID>NewLineAtEndOfFile:MoviesDataSource.kt$com.example.mymovieslist.data.datasource.MoviesDataSource.kt</ID>
     <ID>NewLineAtEndOfFile:MoviesDataSourceImpl.kt$com.example.mymovieslist.data.datasource.MoviesDataSourceImpl.kt</ID>
-    <ID>NewLineAtEndOfFile:NetworkModule.kt$com.example.mymovieslist.core.di.NetworkModule.kt</ID>
+    <ID>NewLineAtEndOfFile:NetworkModule.kt$com.example.mymovieslist.data_remote.network.di.NetworkModule.kt</ID>
     <ID>NewLineAtEndOfFile:ResourceProvider.kt$com.example.mymovieslist.core.resource.ResourceProvider.kt</ID>
     <ID>NewLineAtEndOfFile:RetryScreen.kt$com.example.mymovieslist.core.components.RetryScreen.kt</ID>
     <ID>NewLineAtEndOfFile:ScreenState.kt$com.example.mymovieslist.core.viewmodel.state.ScreenState.kt</ID>

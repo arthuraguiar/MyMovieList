@@ -1,6 +1,6 @@
-package com.example.mymovieslist.data.network.interceptor
+package com.example.mymovieslist.data_remote.network.interceptor
 
-import com.example.mymovieslist.BuildConfig
+import com.example.mymovieslist.data_remote.BuildConfig
 import javax.inject.Inject
 import okhttp3.Interceptor
 import okhttp3.Response

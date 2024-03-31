@@ -1,7 +1,7 @@
 package com.example.mymovieslist.stubs
 
-import com.example.mymovieslist.data.model.FetchPopularMoviesResponse
-import com.example.mymovieslist.data.model.MovieResponse
+import com.example.mymovieslist.data_remote.network.datasource.model.FetchPopularMoviesResponse
+import com.example.mymovieslist.data_remote.network.datasource.model.MovieResponse
 import com.example.mymovieslist.domain.model.Movie
 import io.mockk.mockk
 import retrofit2.HttpException

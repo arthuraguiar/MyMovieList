@@ -1,4 +1,4 @@
-package com.example.mymovieslist.data.model
+package com.example.mymovieslist.data_remote.network.datasource.model
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable

@@ -1,8 +1,8 @@
-package com.example.mymovieslist.core.di
+package com.example.mymovieslist.data_remote.network.di
 
-import com.example.mymovieslist.BuildConfig
-import com.example.mymovieslist.data.network.MovieService
-import com.example.mymovieslist.data.network.interceptor.AuthInterceptor
+import com.example.mymovieslist.data_remote.BuildConfig
+import com.example.mymovieslist.data_remote.network.api.MovieService
+import com.example.mymovieslist.data_remote.network.interceptor.AuthInterceptor
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import dagger.Module
 import dagger.Provides

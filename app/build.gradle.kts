@@ -15,7 +15,7 @@ android {
     defaultConfig {
 
         applicationId = "com.example.mymovieslist"
-        minSdk = 24
+        minSdk = 21
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -77,10 +77,7 @@ dependencies {
     implementation(libs.androidx.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.kotlinx.coroutines.android)
-    implementation(libs.retrofit)
-    implementation(libs.logging.interceptor)
-    implementation(libs.retrofit2.kotlinx.serialization.converter)
-    implementation(libs.kotlinx.serialization.json)
+
     implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.hilt.navigation.compose)
     implementation(libs.androidx.activity.compose)
@@ -89,6 +86,8 @@ dependencies {
     implementation(projects.theme)
     implementation(projects.core.domain)
     implementation(projects.core.common)
+    implementation(projects.core.dataRemote)
+    implementation(projects.core.data)
 
     implementation(libs.coil)
     implementation(libs.accompanist.swiperefresh)
@@ -100,7 +99,6 @@ dependencies {
     testImplementation(libs.androidx.core.testing)
     testImplementation(libs.turbine)
     testImplementation(libs.junit)
-    androidTestImplementation("androidx.compose.ui:ui-test-junit4")
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 }

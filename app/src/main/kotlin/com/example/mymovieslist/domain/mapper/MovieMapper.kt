@@ -2,8 +2,8 @@ package com.example.mymovieslist.domain.mapper
 
 import com.example.mymovieslist.R
 import com.example.mymovieslist.core.resource.ResourceProvider
-import com.example.mymovieslist.data.model.FetchPopularMoviesResponse
-import com.example.mymovieslist.data.model.MovieResponse
+import com.example.mymovieslist.data_remote.network.datasource.model.FetchPopularMoviesResponse
+import com.example.mymovieslist.data_remote.network.datasource.model.MovieResponse
 import com.example.mymovieslist.domain.model.Movie
 import javax.inject.Inject
 

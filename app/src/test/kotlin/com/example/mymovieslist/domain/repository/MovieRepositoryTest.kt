@@ -3,7 +3,7 @@ package com.example.mymovieslist.domain.repository
 import app.cash.turbine.test
 import com.example.mymovieslist.R
 import com.example.mymovieslist.core.resource.ResourceProvider
-import com.example.mymovieslist.data.datasource.MoviesDataSource
+import com.example.mymovieslist.data_remote.network.datasource.MoviesDataSource
 import com.example.mymovieslist.data.repository.MovieRepositoryImpl
 import com.example.mymovieslist.domain.mapper.MovieMapper
 import com.example.mymovieslist.stubs.fetchPopularMoviesResponse
