@@ -12,6 +12,4 @@ android {
 dependencies {
 
     implementation(projects.core.domain)
-    implementation(libs.bundles.room)
-    ksp(libs.room.runtime)
 }
