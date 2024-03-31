@@ -32,8 +32,8 @@ import coil.compose.SubcomposeAsyncImage
 import coil.request.ImageRequest
 import com.example.mymovieslist.R
 import com.example.mymovieslist.core.components.RetryScreen
-import com.example.mymovieslist.domain.model.Movie
-import com.example.mymovieslist.domain.model.MovieSection
+import com.example.domain.model.Movie
+import com.example.domain.model.MovieSection
 import com.example.theme.MyMoviesTheme
 import com.example.theme.md_theme_dark_onSurface
 

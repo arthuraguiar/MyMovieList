@@ -2,9 +2,9 @@ package com.example.mymovieslist.presentation
 
 import app.cash.turbine.test
 import com.example.CoroutinesTestRule
-import com.example.mymovieslist.domain.usecase.GetPopularMoviesListUseCase
+import com.example.domain.model.Movie
+import com.example.domain.usecase.GetPopularMoviesListUseCase
 import com.example.mymovieslist.presentation.viewmodel.MainViewModel
-import com.example.mymovieslist.stubs.popularMoviesList
 import io.mockk.coEvery
 import io.mockk.mockk
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -20,6 +20,15 @@ import kotlin.time.ExperimentalTime
 @ExperimentalTime
 class MainViewModelTest {
 
+    private val popularMoviesList = listOf(
+        Movie(
+            title = "UiMXAVh8",
+            releaseDate = "r94",
+            originalLanguage = "14SXz5pI",
+            posterUrl = "https://image.tmdb.org/t/p/original/bY3jI0",
+        )
+    )
+
     @get: Rule
     val coroutinesTestRule = CoroutinesTestRule()
     private val useCase: GetPopularMoviesListUseCase = mockk(relaxed = true)
@@ -31,7 +40,7 @@ class MainViewModelTest {
         // Given
         val initState = MainState()
         val errorState = MainState(isErrorState = true)
-        coEvery { useCase.invoke() } returns flow { throw Throwable() }
+        coEvery { useCase.invoke(1) } returns flow { throw Throwable() }
 
         // When
         viewModel = MainViewModel(useCase, coroutinesTestRule.standardTestDispatcher)
@@ -51,7 +60,7 @@ class MainViewModelTest {
         // Given
         val initState = MainState()
         val successState = MainState(moviesList = popularMoviesList, isLoading = true)
-        coEvery { useCase.invoke() } returns flowOf(popularMoviesList)
+        coEvery { useCase.invoke(1) } returns flowOf(popularMoviesList)
 
         // When
         viewModel = MainViewModel(useCase, coroutinesTestRule.standardTestDispatcher)
@@ -72,7 +81,7 @@ class MainViewModelTest {
         val initState = MainState()
         val successState =
             MainState(moviesList = emptyList(), isLoading = true, isEmptyState = true)
-        coEvery { useCase.invoke() } returns flowOf(emptyList())
+        coEvery { useCase.invoke(1) } returns flowOf(emptyList())
 
         // When
         viewModel = MainViewModel(useCase, coroutinesTestRule.standardTestDispatcher)

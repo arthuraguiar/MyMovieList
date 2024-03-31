@@ -5,13 +5,14 @@ plugins {
 }
 
 android {
-    namespace = "com.example.domain"
+    namespace = "com.example.mymovieslist.data"
 }
 
 dependencies {
-    testImplementation(libs.junit)
+
     implementation(libs.kotlinx.coroutines.android)
-    androidTestImplementation(libs.androidx.junit)
+    implementation(projects.core.dataRemote)
+    implementation(projects.core.domain)
     testImplementation(libs.mockk)
     testImplementation(libs.kotlinx.coroutines.test)
     testImplementation(libs.truth)

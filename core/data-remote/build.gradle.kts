@@ -2,16 +2,25 @@ plugins {
     id("config.android.library")
     id("org.jetbrains.kotlin.android")
     id("config.android.hilt")
+    kotlin("plugin.serialization")
+    alias(libs.plugins.secrets)
 }
 
 android {
-    namespace = "com.example.domain"
+    namespace = "com.example.mymovieslist.data_remote"
+
+    secrets {
+        defaultPropertiesFileName = "secrets.defaults.properties"
+    }
 }
 
 dependencies {
-    testImplementation(libs.junit)
+    implementation(libs.retrofit)
+    implementation(libs.logging.interceptor)
+    implementation(libs.retrofit2.kotlinx.serialization.converter)
+    implementation(libs.kotlinx.serialization.json)
     implementation(libs.kotlinx.coroutines.android)
-    androidTestImplementation(libs.androidx.junit)
+    api(projects.core.common)
     testImplementation(libs.mockk)
     testImplementation(libs.kotlinx.coroutines.test)
     testImplementation(libs.truth)

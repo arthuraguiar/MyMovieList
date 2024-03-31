@@ -12,7 +12,7 @@ android {
     defaultConfig {
 
         applicationId = "com.example.mymovieslist"
-        minSdk = 24
+        minSdk = 21
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -59,25 +59,13 @@ secrets {
 
 dependencies {
 
-    implementation(platform("androidx.compose:compose-bom:2022.12.00"))
-    implementation("androidx.compose.foundation:foundation")
-    implementation("androidx.compose.material:material")
-    implementation("androidx.compose.material3:material3")
-    implementation("androidx.compose.animation:animation")
-    implementation("androidx.compose.material:material-icons-core")
-    implementation("androidx.compose.material:material-icons-extended")
-    implementation("androidx.compose.material3:material3-window-size-class")
-    implementation("androidx.compose.ui:ui")
-    implementation("androidx.compose.ui:ui-tooling-preview")
-    implementation("androidx.compose.ui:ui-tooling")
+    implementation(platform(libs.compose.boom))
+    implementation(libs.bundles.compose)
 
     implementation(libs.androidx.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.kotlinx.coroutines.android)
-    implementation(libs.retrofit)
-    implementation(libs.logging.interceptor)
-    implementation(libs.retrofit2.kotlinx.serialization.converter)
-    implementation(libs.kotlinx.serialization.json)
+
     implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.hilt.navigation.compose)
     implementation(libs.androidx.activity.compose)
@@ -86,6 +74,8 @@ dependencies {
     implementation(projects.theme)
     implementation(projects.core.domain)
     implementation(projects.core.common)
+    implementation(projects.core.dataRemote)
+    implementation(projects.core.data)
 
     implementation(libs.coil)
     implementation(libs.accompanist.swiperefresh)
@@ -98,5 +88,4 @@ dependencies {
     testImplementation(libs.turbine)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
 }
