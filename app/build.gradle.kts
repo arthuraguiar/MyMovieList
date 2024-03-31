@@ -76,6 +76,7 @@ dependencies {
     implementation(projects.core.common)
     implementation(projects.core.dataRemote)
     implementation(projects.core.data)
+    implementation(projects.core.dataLocal)
 
     implementation(libs.coil)
     implementation(libs.accompanist.swiperefresh)
