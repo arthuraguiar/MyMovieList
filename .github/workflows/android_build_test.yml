@@ -18,5 +18,15 @@ jobs:
       - name: Run Unit Tests
         run: ./gradlew test
 
+      - name: Detekt Verification
+        run: ./gradlew detektAll
+
+      - name: Upload SARIF to GitHub using the upload-sarif action
+        uses: github/codeql-action/upload-sarif@v3
+        if: success() || failure()
+        with:
+          sarif_file: build/reports/detekt/detekt.sarif
+          category: lint
+
       - name: Build Project
         run: ./gradlew assemble

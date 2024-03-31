@@ -19,6 +19,7 @@ class MainViewModel @Inject constructor(
     private val getPopularMoviesListUseCase: GetPopularMoviesListUseCase,
     @IoDispatcher private val dispatcher: CoroutineDispatcher
 ) : BaseViewModel<MainState>(MainState()) {
+
     init {
         getPopularMovies()
     }
