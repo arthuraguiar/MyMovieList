@@ -7,6 +7,7 @@ import org.gradle.kotlin.dsl.configure
 import org.gradle.kotlin.dsl.getByType
 
 class AndroidLibraryConventionPlugin : Plugin<Project> {
+
     override fun apply(project: Project) {
         with(project) {
             with(pluginManager) {

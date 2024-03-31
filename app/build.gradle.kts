@@ -1,7 +1,7 @@
 plugins {
     id("com.android.application")
     kotlin("android")
-    id("config.android.hilt")
+    alias(libs.plugins.config.android.hilt)
     kotlin("plugin.serialization")
     alias(libs.plugins.secrets)
 }

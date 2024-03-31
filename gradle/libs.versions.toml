@@ -70,9 +70,9 @@ compose-material3-window = { module = "androidx.compose.material3:material3-wind
 compose-ui = { module = "androidx.compose.ui:ui" }
 compose-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview" }
 compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling" }
-room-runtime = { module = "androidx.room:room-runtime", version.ref = "room" }
-room-compile = { module = "androidx.room:room-compile", version.ref = "room" }
-androidx-room-ktx = { module = "androidx.room:room-ktx", version.ref = "room" }
+room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
+room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "room" }
+room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "room" }
 
 logging-interceptor = { module = "com.squareup.okhttp3:logging-interceptor", version.ref = "logging-interceptor" }
 androidx-espresso-core = { module = "androidx.test.espresso:espresso-core", version.ref = "espresso-core" }
@@ -81,6 +81,7 @@ truth = { module = "com.google.truth:truth", version.ref = "truth" }
 junit = { module = "junit:junit", version.ref = "junit" }
 turbine = { module = "app.cash.turbine:turbine", version.ref = "turbine" }
 androidx-junit = { module = "androidx.test.ext:junit", version.ref = "androidx-junit" }
+ksp-gradlePlugin = { group = "com.google.devtools.ksp", name = "com.google.devtools.ksp.gradle.plugin", version.ref = "ksp" }
 
 detekt-formatting = { module = "io.gitlab.arturbosch.detekt:detekt-formatting", version.ref = "detekt" }
 
@@ -88,6 +89,12 @@ detekt-formatting = { module = "io.gitlab.arturbosch.detekt:detekt-formatting", 
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
 secrets = { id = "com.google.android.libraries.mapsplatform.secrets-gradle-plugin", version.ref = "secrets" }
+
+# Plugins defined by this project
+config-android-room = { id = "config.android.room", version = "unspecified" }
+config-android-hilt = { id = "config.android.hilt", version = "unspecified" }
+config-android-library = { id = "config.android.library", version = "unspecified" }
+
 
 [bundles]
 compose = [
@@ -101,8 +108,4 @@ compose = [
     "compose-ui",
     "compose-ui-tooling-preview",
     "compose-ui-tooling"
-]
-room = [
-    "room-runtime",
-    "androidx-room-ktx"
 ]
