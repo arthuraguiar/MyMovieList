@@ -37,7 +37,7 @@ android {
     }
 
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.3"
+        kotlinCompilerExtensionVersion = "1.5.11"
     }
 
     buildTypes {
@@ -62,7 +62,7 @@ android {
 
 dependencies {
 
-    implementation(platform("androidx.compose:compose-bom:2022.12.00"))
+    implementation(platform("androidx.compose:compose-bom:2024.04.00"))
     implementation("androidx.compose.foundation:foundation")
     implementation("androidx.compose.material:material")
     implementation("androidx.compose.material3:material3")
