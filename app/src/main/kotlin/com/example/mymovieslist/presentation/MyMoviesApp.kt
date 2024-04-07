@@ -13,7 +13,6 @@ import com.example.mymovieslist.presentation.navigation.BottomNavigation
 import com.example.theme.MyMoviesTheme
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MyMoviesApp() {
     MyMoviesTheme {

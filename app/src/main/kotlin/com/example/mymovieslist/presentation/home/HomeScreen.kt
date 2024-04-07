@@ -34,6 +34,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.SubcomposeAsyncImage
+import coil.request.CachePolicy
 import coil.request.ImageRequest
 import com.example.mymovieslist.R
 import com.example.mymovieslist.core.components.RetryScreen
@@ -134,7 +135,12 @@ private fun InflateImage(posterUrl: String) =
         model = ImageRequest.Builder(LocalContext.current)
             .data(posterUrl)
             .crossfade(true)
+            .memoryCacheKey(posterUrl)
+            .diskCacheKey(posterUrl)
+            .diskCachePolicy(CachePolicy.ENABLED)
+            .memoryCachePolicy(CachePolicy.ENABLED)
             .build(),
+        
         contentDescription = null,
         contentScale = ContentScale.Fit,
         loading = {
