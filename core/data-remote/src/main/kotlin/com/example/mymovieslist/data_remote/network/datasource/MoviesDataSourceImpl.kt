@@ -10,10 +10,9 @@ class MoviesDataSourceImpl @Inject constructor(
     private val movieService: MovieService,
 ) : MoviesDataSource {
 
-    override fun fetchPopularMovies(
+    override suspend fun fetchPopularMovies(
         page: Int,
-    ): Flow<FetchPopularMoviesResponse> {
-        return flowOf { movieService.fetchPopularMovies(page) }
-
+    ): FetchPopularMoviesResponse {
+        return  movieService.fetchPopularMovies(page)
     }
 }

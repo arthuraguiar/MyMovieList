@@ -1,8 +1,6 @@
 package com.example.mymovieslist.presentation.home
 
-import androidx.compose.foundation.lazy.grid.LazyGridState
 import androidx.compose.foundation.lazy.grid.rememberLazyGridState
-import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -20,7 +18,7 @@ fun HomeRoute(viewModel: MainViewModel) {
 
     val shouldStartPaginate by remember {
         derivedStateOf {
-            state.canPaginate && (listState.layoutInfo.visibleItemsInfo.lastOrNull()?.index
+            (listState.layoutInfo.visibleItemsInfo.lastOrNull()?.index
                 ?: -9) >= (listState.layoutInfo.totalItemsCount - 3)
         }
     }

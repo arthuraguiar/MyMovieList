@@ -1,6 +1,5 @@
 package com.example.mymovieslist.presentation.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.viewModelScope
 import com.example.domain.model.Movie
 import com.example.mymovieslist.core.di.IoDispatcher
@@ -42,14 +41,13 @@ class MainViewModel @Inject constructor(
     }
 
     private fun handleSuccess(newList: List<Movie>) {
-        page++
         setState {
             copy(
                 isLoading = false,
-                moviesList = moviesList + newList,
-                canPaginate = newList.size == PAGE_SIZE
+                moviesList = newList,
             )
         }
+        page++
     }
 
     fun onRetry() {

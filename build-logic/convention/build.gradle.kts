@@ -21,6 +21,7 @@ dependencies {
     compileOnly(libs.build.logic.android.gradlePlugin)
     compileOnly(libs.build.logic.kotlin.gradlePlugin)
     compileOnly(libs.ksp.gradlePlugin)
+    compileOnly(libs.room.gradlePlugin)
 }
 
 gradlePlugin {

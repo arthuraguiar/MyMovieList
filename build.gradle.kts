@@ -4,6 +4,7 @@ import io.gitlab.arturbosch.detekt.DetektCreateBaselineTask
 plugins {
     alias(libs.plugins.ksp) apply false
     alias(libs.plugins.secrets) apply false
+    alias(libs.plugins.room) apply false
     alias(libs.plugins.detekt)
 }
 
@@ -40,7 +41,7 @@ detekt {
 }
 
 tasks.register("clean", Delete::class) {
-    delete(rootProject.buildDir)
+    delete(rootProject.layout.buildDirectory)
 }
 
 tasks.register("detektAll", Detekt::class.java) {

@@ -4,7 +4,7 @@ import com.example.mymovieslist.data_remote.network.datasource.model.FetchPopula
 import kotlinx.coroutines.flow.Flow
 
 interface MoviesDataSource {
-    fun fetchPopularMovies(
+    suspend fun fetchPopularMovies(
         page: Int
-    ): Flow<FetchPopularMoviesResponse>
+    ): FetchPopularMoviesResponse
 }
