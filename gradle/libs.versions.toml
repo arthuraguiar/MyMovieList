@@ -96,7 +96,6 @@ config-android-room = { id = "config.android.room", version = "unspecified" }
 config-android-hilt = { id = "config.android.hilt", version = "unspecified" }
 config-android-library = { id = "config.android.library", version = "unspecified" }
 
-
 [bundles]
 compose = [
     "compose-foundation",

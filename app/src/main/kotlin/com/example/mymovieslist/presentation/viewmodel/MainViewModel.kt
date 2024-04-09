@@ -53,7 +53,6 @@ class MainViewModel @Inject constructor(
                 upcomingMovies = upcomingMovies.copy(
                     movies = upcomingMovies.movies + newList
                 ),
-                canPaginate = newList.size == PAGE_SIZE
             )
         }
         page++

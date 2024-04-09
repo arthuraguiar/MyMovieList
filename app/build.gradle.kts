@@ -74,9 +74,9 @@ dependencies {
     implementation(projects.theme)
     implementation(projects.core.domain)
     implementation(projects.core.common)
-    implementation(projects.core.dataRemote)
+    implementation(projects.core.dataremote)
     implementation(projects.core.data)
-    implementation(projects.core.dataLocal)
+    implementation(projects.core.datalocal)
 
     implementation(libs.coil)
     implementation(libs.accompanist.swiperefresh)
