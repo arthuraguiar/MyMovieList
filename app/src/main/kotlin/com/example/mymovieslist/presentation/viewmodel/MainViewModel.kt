@@ -2,9 +2,9 @@ package com.example.mymovieslist.presentation.viewmodel
 
 import androidx.lifecycle.viewModelScope
 import com.example.domain.model.Movie
+import com.example.domain.usecase.GetPopularMoviesListUseCase
 import com.example.mymovieslist.core.di.IoDispatcher
 import com.example.mymovieslist.core.viewmodel.BaseViewModel
-import com.example.domain.usecase.GetPopularMoviesListUseCase
 import com.example.mymovieslist.presentation.MainState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
@@ -44,7 +44,16 @@ class MainViewModel @Inject constructor(
         setState {
             copy(
                 isLoading = false,
-                moviesList = newList,
+                popularMovies = popularMovies.copy(
+                    movies = popularMovies.movies + newList
+                ),
+                nowPlayingMovies = nowPlayingMovies.copy(
+                    movies = nowPlayingMovies.movies + newList
+                ),
+                upcomingMovies = upcomingMovies.copy(
+                    movies = upcomingMovies.movies + newList
+                ),
+                canPaginate = newList.size == PAGE_SIZE
             )
         }
         page++

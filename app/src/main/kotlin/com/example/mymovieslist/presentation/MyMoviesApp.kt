@@ -8,6 +8,7 @@ import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.navigation.compose.rememberNavController
+import com.example.mymovieslist.presentation.home.HomeRoute
 import com.example.mymovieslist.presentation.navigation.AppNavHost
 import com.example.mymovieslist.presentation.navigation.BottomNavigation
 import com.example.theme.MyMoviesTheme
@@ -21,16 +22,7 @@ fun MyMoviesApp() {
 
         val navController = rememberNavController()
 
-        Scaffold(
-            bottomBar = {
-                BottomNavigation(navController)
-            }
-        ) { innerPadding ->
-            AppNavHost(
-                modifier = Modifier.padding(innerPadding),
-                navController = navController
-            )
-        }
+        HomeRoute()
     }
 }
 

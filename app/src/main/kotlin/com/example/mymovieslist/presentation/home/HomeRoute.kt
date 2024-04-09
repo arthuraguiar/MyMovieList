@@ -7,10 +7,11 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.mymovieslist.presentation.viewmodel.MainViewModel
 
 @Composable
-fun HomeRoute(viewModel: MainViewModel) {
+fun HomeRoute(viewModel: MainViewModel = hiltViewModel()) {
 
     val state by viewModel.screenState.collectAsState()
 
@@ -29,8 +30,10 @@ fun HomeRoute(viewModel: MainViewModel) {
 
     HomeScreen(
         loading = state.isLoading,
-        movieList = state.moviesList,
         listState = listState,
+        nowPlayingMovies = state.nowPlayingMovies,
+        popularMovies = state.popularMovies,
+        upcomingMovies = state.upcomingMovies,
         retry = viewModel::onRetry,
     )
 }
