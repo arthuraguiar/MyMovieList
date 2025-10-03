@@ -1,12 +1,9 @@
-import java.io.FileInputStream
-import java.io.FileNotFoundException
-import java.util.Properties
-
 plugins {
     id("com.android.application")
     kotlin("android")
     id("config.android.hilt")
     kotlin("plugin.serialization")
+    alias(libs.plugins.secrets)
 }
 
 android {
@@ -15,7 +12,7 @@ android {
     defaultConfig {
 
         applicationId = "com.example.mymovieslist"
-        minSdk = 24
+        minSdk = 21
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -37,7 +34,7 @@ android {
     }
 
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.3"
+        kotlinCompilerExtensionVersion = "1.5.11"
     }
 
     buildTypes {
@@ -47,40 +44,28 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
-            buildConfigField("String", "API_URL", "\"https://api.themoviedb.org/3/movie/\"")
-            buildConfigField("String", "API_KEY", getApiKey())
         }
         getByName("debug") {
             isMinifyEnabled = false
-            buildConfigField("String", "API_URL", "\"https://api.themoviedb.org/3/movie/\"")
             isDebuggable = true
-            buildConfigField("String", "API_KEY", getApiKey())
         }
     }
     namespace = "com.example.mymovieslist"
 }
 
+secrets {
+    defaultPropertiesFileName = "secrets.defaults.properties"
+}
+
 dependencies {
 
-    implementation(platform("androidx.compose:compose-bom:2022.12.00"))
-    implementation("androidx.compose.foundation:foundation")
-    implementation("androidx.compose.material:material")
-    implementation("androidx.compose.material3:material3")
-    implementation("androidx.compose.animation:animation")
-    implementation("androidx.compose.material:material-icons-core")
-    implementation("androidx.compose.material:material-icons-extended")
-    implementation("androidx.compose.material3:material3-window-size-class")
-    implementation("androidx.compose.ui:ui")
-    implementation("androidx.compose.ui:ui-tooling-preview")
-    implementation("androidx.compose.ui:ui-tooling")
+    implementation(platform(libs.compose.boom))
+    implementation(libs.bundles.compose)
 
     implementation(libs.androidx.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.kotlinx.coroutines.android)
-    implementation(libs.retrofit)
-    implementation(libs.logging.interceptor)
-    implementation(libs.retrofit2.kotlinx.serialization.converter)
-    implementation(libs.kotlinx.serialization.json)
+
     implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.hilt.navigation.compose)
     implementation(libs.androidx.activity.compose)
@@ -89,6 +74,8 @@ dependencies {
     implementation(projects.theme)
     implementation(projects.core.domain)
     implementation(projects.core.common)
+    implementation(projects.core.dataRemote)
+    implementation(projects.core.data)
 
     implementation(libs.coil)
     implementation(libs.accompanist.swiperefresh)
@@ -100,19 +87,5 @@ dependencies {
     testImplementation(libs.androidx.core.testing)
     testImplementation(libs.turbine)
     testImplementation(libs.junit)
-    androidTestImplementation("androidx.compose.ui:ui-test-junit4")
     androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
-}
-
-fun getApiKey(): String {
-    val fl = rootProject.file("gradle.properties")
-
-    if (fl.exists()) {
-        val properties = Properties()
-        properties.load(FileInputStream(fl))
-        return properties.getProperty("API_KEY")
-    } else {
-        throw FileNotFoundException()
-    }
 }

@@ -1,8 +1,11 @@
 import io.gitlab.arturbosch.detekt.Detekt
 import io.gitlab.arturbosch.detekt.DetektCreateBaselineTask
-import org.gradle.internal.impldep.org.junit.experimental.categories.Categories.CategoryFilter.exclude
-import org.gradle.internal.impldep.org.junit.experimental.categories.Categories.CategoryFilter.include
-import org.jetbrains.kotlin.js.backend.ast.JsEmpty.setSource
+
+plugins {
+    alias(libs.plugins.ksp) apply false
+    alias(libs.plugins.secrets) apply false
+    alias(libs.plugins.detekt)
+}
 
 buildscript {
     repositories {
@@ -17,16 +20,11 @@ buildscript {
         }
     }
     dependencies {
-        classpath (libs.build.logic.android.gradlePlugin)
-        classpath (libs.build.logic.kotlin.gradlePlugin)
-        classpath (libs.kotlin.serialization)
-        classpath (libs.hilt.android.plugin)
+        classpath(libs.build.logic.android.gradlePlugin)
+        classpath(libs.build.logic.kotlin.gradlePlugin)
+        classpath(libs.kotlin.serialization)
+        classpath(libs.hilt.android.plugin)
     }
-}
-
-plugins {
-    alias(libs.plugins.ksp) apply false
-    alias(libs.plugins.detekt)
 }
 
 dependencies {
@@ -41,11 +39,11 @@ detekt {
     reportsDir = file("$projectDir/build/reports/detekt/")
 }
 
-tasks.register("clean",Delete::class){
+tasks.register("clean", Delete::class) {
     delete(rootProject.buildDir)
 }
 
-tasks.register("detektAll", Detekt::class.java){
+tasks.register("detektAll", Detekt::class.java) {
     val autoFix = project.hasProperty("detektAutoFix")
 
     description = "Custom DETEKT build for all modules"
