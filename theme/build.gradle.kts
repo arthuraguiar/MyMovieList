@@ -24,18 +24,18 @@ android {
     }
 
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.11"
+        kotlinCompilerExtensionVersion = "1.5.15"
     }
 }
 
 dependencies {
 
-    val composeBom = platform("androidx.compose:compose-bom:2023.04.01")
+    val composeBom = platform("androidx.compose:compose-bom:2025.09.01")
     implementation(composeBom)
 
     implementation(libs.androidx.appcompat)
-    implementation("com.google.android.material:material:1.6.0")
-    implementation("androidx.compose.material3:material3:1.0.1")
+    implementation("com.google.android.material:material:1.13.0")
+    implementation("androidx.compose.material3:material3:1.4.0")
     implementation("androidx.compose.material:material")
     implementation(libs.accompanist.swiperefresh)
     implementation(libs.accompanist.systemuicontroller)
