@@ -7,7 +7,7 @@ import org.gradle.api.Project
 import org.gradle.api.artifacts.VersionCatalog
 
 internal fun Project.configureKotlinAndroid(
-    commonExtension: CommonExtension<*, *, *, *>,
+    commonExtension: CommonExtension<*, *, *, *, *, *>,
     libs: VersionCatalog
 ) {
     commonExtension.apply {
