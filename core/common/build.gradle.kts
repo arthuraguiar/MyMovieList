@@ -15,6 +15,4 @@ dependencies {
     implementation(project(mapOf("path" to ":core:domain")))
 
     testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
 }
