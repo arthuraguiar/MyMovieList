@@ -23,7 +23,6 @@ dependencies {
     api(projects.core.common)
     testImplementation(libs.mockk)
     testImplementation(libs.kotlinx.coroutines.test)
-    testImplementation(libs.truth)
     testImplementation(libs.androidx.core.testing)
     testImplementation(libs.turbine)
     testImplementation(libs.junit)

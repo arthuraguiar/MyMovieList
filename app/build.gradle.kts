@@ -1,19 +1,22 @@
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+
 plugins {
     id("com.android.application")
     kotlin("android")
     id("config.android.hilt")
     kotlin("plugin.serialization")
     alias(libs.plugins.secrets)
+    id("org.jetbrains.kotlin.plugin.compose") version "2.2.20"
 }
 
 android {
-    compileSdk = 34
+    compileSdk = 36
 
     defaultConfig {
 
         applicationId = "com.example.mymovieslist"
-        minSdk = 21
-        targetSdk = 34
+        minSdk = 23
+        targetSdk = 36
         versionCode = 1
         versionName = "1.0"
 
@@ -25,8 +28,11 @@ android {
         targetCompatibility = JavaVersion.VERSION_17
     }
 
-    kotlinOptions {
-        jvmTarget = "17"
+    kotlin {
+        compilerOptions {
+            jvmTarget.set(JvmTarget.JVM_17)
+            freeCompilerArgs = listOf("-XXLanguage:+PropertyParamAnnotationDefaultTargetMode")
+        }
     }
 
     buildFeatures {
@@ -83,9 +89,9 @@ dependencies {
 
     testImplementation(libs.mockk)
     testImplementation(libs.kotlinx.coroutines.test)
-    testImplementation(libs.truth)
     testImplementation(libs.androidx.core.testing)
     testImplementation(libs.turbine)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
+    testImplementation(kotlin("test"))
 }

@@ -40,7 +40,7 @@ detekt {
 }
 
 tasks.register("clean", Delete::class) {
-    delete(rootProject.buildDir)
+    delete(getLayout().buildDirectory)
 }
 
 tasks.register("detektAll", Detekt::class.java) {
