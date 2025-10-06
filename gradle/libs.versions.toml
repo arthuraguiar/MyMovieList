@@ -29,6 +29,7 @@ ksp = "2.2.20-2.0.3"
 turbine = "1.2.1"
 detekt = "1.23.8"
 secrets = "2.0.1"
+material = "1.13.0"
 
 [libraries]
 
@@ -54,20 +55,22 @@ kotlin-serialization = { module = "org.jetbrains.kotlin:kotlin-serialization", v
 kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlinx-coroutines-android" }
 kotlinx-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "kotlinx-coroutines-android" }
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinx-serialization-json" }
+
 retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
 retrofit2-kotlinx-serialization-converter = { module = "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter", version.ref = "retrofit2-kotlinx-serialization-converter" }
-compose-boom = {module = "androidx.compose:compose-bom", version.ref = "compose-bom"}
+
+compose-boom = { module = "androidx.compose:compose-bom", version.ref = "compose-bom" }
 compose-foundation = { module = "androidx.compose.foundation:foundation" }
-compose-material = { module = "androidx.compose.material:material" }
 compose-material3 = { module = "androidx.compose.material3:material3" }
+compose-material-android = { module = "com.google.android.material:material", version.ref = "material" }
 compose-animation = { module = "androidx.compose.animation:animation" }
 compose-material-icon = { module = "androidx.compose.material:material-icons-core" }
 compose-material-icons-extended = { module = "androidx.compose.material:material-icons-extended" }
 compose-material3-window = { module = "androidx.compose.material3:material3-window-size-class" }
 compose-ui = { module = "androidx.compose.ui:ui" }
-compose-ui-tooling-preview = {module = "androidx.compose.ui:ui-tooling-preview"}
-compose-ui-tooling = {module = "androidx.compose.ui:ui-tooling"}
-
+compose-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview" }
+compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling" }
+compose-gradlePlugin = { module = "org.jetbrains.kotlin:compose-compiler-gradle-plugin", version.ref = "kotlin" }
 
 logging-interceptor = { module = "com.squareup.okhttp3:logging-interceptor", version.ref = "logging-interceptor" }
 mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
@@ -81,11 +84,11 @@ detekt-formatting = { module = "io.gitlab.arturbosch.detekt:detekt-formatting", 
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
 secrets = { id = "com.google.android.libraries.mapsplatform.secrets-gradle-plugin", version.ref = "secrets" }
+compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 
 [bundles]
 compose = [
     "compose-foundation",
-    "compose-material",
     "compose-material3",
     "compose-animation",
     "compose-material-icon",

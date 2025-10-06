@@ -6,7 +6,7 @@ plugins {
     id("config.android.hilt")
     kotlin("plugin.serialization")
     alias(libs.plugins.secrets)
-    id("org.jetbrains.kotlin.plugin.compose") version "2.2.20"
+    id("config.compose.app")
 }
 
 android {
