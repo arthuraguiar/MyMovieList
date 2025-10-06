@@ -13,7 +13,7 @@ import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert.assertEquals
 import org.junit.Rule
-import org.junit.Test
+import kotlin.test.Test
 import kotlin.time.ExperimentalTime
 
 @ExperimentalCoroutinesApi
