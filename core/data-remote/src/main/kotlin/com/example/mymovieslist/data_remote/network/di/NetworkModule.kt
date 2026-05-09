@@ -18,7 +18,7 @@ import retrofit2.Retrofit
 
 @InstallIn(SingletonComponent::class)
 @Module
-object NetworkModule {
+internal object NetworkModule {
 
     @Provides
     fun providesHttpLoggingInterceptor(): HttpLoggingInterceptor {

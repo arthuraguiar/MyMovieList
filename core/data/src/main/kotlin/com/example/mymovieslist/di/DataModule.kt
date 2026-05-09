@@ -1,8 +1,7 @@
-package com.example.mymovieslist.core.di
+package com.example.mymovieslist.di
 
-
-import com.example.mymovieslist.data.repository.MovieRepositoryImpl
 import com.example.domain.repository.MovieRepository
+import com.example.mymovieslist.data.repository.MovieRepositoryImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -10,7 +9,7 @@ import dagger.hilt.components.SingletonComponent
 
 @InstallIn(SingletonComponent::class)
 @Module
-abstract class DataModule {
+internal abstract class DataModule {
 
     @Binds
     abstract fun bindMovieRepository(

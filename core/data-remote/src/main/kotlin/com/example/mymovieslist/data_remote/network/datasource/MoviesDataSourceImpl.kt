@@ -6,7 +6,7 @@ import com.example.mymovieslist.data_remote.network.datasource.model.FetchPopula
 import javax.inject.Inject
 import kotlinx.coroutines.flow.Flow
 
-class MoviesDataSourceImpl @Inject constructor(
+internal class MoviesDataSourceImpl @Inject constructor(
     private val movieService: MovieService,
 ) : MoviesDataSource {
 

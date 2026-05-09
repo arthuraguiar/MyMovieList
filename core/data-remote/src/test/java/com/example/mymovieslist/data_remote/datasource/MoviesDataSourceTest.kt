@@ -20,7 +20,7 @@ import kotlin.time.ExperimentalTime
 
 @ExperimentalTime
 @ExperimentalCoroutinesApi
-class MoviesDataSourceTest {
+internal class MoviesDataSourceTest {
 
     private val service: MovieService = mockk(relaxed = true)
     private lateinit var moviesDataSource: MoviesDataSource

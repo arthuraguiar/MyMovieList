@@ -6,7 +6,7 @@ import retrofit2.http.Query
 
 private const val PAGE = "page"
 
-interface MovieService {
+internal interface MovieService {
 
     @GET("popular")
     suspend fun fetchPopularMovies(

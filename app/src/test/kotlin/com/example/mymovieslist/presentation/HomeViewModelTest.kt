@@ -18,7 +18,7 @@ import kotlin.time.ExperimentalTime
 
 @ExperimentalCoroutinesApi
 @ExperimentalTime
-class HomeViewModelTest {
+internal class HomeViewModelTest {
 
     private val popularMoviesList = listOf(
         Movie(
