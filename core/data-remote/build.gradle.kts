@@ -7,7 +7,7 @@ plugins {
 
 configure<com.android.build.api.dsl.LibraryExtension> {
 
-    namespace = "com.example.mymovieslist.data_remote"
+    namespace = "br.com.mymovieslist.data_remote"
 
     buildFeatures {
         buildConfig = true

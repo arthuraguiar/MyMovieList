@@ -14,7 +14,7 @@ android {
 
     defaultConfig {
 
-        applicationId = "com.example.mymovieslist"
+        applicationId = "br.com.mymovieslist"
         minSdk = 23
         targetSdk = 36
         versionCode = 1
@@ -52,7 +52,7 @@ android {
             isDebuggable = true
         }
     }
-    namespace = "com.example.mymovieslist"
+    namespace = "br.com.mymovieslist"
 }
 
 secrets {
