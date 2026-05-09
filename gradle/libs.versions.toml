@@ -30,6 +30,8 @@ turbine = "1.2.1"
 detekt = "1.23.8"
 secrets = "2.0.1"
 material = "1.13.0"
+google-services = "4.4.4"
+firebase-boom = "34.11.0"
 
 [libraries]
 
@@ -80,11 +82,15 @@ androidx-junit = { module = "androidx.test.ext:junit", version.ref = "androidx-j
 
 detekt-formatting = { module = "io.gitlab.arturbosch.detekt:detekt-formatting", version.ref = "detekt" }
 
+google-firebase-boom = { module = "com.google.firebase:firebase-bom", version.ref = "firebase-boom" }
+fireabse-analytics = { module = "com.google.firebase:firebase-analytics" }
+
 [plugins]
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
 secrets = { id = "com.google.android.libraries.mapsplatform.secrets-gradle-plugin", version.ref = "secrets" }
 compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+google-services = { id = "com.google.gms.google-services", version.ref = "google-services" }
 
 [bundles]
 compose = [
