@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
 <SmellBaseline>
-  <ManuallySuppressedIssues></ManuallySuppressedIssues>
+  <ManuallySuppressedIssues/>
   <CurrentIssues>
     <ID>ArgumentListWrapping:Typography.kt$( fontSize = 11.sp, lineHeight = 16.sp, letterSpacing = 0.5.sp, fontWeight = FontWeight.Medium )</ID>
     <ID>ArgumentListWrapping:Typography.kt$( fontSize = 12.sp, lineHeight = 16.sp, letterSpacing = 0.4.sp )</ID>
@@ -16,52 +16,60 @@
     <ID>ArgumentListWrapping:Typography.kt$( fontSize = 45.sp, lineHeight = 52.sp, letterSpacing = 0.sp )</ID>
     <ID>ArgumentListWrapping:Typography.kt$( fontSize = 57.sp, lineHeight = 64.sp, letterSpacing = (-0.25).sp )</ID>
     <ID>CommentSpacing:HomeScreen.kt$//TODO map other api endpoints</ID>
-    <ID>Filename:Exceptions.kt$com.example.domain.Exceptions.kt</ID>
+    <ID>Filename:Exceptions.kt$br.com.extensions.Exceptions.kt</ID>
     <ID>Filename:kotlinAndroid.kt$config.kotlinAndroid.kt</ID>
-    <ID>FinalNewline:AuthInterceptor.kt$br.com.mymovieslist.data.network.interceptor.AuthInterceptor.kt</ID>
+    <ID>FinalNewline:AndroidAppComposePlugin.kt$.AndroidAppComposePlugin.kt</ID>
+    <ID>FinalNewline:AndroidComposeLibraryPlugin.kt$.AndroidComposeLibraryPlugin.kt</ID>
+    <ID>FinalNewline:AndroidComposePlugin.kt$config.AndroidComposePlugin.kt</ID>
+    <ID>FinalNewline:AuthInterceptor.kt$br.com.mymovieslist.data_remote.network.interceptor.AuthInterceptor.kt</ID>
     <ID>FinalNewline:BaseViewModel.kt$br.com.mymovieslist.core.viewmodel.BaseViewModel.kt</ID>
-    <ID>FinalNewline:Color.kt$com.example.theme.Color.kt</ID>
-    <ID>FinalNewline:DataModule.kt$br.com.mymovieslist.core.di.DataModule.kt</ID>
-    <ID>FinalNewline:DataStubs.kt$br.com.mymovieslist.stubs.DataStubs.kt</ID>
+    <ID>FinalNewline:Color.kt$br.com.mymovielist.theme.Color.kt</ID>
+    <ID>FinalNewline:DataModule.kt$br.com.mymovieslist.di.DataModule.kt</ID>
+    <ID>FinalNewline:DataRemoteModule.kt$br.com.mymovieslist.data_remote.network.di.DataRemoteModule.kt</ID>
     <ID>FinalNewline:DispatcherModule.kt$br.com.mymovieslist.core.di.DispatcherModule.kt</ID>
-    <ID>FinalNewline:Exceptions.kt$com.example.domain.Exceptions.kt</ID>
+    <ID>FinalNewline:Extensions.kt$config.Extensions.kt</ID>
     <ID>FinalNewline:FavoriteScreen.kt$br.com.mymovieslist.presentation.screens.FavoriteScreen.kt</ID>
-    <ID>FinalNewline:FlowOf.kt$com.example.common.extensions.FlowOf.kt</ID>
-    <ID>FinalNewline:GetPopularMoviesListUseCase.kt$br.com.mymovieslist.domain.usecase.GetPopularMoviesListUseCase.kt</ID>
-    <ID>FinalNewline:GetPopularMoviesListUseCaseTest.kt$br.com.mymovieslist.domain.usecase.GetPopularMoviesListUseCaseTest.kt</ID>
-    <ID>FinalNewline:MainViewModelTest.kt$br.com.mymovieslist.presentation.MainViewModelTest.kt</ID>
+    <ID>FinalNewline:GetPopularMoviesListUseCase.kt$br.com.domain.usecase.GetPopularMoviesListUseCase.kt</ID>
+    <ID>FinalNewline:GetPopularMoviesListUseCaseTest.kt$br.com.mymovieslist.usecase.GetPopularMoviesListUseCaseTest.kt</ID>
+    <ID>FinalNewline:HomeViewModelTest.kt$br.com.mymovieslist.presentation.HomeViewModelTest.kt</ID>
     <ID>FinalNewline:MovieApplication.kt$br.com.mymovieslist.MovieApplication.kt</ID>
-    <ID>FinalNewline:MovieRepository.kt$br.com.mymovieslist.domain.repository.MovieRepository.kt</ID>
+    <ID>FinalNewline:MovieRepository.kt$br.com.domain.repository.MovieRepository.kt</ID>
     <ID>FinalNewline:MovieRepositoryImpl.kt$br.com.mymovieslist.data.repository.MovieRepositoryImpl.kt</ID>
-    <ID>FinalNewline:br.com.mymovieslist.data.repository.MovieRepositoryTest.kt$br.com.mymovieslist.data.repository.MovieRepositoryTest.kt</ID>
-    <ID>FinalNewline:MovieResponse.kt$br.com.mymovieslist.data.model.MovieResponse.kt</ID>
-    <ID>FinalNewline:MovieSection.kt$br.com.mymovieslist.domain.model.MovieSection.kt</ID>
-    <ID>FinalNewline:MovieService.kt$br.com.mymovieslist.data.network.MovieService.kt</ID>
-    <ID>FinalNewline:MoviesDataSource.kt$br.com.mymovieslist.data.datasource.MoviesDataSource.kt</ID>
-    <ID>FinalNewline:MoviesDataSourceImpl.kt$br.com.mymovieslist.data.datasource.MoviesDataSourceImpl.kt</ID>
+    <ID>FinalNewline:MovieRepositoryTest.kt$br.com.mymovieslist.data.repository.MovieRepositoryTest.kt</ID>
+    <ID>FinalNewline:MovieResponse.kt$br.com.mymovieslist.data_remote.network.datasource.model.MovieResponse.kt</ID>
+    <ID>FinalNewline:MovieSection.kt$br.com.domain.model.MovieSection.kt</ID>
+    <ID>FinalNewline:MovieService.kt$br.com.mymovieslist.data_remote.network.api.MovieService.kt</ID>
+    <ID>FinalNewline:MoviesDataSource.kt$br.com.mymovieslist.data_remote.network.datasource.MoviesDataSource.kt</ID>
+    <ID>FinalNewline:MoviesDataSourceImpl.kt$br.com.mymovieslist.data_remote.network.datasource.MoviesDataSourceImpl.kt</ID>
+    <ID>FinalNewline:MyMoviesApp.kt$br.com.mymovieslist.presentation.MyMoviesApp.kt</ID>
     <ID>FinalNewline:NetworkModule.kt$br.com.mymovieslist.data_remote.network.di.NetworkModule.kt</ID>
     <ID>FinalNewline:ResourceProvider.kt$br.com.mymovieslist.core.resource.ResourceProvider.kt</ID>
     <ID>FinalNewline:RetryScreen.kt$br.com.mymovieslist.core.components.RetryScreen.kt</ID>
     <ID>FinalNewline:ScreenState.kt$br.com.mymovieslist.core.viewmodel.state.ScreenState.kt</ID>
     <ID>FinalNewline:SearchScreen.kt$br.com.mymovieslist.presentation.screens.SearchScreen.kt</ID>
-    <ID>FinalNewline:Theme.kt$com.example.theme.Theme.kt</ID>
-    <ID>FinalNewline:Typography.kt$com.example.theme.Typography.kt</ID>
+    <ID>FinalNewline:Theme.kt$br.com.mymovielist.theme.Theme.kt</ID>
+    <ID>FinalNewline:Typography.kt$br.com.mymovielist.theme.Typography.kt</ID>
+    <ID>FinalNewline:build.gradle.kts$.build.gradle.kts</ID>
     <ID>FunctionStartOfBodySpacing:BaseViewModel.kt$BaseViewModel$fun setState(screenState: (STATE) -&gt; STATE)</ID>
-    <ID>FunctionStartOfBodySpacing:MainState.kt$MainState$fun getLoadingState(isLoading: Boolean): MainState</ID>
-    <ID>FunctionStartOfBodySpacing:MovieMapper.kt$MovieMapper$private fun MovieResponse.toMovieEntity(): Movie</ID>
+    <ID>FunctionStartOfBodySpacing:HomeState.kt$HomeState$fun getLoadingState(isLoading: Boolean): HomeState</ID>
     <ID>FunctionStartOfBodySpacing:MovieMapper.kt$MovieMapper$private fun buildPosterImageUrl(posterPath:String?): String?</ID>
-    <ID>FunctionStartOfBodySpacing:MovieRepositoryImpl.kt$MovieRepositoryImpl$override fun getPopularMoviesList(): Flow&lt;List&lt;Movie&gt;&gt;</ID>
-    <ID>ImportOrdering:AuthInterceptor.kt$import br.com.mymovieslist.BuildConfig import javax.inject.Inject import okhttp3.Interceptor import okhttp3.Response</ID>
+    <ID>FunctionStartOfBodySpacing:MovieRepositoryImpl.kt$MovieRepositoryImpl$override fun getPopularMoviesList( page: Int ): Flow&lt;List&lt;Movie&gt;&gt;</ID>
+    <ID>ImportOrdering:AndroidLibraryConventionPlugin.kt$import config.configureKotlinAndroid import com.android.build.api.dsl.LibraryExtension import org.gradle.api.Plugin import org.gradle.api.Project import org.gradle.kotlin.dsl.configure</ID>
+    <ID>ImportOrdering:AuthInterceptor.kt$import br.com.mymovieslist.data_remote.BuildConfig import javax.inject.Inject import okhttp3.Interceptor import okhttp3.Response</ID>
     <ID>ImportOrdering:DispatcherModule.kt$import dagger.Module import dagger.Provides import dagger.hilt.InstallIn import dagger.hilt.components.SingletonComponent import javax.inject.Qualifier import kotlinx.coroutines.CoroutineDispatcher import kotlinx.coroutines.Dispatchers</ID>
-    <ID>ImportOrdering:FlowOf.kt$import com.example.domain.RequestExceptions import java.io.InterruptedIOException import java.net.ConnectException import java.net.SocketException import java.net.SocketTimeoutException import java.net.UnknownHostException import java.util.concurrent.TimeoutException import kotlin.experimental.ExperimentalTypeInference import kotlinx.coroutines.flow.Flow import kotlinx.coroutines.flow.FlowCollector import kotlinx.coroutines.flow.catch import kotlinx.coroutines.flow.flow import retrofit2.HttpException</ID>
-    <ID>ImportOrdering:GetPopularMoviesListUseCase.kt$import br.com.mymovieslist.domain.model.Movie import br.com.mymovieslist.domain.repository.MovieRepository import javax.inject.Inject import kotlinx.coroutines.flow.Flow</ID>
-    <ID>ImportOrdering:MainViewModel.kt$import androidx.lifecycle.viewModelScope import br.com.mymovieslist.core.di.IoDispatcher import br.com.mymovieslist.core.viewmodel.BaseViewModel import br.com.mymovieslist.domain.usecase.GetPopularMoviesListUseCase import br.com.mymovieslist.presentation.MainState import dagger.hilt.android.lifecycle.HiltViewModel import javax.inject.Inject import kotlinx.coroutines.CoroutineDispatcher import kotlinx.coroutines.flow.catch import kotlinx.coroutines.flow.flowOn import kotlinx.coroutines.flow.onCompletion import kotlinx.coroutines.flow.onStart import kotlinx.coroutines.launch</ID>
-    <ID>ImportOrdering:MovieRepositoryImpl.kt$import br.com.mymovieslist.data.datasource.MoviesDataSource import br.com.mymovieslist.domain.mapper.MovieMapper import br.com.mymovieslist.domain.model.Movie import br.com.mymovieslist.domain.repository.MovieRepository import javax.inject.Inject import kotlinx.coroutines.flow.Flow import kotlinx.coroutines.flow.map</ID>
-    <ID>ImportOrdering:br.com.mymovieslist.data.repository.MovieRepositoryTest.kt$import app.cash.turbine.test import br.com.mymovieslist.R import br.com.mymovieslist.core.resource.ResourceProvider import br.com.mymovieslist.data.datasource.MoviesDataSource import br.com.mymovieslist.data.repository.MovieRepositoryImpl import br.com.mymovieslist.domain.mapper.MovieMapper import br.com.mymovieslist.stubs.fetchPopularMoviesResponse import br.com.mymovieslist.stubs.popularMoviesList import io.mockk.coEvery import io.mockk.every import io.mockk.mockk import org.junit.Assert.assertEquals import kotlinx.coroutines.ExperimentalCoroutinesApi import kotlinx.coroutines.flow.flowOf import kotlinx.coroutines.test.runTest import org.junit.Before import org.junit.Test import kotlin.time.ExperimentalTime</ID>
-    <ID>ImportOrdering:MoviesDataSourceImpl.kt$import com.example.common.extensions.flowOf import br.com.mymovieslist.data.model.FetchPopularMoviesResponse import br.com.mymovieslist.data.network.MovieService import javax.inject.Inject import kotlinx.coroutines.flow.Flow</ID>
-    <ID>ImportOrdering:MoviesDataSourceTest.kt$import app.cash.turbine.test import com.example.domain.RequestExceptions import br.com.mymovieslist.data.network.MovieService import br.com.mymovieslist.stubs.fetchPopularMoviesResponse import br.com.mymovieslist.stubs.httpException import br.com.mymovieslist.stubs.socketTimeoutException import io.mockk.coEvery import io.mockk.mockk import org.junit.Assert.assertEquals import kotlinx.coroutines.ExperimentalCoroutinesApi import org.junit.Before import org.junit.Test import kotlinx.coroutines.test.runTest import kotlin.time.ExperimentalTime</ID>
-    <ID>ImportOrdering:NetworkModule.kt$import br.com.mymovieslist.BuildConfig import br.com.mymovieslist.data.network.MovieService import br.com.mymovieslist.data.network.interceptor.AuthInterceptor import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory import dagger.Module import dagger.Provides import dagger.hilt.InstallIn import dagger.hilt.components.SingletonComponent import javax.inject.Singleton import kotlinx.serialization.ExperimentalSerializationApi import kotlinx.serialization.json.Json import okhttp3.MediaType.Companion.toMediaType import okhttp3.OkHttpClient import okhttp3.logging.HttpLoggingInterceptor import retrofit2.Retrofit</ID>
-    <ID>ImportOrdering:kotlinAndroid.kt$import com.android.build.api.dsl.CommonExtension import org.gradle.api.JavaVersion import org.gradle.api.Project import org.gradle.api.artifacts.VersionCatalog</ID>
+    <ID>ImportOrdering:FlowOf.kt$import java.io.InterruptedIOException import java.net.ConnectException import java.net.SocketException import java.net.SocketTimeoutException import java.net.UnknownHostException import java.util.concurrent.TimeoutException import kotlin.experimental.ExperimentalTypeInference import kotlinx.coroutines.flow.Flow import kotlinx.coroutines.flow.FlowCollector import kotlinx.coroutines.flow.catch import kotlinx.coroutines.flow.flow import retrofit2.HttpException</ID>
+    <ID>ImportOrdering:GetPopularMoviesListUseCase.kt$import br.com.domain.model.Movie import br.com.domain.repository.MovieRepository import javax.inject.Inject import kotlinx.coroutines.flow.Flow</ID>
+    <ID>ImportOrdering:HomeScreen.kt$import androidx.compose.foundation.Image import androidx.compose.foundation.layout.Arrangement import androidx.compose.foundation.layout.Box import androidx.compose.foundation.layout.Column import androidx.compose.foundation.layout.PaddingValues import androidx.compose.foundation.layout.fillMaxSize import androidx.compose.foundation.layout.fillMaxWidth import androidx.compose.foundation.layout.height import androidx.compose.foundation.layout.padding import androidx.compose.foundation.layout.paddingFromBaseline import androidx.compose.foundation.layout.wrapContentSize import androidx.compose.foundation.lazy.LazyColumn import androidx.compose.foundation.lazy.grid.GridCells.Fixed import androidx.compose.foundation.lazy.grid.LazyHorizontalGrid import androidx.compose.foundation.lazy.grid.items import androidx.compose.foundation.lazy.items import androidx.compose.material3.Card import androidx.compose.material3.CardDefaults import androidx.compose.material3.CircularProgressIndicator import androidx.compose.material3.MaterialTheme import androidx.compose.material3.Text import androidx.compose.runtime.Composable import androidx.compose.ui.Alignment import androidx.compose.ui.Modifier import androidx.compose.ui.layout.ContentScale import androidx.compose.ui.platform.LocalContext import androidx.compose.ui.res.painterResource import androidx.compose.ui.tooling.preview.Preview import androidx.compose.ui.unit.dp import coil.compose.SubcomposeAsyncImage import coil.request.ImageRequest import br.com.mymovieslist.R import br.com.mymovieslist.core.components.RetryScreen import br.com.domain.model.Movie import br.com.domain.model.MovieSection import br.com.mymovielist.theme.MyMoviesTheme import br.com.mymovielist.theme.md_theme_dark_onSurface</ID>
+    <ID>ImportOrdering:HomeState.kt$import br.com.mymovieslist.core.viewmodel.state.ScreenState import br.com.domain.model.Movie</ID>
+    <ID>ImportOrdering:HomeViewModel.kt$import androidx.lifecycle.viewModelScope import br.com.mymovieslist.core.viewmodel.BaseViewModel import br.com.domain.usecase.GetPopularMoviesListUseCase import br.com.mymovieslist.core.di.IoDispatcher import br.com.mymovieslist.presentation.HomeState import dagger.hilt.android.lifecycle.HiltViewModel import javax.inject.Inject import kotlinx.coroutines.CoroutineDispatcher import kotlinx.coroutines.flow.catch import kotlinx.coroutines.flow.flowOn import kotlinx.coroutines.flow.onCompletion import kotlinx.coroutines.flow.onStart import kotlinx.coroutines.launch</ID>
+    <ID>ImportOrdering:MovieMapper.kt$import br.com.mymovieslist.data_remote.network.datasource.model.FetchPopularMoviesResponse import br.com.mymovieslist.data_remote.network.datasource.model.MovieResponse import br.com.domain.model.Movie import javax.inject.Inject</ID>
+    <ID>ImportOrdering:MovieRepositoryImpl.kt$import br.com.domain.model.Movie import br.com.mymovieslist.data.mapper.MovieMapper import br.com.domain.repository.MovieRepository import br.com.mymovieslist.data_remote.network.datasource.MoviesDataSource import javax.inject.Inject import kotlinx.coroutines.flow.Flow import kotlinx.coroutines.flow.map</ID>
+    <ID>ImportOrdering:MovieRepositoryTest.kt$import app.cash.turbine.test import br.com.domain.model.Movie import br.com.mymovieslist.data_remote.network.datasource.MoviesDataSource import br.com.mymovieslist.data.mapper.MovieMapper import br.com.domain.repository.MovieRepository import br.com.mymovieslist.data_remote.network.datasource.model.FetchPopularMoviesResponse import br.com.mymovieslist.data_remote.network.datasource.model.MovieResponse import io.mockk.coEvery import io.mockk.mockk import org.junit.Assert.assertEquals import kotlinx.coroutines.ExperimentalCoroutinesApi import kotlinx.coroutines.flow.flowOf import kotlinx.coroutines.test.runTest import org.junit.Before import org.junit.Test import kotlin.time.ExperimentalTime</ID>
+    <ID>ImportOrdering:MoviesDataSourceImpl.kt$import br.com.extensions.flowOf import br.com.mymovieslist.data_remote.network.api.MovieService import br.com.mymovieslist.data_remote.network.datasource.model.FetchPopularMoviesResponse import javax.inject.Inject import kotlinx.coroutines.flow.Flow</ID>
+    <ID>ImportOrdering:MoviesDataSourceTest.kt$import app.cash.turbine.test import br.com.extensions.RequestExceptions import br.com.mymovieslist.data_remote.network.api.MovieService import br.com.mymovieslist.data_remote.network.datasource.MoviesDataSource import br.com.mymovieslist.data_remote.network.datasource.MoviesDataSourceImpl import br.com.mymovieslist.data_remote.network.datasource.model.FetchPopularMoviesResponse import br.com.mymovieslist.data_remote.network.datasource.model.MovieResponse import io.mockk.coEvery import io.mockk.mockk import org.junit.Assert.assertEquals import kotlinx.coroutines.ExperimentalCoroutinesApi import org.junit.Before import org.junit.Test import kotlinx.coroutines.test.runTest import retrofit2.HttpException import java.net.SocketTimeoutException import kotlin.time.ExperimentalTime</ID>
+    <ID>ImportOrdering:NetworkModule.kt$import br.com.mymovieslist.data_remote.BuildConfig import br.com.mymovieslist.data_remote.network.api.MovieService import br.com.mymovieslist.data_remote.network.interceptor.AuthInterceptor import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory import dagger.Module import dagger.Provides import dagger.hilt.InstallIn import dagger.hilt.components.SingletonComponent import javax.inject.Singleton import kotlinx.serialization.ExperimentalSerializationApi import kotlinx.serialization.json.Json import okhttp3.MediaType.Companion.toMediaType import okhttp3.OkHttpClient import okhttp3.logging.HttpLoggingInterceptor import retrofit2.Retrofit</ID>
+    <ID>InvalidPackageDeclaration:MovieRepositoryTest.kt$package br.com.mymovieslist.data.repository</ID>
+    <ID>InvalidPackageDeclaration:MoviesDataSourceTest.kt$package br.com.mymovieslist.data_remote.datasource</ID>
     <ID>LongMethod:FavoriteScreen.kt$@Composable fun FavoriteScreen()</ID>
     <ID>LongMethod:HomeScreen.kt$@Composable private fun InflateImage(posterUrl: String)</ID>
     <ID>LongMethod:HomeScreen.kt$@Preview @Composable fun MovieListPreview()</ID>
@@ -88,57 +96,75 @@
     <ID>MagicNumber:Color.kt$0xFFFFFFFF</ID>
     <ID>MagicNumber:HomeScreen.kt$10</ID>
     <ID>MatchingDeclarationName:Exceptions.kt$RequestExceptions : Throwable</ID>
-    <ID>NewLineAtEndOfFile:AuthInterceptor.kt$br.com.mymovieslist.data.network.interceptor.AuthInterceptor.kt</ID>
+    <ID>NewLineAtEndOfFile:AndroidAppComposePlugin.kt$.AndroidAppComposePlugin.kt</ID>
+    <ID>NewLineAtEndOfFile:AndroidComposeLibraryPlugin.kt$.AndroidComposeLibraryPlugin.kt</ID>
+    <ID>NewLineAtEndOfFile:AndroidComposePlugin.kt$config.AndroidComposePlugin.kt</ID>
+    <ID>NewLineAtEndOfFile:AuthInterceptor.kt$br.com.mymovieslist.data_remote.network.interceptor.AuthInterceptor.kt</ID>
     <ID>NewLineAtEndOfFile:BaseViewModel.kt$br.com.mymovieslist.core.viewmodel.BaseViewModel.kt</ID>
-    <ID>NewLineAtEndOfFile:Color.kt$com.example.theme.Color.kt</ID>
-    <ID>NewLineAtEndOfFile:DataModule.kt$br.com.mymovieslist.core.di.DataModule.kt</ID>
-    <ID>NewLineAtEndOfFile:DataStubs.kt$br.com.mymovieslist.stubs.DataStubs.kt</ID>
+    <ID>NewLineAtEndOfFile:Color.kt$br.com.mymovielist.theme.Color.kt</ID>
+    <ID>NewLineAtEndOfFile:DataModule.kt$br.com.mymovieslist.di.DataModule.kt</ID>
+    <ID>NewLineAtEndOfFile:DataRemoteModule.kt$br.com.mymovieslist.data_remote.network.di.DataRemoteModule.kt</ID>
     <ID>NewLineAtEndOfFile:DispatcherModule.kt$br.com.mymovieslist.core.di.DispatcherModule.kt</ID>
-    <ID>NewLineAtEndOfFile:Exceptions.kt$com.example.domain.Exceptions.kt</ID>
+    <ID>NewLineAtEndOfFile:Extensions.kt$config.Extensions.kt</ID>
     <ID>NewLineAtEndOfFile:FavoriteScreen.kt$br.com.mymovieslist.presentation.screens.FavoriteScreen.kt</ID>
-    <ID>NewLineAtEndOfFile:FlowOf.kt$com.example.common.extensions.FlowOf.kt</ID>
-    <ID>NewLineAtEndOfFile:GetPopularMoviesListUseCase.kt$br.com.mymovieslist.domain.usecase.GetPopularMoviesListUseCase.kt</ID>
-    <ID>NewLineAtEndOfFile:GetPopularMoviesListUseCaseTest.kt$br.com.mymovieslist.domain.usecase.GetPopularMoviesListUseCaseTest.kt</ID>
-    <ID>NewLineAtEndOfFile:MainViewModelTest.kt$br.com.mymovieslist.presentation.MainViewModelTest.kt</ID>
+    <ID>NewLineAtEndOfFile:GetPopularMoviesListUseCase.kt$br.com.domain.usecase.GetPopularMoviesListUseCase.kt</ID>
+    <ID>NewLineAtEndOfFile:GetPopularMoviesListUseCaseTest.kt$br.com.mymovieslist.usecase.GetPopularMoviesListUseCaseTest.kt</ID>
+    <ID>NewLineAtEndOfFile:HomeViewModelTest.kt$br.com.mymovieslist.presentation.HomeViewModelTest.kt</ID>
     <ID>NewLineAtEndOfFile:MovieApplication.kt$br.com.mymovieslist.MovieApplication.kt</ID>
-    <ID>NewLineAtEndOfFile:MovieRepository.kt$br.com.mymovieslist.domain.repository.MovieRepository.kt</ID>
+    <ID>NewLineAtEndOfFile:MovieRepository.kt$br.com.domain.repository.MovieRepository.kt</ID>
     <ID>NewLineAtEndOfFile:MovieRepositoryImpl.kt$br.com.mymovieslist.data.repository.MovieRepositoryImpl.kt</ID>
-    <ID>NewLineAtEndOfFile:br.com.mymovieslist.data.repository.MovieRepositoryTest.kt$br.com.mymovieslist.data.repository.MovieRepositoryTest.kt</ID>
-    <ID>NewLineAtEndOfFile:MovieResponse.kt$br.com.mymovieslist.data.model.MovieResponse.kt</ID>
-    <ID>NewLineAtEndOfFile:MovieSection.kt$br.com.mymovieslist.domain.model.MovieSection.kt</ID>
-    <ID>NewLineAtEndOfFile:MovieService.kt$br.com.mymovieslist.data.network.MovieService.kt</ID>
-    <ID>NewLineAtEndOfFile:MoviesDataSource.kt$br.com.mymovieslist.data.datasource.MoviesDataSource.kt</ID>
-    <ID>NewLineAtEndOfFile:MoviesDataSourceImpl.kt$br.com.mymovieslist.data.datasource.MoviesDataSourceImpl.kt</ID>
+    <ID>NewLineAtEndOfFile:MovieRepositoryTest.kt$br.com.mymovieslist.data.repository.MovieRepositoryTest.kt</ID>
+    <ID>NewLineAtEndOfFile:MovieResponse.kt$br.com.mymovieslist.data_remote.network.datasource.model.MovieResponse.kt</ID>
+    <ID>NewLineAtEndOfFile:MovieSection.kt$br.com.domain.model.MovieSection.kt</ID>
+    <ID>NewLineAtEndOfFile:MovieService.kt$br.com.mymovieslist.data_remote.network.api.MovieService.kt</ID>
+    <ID>NewLineAtEndOfFile:MoviesDataSource.kt$br.com.mymovieslist.data_remote.network.datasource.MoviesDataSource.kt</ID>
+    <ID>NewLineAtEndOfFile:MoviesDataSourceImpl.kt$br.com.mymovieslist.data_remote.network.datasource.MoviesDataSourceImpl.kt</ID>
+    <ID>NewLineAtEndOfFile:MyMoviesApp.kt$br.com.mymovieslist.presentation.MyMoviesApp.kt</ID>
     <ID>NewLineAtEndOfFile:NetworkModule.kt$br.com.mymovieslist.data_remote.network.di.NetworkModule.kt</ID>
     <ID>NewLineAtEndOfFile:ResourceProvider.kt$br.com.mymovieslist.core.resource.ResourceProvider.kt</ID>
     <ID>NewLineAtEndOfFile:RetryScreen.kt$br.com.mymovieslist.core.components.RetryScreen.kt</ID>
     <ID>NewLineAtEndOfFile:ScreenState.kt$br.com.mymovieslist.core.viewmodel.state.ScreenState.kt</ID>
     <ID>NewLineAtEndOfFile:SearchScreen.kt$br.com.mymovieslist.presentation.screens.SearchScreen.kt</ID>
-    <ID>NewLineAtEndOfFile:Theme.kt$com.example.theme.Theme.kt</ID>
-    <ID>NewLineAtEndOfFile:Typography.kt$com.example.theme.Typography.kt</ID>
-    <ID>NoBlankLineBeforeRbrace:MovieService.kt$MovieService$ </ID>
+    <ID>NewLineAtEndOfFile:Theme.kt$br.com.mymovielist.theme.Theme.kt</ID>
+    <ID>NewLineAtEndOfFile:Typography.kt$br.com.mymovielist.theme.Typography.kt</ID>
+    <ID>NewLineAtEndOfFile:build.gradle.kts$.build.gradle.kts</ID>
+    <ID>NoBlankLineBeforeRbrace:MoviesDataSourceImpl.kt$MoviesDataSourceImpl$ </ID>
     <ID>NoConsecutiveBlankLines:Color.kt$ </ID>
-    <ID>NoConsecutiveBlankLines:MainViewModelTest.kt$MainViewModelTest$ </ID>
+    <ID>NoConsecutiveBlankLines:HomeViewModelTest.kt$HomeViewModelTest$ </ID>
     <ID>NoConsecutiveBlankLines:MoviesDataSourceTest.kt$ </ID>
     <ID>NoConsecutiveBlankLines:MoviesDataSourceTest.kt$MoviesDataSourceTest$ </ID>
     <ID>NoEmptyFirstLineInMethodBlock:AppNavHost.kt$ </ID>
     <ID>NoEmptyFirstLineInMethodBlock:HomeRoute.kt$ </ID>
     <ID>NoEmptyFirstLineInMethodBlock:HomeScreen.kt$ </ID>
+    <ID>NoEmptyFirstLineInMethodBlock:MovieRepositoryTest.kt$MovieRepositoryTest$ </ID>
     <ID>NoEmptyFirstLineInMethodBlock:MyMoviesApp.kt$ </ID>
     <ID>NoEmptyFirstLineInMethodBlock:kotlinAndroid.kt$ </ID>
     <ID>NoMultipleSpaces:MovieRepositoryImpl.kt$MovieRepositoryImpl$ </ID>
-    <ID>NoUnusedImports:RetryScreen.kt$br.com.mymovieslist.core.components.RetryScreen.kt</ID>
+    <ID>PackageName:AuthInterceptor.kt$package br.com.mymovieslist.data_remote.network.interceptor</ID>
+    <ID>PackageName:DataRemoteModule.kt$package br.com.mymovieslist.data_remote.network.di</ID>
+    <ID>PackageName:FetchPopularMoviesResponse.kt$package br.com.mymovieslist.data_remote.network.datasource.model</ID>
+    <ID>PackageName:MovieResponse.kt$package br.com.mymovieslist.data_remote.network.datasource.model</ID>
+    <ID>PackageName:MovieService.kt$package br.com.mymovieslist.data_remote.network.api</ID>
+    <ID>PackageName:MoviesDataSource.kt$package br.com.mymovieslist.data_remote.network.datasource</ID>
+    <ID>PackageName:MoviesDataSourceImpl.kt$package br.com.mymovieslist.data_remote.network.datasource</ID>
+    <ID>PackageName:MoviesDataSourceTest.kt$package br.com.mymovieslist.data_remote.datasource</ID>
+    <ID>PackageName:NetworkModule.kt$package br.com.mymovieslist.data_remote.network.di</ID>
+    <ID>PackageNaming:AuthInterceptor.kt$package br.com.mymovieslist.data_remote.network.interceptor</ID>
+    <ID>PackageNaming:DataRemoteModule.kt$package br.com.mymovieslist.data_remote.network.di</ID>
+    <ID>PackageNaming:FetchPopularMoviesResponse.kt$package br.com.mymovieslist.data_remote.network.datasource.model</ID>
+    <ID>PackageNaming:MovieResponse.kt$package br.com.mymovieslist.data_remote.network.datasource.model</ID>
+    <ID>PackageNaming:MovieService.kt$package br.com.mymovieslist.data_remote.network.api</ID>
+    <ID>PackageNaming:MoviesDataSource.kt$package br.com.mymovieslist.data_remote.network.datasource</ID>
+    <ID>PackageNaming:MoviesDataSourceImpl.kt$package br.com.mymovieslist.data_remote.network.datasource</ID>
+    <ID>PackageNaming:MoviesDataSourceTest.kt$package br.com.mymovieslist.data_remote.datasource</ID>
+    <ID>PackageNaming:NetworkModule.kt$package br.com.mymovieslist.data_remote.network.di</ID>
     <ID>SpacingAroundColon:AuthInterceptor.kt$AuthInterceptor$:</ID>
     <ID>SpacingAroundColon:BaseViewModel.kt$BaseViewModel$:</ID>
     <ID>SpacingAroundColon:MovieMapper.kt$MovieMapper$:</ID>
-    <ID>SpacingAroundColon:MoviesDataSourceImpl.kt$MoviesDataSourceImpl$:</ID>
-    <ID>SpacingAroundComma:build.gradle.kts$,</ID>
     <ID>SpacingAroundCurly:BaseViewModel.kt$BaseViewModel${</ID>
-    <ID>SpacingAroundCurly:MainState.kt$MainState${</ID>
+    <ID>SpacingAroundCurly:HomeState.kt$HomeState${</ID>
     <ID>SpacingAroundCurly:MovieMapper.kt$MovieMapper${</ID>
-    <ID>SpacingAroundCurly:build.gradle.kts${</ID>
-    <ID>SpacingAroundParens:build.gradle.kts$(</ID>
     <ID>SpacingAroundParens:settings.gradle.kts$(</ID>
-    <ID>TooGenericExceptionThrown:MainViewModelTest.kt$MainViewModelTest$throw Throwable()</ID>
+    <ID>TooGenericExceptionThrown:HomeViewModelTest.kt$HomeViewModelTest$throw Throwable()</ID>
   </CurrentIssues>
 </SmellBaseline>
