@@ -7,19 +7,18 @@ import org.gradle.api.Project
 import org.gradle.api.artifacts.VersionCatalog
 
 internal fun Project.configureKotlinAndroid(
-    commonExtension: CommonExtension<*, *, *, *, *, *>,
-    libs: VersionCatalog
+    commonExtension: CommonExtension,
 ) {
     commonExtension.apply {
 
         compileSdk = libs.findVersion("compileSdk").get().toString().toInt()
 
-        defaultConfig {
+        defaultConfig.apply {
             minSdk = libs.findVersion("minSdk").get().toString().toInt()
             testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         }
 
-        compileOptions {
+        compileOptions.apply {
             sourceCompatibility = JavaVersion.VERSION_17
             targetCompatibility = JavaVersion.VERSION_17
         }

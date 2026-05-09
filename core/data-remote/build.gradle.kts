@@ -1,3 +1,5 @@
+import shadow.bundletool.com.android.tools.r8.internal.bu
+
 plugins {
     id("config.android.library")
     id("org.jetbrains.kotlin.android")
@@ -8,6 +10,10 @@ plugins {
 
 android {
     namespace = "com.example.mymovieslist.data_remote"
+
+    buildFeatures {
+        buildConfig = true
+    }
 
     secrets {
         defaultPropertiesFileName = "secrets.defaults.properties"

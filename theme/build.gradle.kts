@@ -9,10 +9,6 @@ plugins {
 android {
     namespace = "com.example.theme"
 
-    buildFeatures {
-        compose = true
-    }
-
     buildTypes {
         release {
             isMinifyEnabled = false
