@@ -2,11 +2,10 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
     id("config.android.library")
-    id("org.jetbrains.kotlin.android")
     id("config.compose.library")
 }
 
-android {
+configure<com.android.build.api.dsl.LibraryExtension> {
     namespace = "com.example.theme"
 
     buildTypes {
@@ -18,14 +17,15 @@ android {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
     }
-    kotlin {
-        compilerOptions {
-            jvmTarget.set(JvmTarget.JVM_17)
-        }
-    }
 
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.11"
+    }
+}
+
+kotlin {
+    compilerOptions {
+        jvmTarget.set(JvmTarget.JVM_17)
     }
 }
 

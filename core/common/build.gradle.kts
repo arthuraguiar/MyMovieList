@@ -1,9 +1,8 @@
 plugins {
     id("config.android.library")
-    id("org.jetbrains.kotlin.android")
 }
 
-android {
+configure<com.android.build.api.dsl.LibraryExtension> {
     namespace = "com.example.common"
 }
 

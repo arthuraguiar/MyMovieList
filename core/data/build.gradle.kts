@@ -1,10 +1,9 @@
 plugins {
     id("config.android.library")
-    id("org.jetbrains.kotlin.android")
     id("config.android.hilt")
 }
 
-android {
+configure<com.android.build.api.dsl.LibraryExtension> {
     namespace = "com.example.mymovieslist.data"
 }
 
