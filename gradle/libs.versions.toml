@@ -1,9 +1,9 @@
 [versions]
 
-compileSdk = "36"
-kotlinSerialization = "2.2.20"
+compileSdk = "37"
+kotlinSerialization = "2.3.21"
 minSdk = "23"
-targetSdk = "36"
+targetSdk = "37"
 
 kotlin = "2.3.21"
 gradle = "9.2.1"
