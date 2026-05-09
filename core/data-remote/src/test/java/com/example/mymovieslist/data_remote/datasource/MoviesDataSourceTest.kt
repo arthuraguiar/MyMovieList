@@ -50,7 +50,6 @@ internal class MoviesDataSourceTest {
         runTest {
             // Given
             val exception = socketTimeoutException
-            val expected = RequestExceptions.NoConnectionException()
             coEvery {
                 service.fetchPopularMovies(1)
             } throws exception
@@ -61,7 +60,7 @@ internal class MoviesDataSourceTest {
             // Then
             result.test {
                 val error = awaitError()
-                assertEquals(error, expected)
+                assert(error is RequestExceptions.NoConnectionException)
             }
         }
 
