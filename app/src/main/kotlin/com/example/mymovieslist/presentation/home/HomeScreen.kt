@@ -16,10 +16,11 @@ import androidx.compose.foundation.lazy.grid.GridCells.Fixed
 import androidx.compose.foundation.lazy.grid.LazyHorizontalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material.Card
-import androidx.compose.material.CircularProgressIndicator
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -87,7 +88,7 @@ fun HomeSection(
     Column(modifier) {
         Text(
             text = title,
-            style = MaterialTheme.typography.h5,
+            style = MaterialTheme.typography.bodyLarge,
             color = md_theme_dark_onSurface,
             modifier = Modifier
                 .paddingFromBaseline(top = 40.dp, bottom = 16.dp)
@@ -103,7 +104,7 @@ private fun MovieView(movie: Movie) {
         modifier = Modifier
             .padding(4.dp)
             .fillMaxWidth(),
-        elevation = 8.dp,
+        elevation = CardDefaults.cardElevation(8.dp),
     ) {
         InflateImage(posterUrl = movie.posterUrl)
     }

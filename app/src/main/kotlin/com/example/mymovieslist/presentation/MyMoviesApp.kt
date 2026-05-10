@@ -15,7 +15,7 @@ import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun MyMoviesApp() {
+internal fun MyMoviesApp() {
     MyMoviesTheme {
 
         StatusBarIcons()

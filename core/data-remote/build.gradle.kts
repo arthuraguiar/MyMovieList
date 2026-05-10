@@ -1,17 +1,21 @@
 plugins {
     id("config.android.library")
-    id("org.jetbrains.kotlin.android")
     id("config.android.hilt")
     kotlin("plugin.serialization")
     alias(libs.plugins.secrets)
 }
 
-android {
+configure<com.android.build.api.dsl.LibraryExtension> {
+
     namespace = "com.example.mymovieslist.data_remote"
 
-    secrets {
-        defaultPropertiesFileName = "secrets.defaults.properties"
+    buildFeatures {
+        buildConfig = true
     }
+}
+
+secrets {
+    defaultPropertiesFileName = "secrets.defaults.properties"
 }
 
 dependencies {

@@ -10,7 +10,7 @@ import org.junit.runner.Description
 import org.junit.runners.model.Statement
 
 @ExperimentalCoroutinesApi
-class CoroutinesTestRule : TestRule {
+internal class CoroutinesTestRule : TestRule {
 
     val standardTestDispatcher = StandardTestDispatcher()
 

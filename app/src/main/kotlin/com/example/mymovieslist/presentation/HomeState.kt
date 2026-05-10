@@ -3,13 +3,13 @@ package com.example.mymovieslist.presentation
 import com.example.mymovieslist.core.viewmodel.state.ScreenState
 import com.example.domain.model.Movie
 
-data class MainState(
+data class HomeState(
     val isLoading: Boolean = false,
     val moviesList: List<Movie> = emptyList(),
     val isEmptyState: Boolean = false,
     val isErrorState: Boolean = false
 ) : ScreenState {
-    fun getSuccessState(moviesList: List<Movie>): MainState {
+    fun getSuccessState(moviesList: List<Movie>): HomeState {
         return this.copy(
             moviesList = moviesList,
             isErrorState = false,
@@ -17,13 +17,13 @@ data class MainState(
         )
     }
 
-    fun getErrorState(): MainState {
+    fun getErrorState(): HomeState {
         return this.copy(
             isErrorState = true
         )
     }
 
-    fun getLoadingState(isLoading: Boolean): MainState{
+    fun getLoadingState(isLoading: Boolean): HomeState{
         return this.copy(
             isLoading = isLoading,
             isErrorState = false,

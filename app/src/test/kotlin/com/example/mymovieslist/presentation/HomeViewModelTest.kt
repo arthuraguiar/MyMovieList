@@ -4,7 +4,7 @@ import app.cash.turbine.test
 import com.example.CoroutinesTestRule
 import com.example.domain.model.Movie
 import com.example.domain.usecase.GetPopularMoviesListUseCase
-import com.example.mymovieslist.presentation.viewmodel.MainViewModel
+import com.example.mymovieslist.presentation.viewmodel.HomeViewModel
 import io.mockk.coEvery
 import io.mockk.mockk
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -18,7 +18,7 @@ import kotlin.time.ExperimentalTime
 
 @ExperimentalCoroutinesApi
 @ExperimentalTime
-class MainViewModelTest {
+internal class HomeViewModelTest {
 
     private val popularMoviesList = listOf(
         Movie(
@@ -32,18 +32,18 @@ class MainViewModelTest {
     @get: Rule
     val coroutinesTestRule = CoroutinesTestRule()
     private val useCase: GetPopularMoviesListUseCase = mockk(relaxed = true)
-    private lateinit var viewModel: MainViewModel
+    private lateinit var viewModel: HomeViewModel
 
 
     @Test
     fun `init should show error layout when error occurred`() = runTest {
         // Given
-        val initState = MainState()
-        val errorState = MainState(isErrorState = true)
+        val initState = HomeState()
+        val errorState = HomeState(isErrorState = true)
         coEvery { useCase.invoke(1) } returns flow { throw Throwable() }
 
         // When
-        viewModel = MainViewModel(useCase, coroutinesTestRule.standardTestDispatcher)
+        viewModel = HomeViewModel(useCase, coroutinesTestRule.standardTestDispatcher)
 
         // Then
         viewModel.screenState.test {
@@ -58,12 +58,12 @@ class MainViewModelTest {
     @Test
     fun `init should get popular movies list with data`() = runTest {
         // Given
-        val initState = MainState()
-        val successState = MainState(moviesList = popularMoviesList, isLoading = true)
+        val initState = HomeState()
+        val successState = HomeState(moviesList = popularMoviesList, isLoading = true)
         coEvery { useCase.invoke(1) } returns flowOf(popularMoviesList)
 
         // When
-        viewModel = MainViewModel(useCase, coroutinesTestRule.standardTestDispatcher)
+        viewModel = HomeViewModel(useCase, coroutinesTestRule.standardTestDispatcher)
 
         // Then
         viewModel.screenState.test {
@@ -78,13 +78,13 @@ class MainViewModelTest {
     @Test
     fun `init should get empty popular movies list`() = runTest {
         // Given
-        val initState = MainState()
+        val initState = HomeState()
         val successState =
-            MainState(moviesList = emptyList(), isLoading = true, isEmptyState = true)
+            HomeState(moviesList = emptyList(), isLoading = true, isEmptyState = true)
         coEvery { useCase.invoke(1) } returns flowOf(emptyList())
 
         // When
-        viewModel = MainViewModel(useCase, coroutinesTestRule.standardTestDispatcher)
+        viewModel = HomeViewModel(useCase, coroutinesTestRule.standardTestDispatcher)
 
         // Then
         viewModel.screenState.test {

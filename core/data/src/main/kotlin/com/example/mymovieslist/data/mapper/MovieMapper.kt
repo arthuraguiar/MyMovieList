@@ -5,7 +5,7 @@ import com.example.mymovieslist.data_remote.network.datasource.model.MovieRespon
 import com.example.domain.model.Movie
 import javax.inject.Inject
 
-class MovieMapper @Inject constructor() {
+internal class MovieMapper @Inject constructor() {
 
     private val basePosterUrl = "https://image.tmdb.org/t/p/original"
 

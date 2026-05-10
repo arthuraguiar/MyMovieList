@@ -15,7 +15,7 @@ import kotlin.time.ExperimentalTime
 
 @ExperimentalCoroutinesApi
 @ExperimentalTime
-class GetPopularMoviesListUseCaseTest {
+internal class GetPopularMoviesListUseCaseTest {
 
     private val repository: MovieRepository = mockk(relaxed = true)
     private val getPopularMoviesListUseCase = GetPopularMoviesListUseCase(repository)

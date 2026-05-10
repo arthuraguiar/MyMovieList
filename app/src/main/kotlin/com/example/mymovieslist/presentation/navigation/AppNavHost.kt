@@ -12,7 +12,7 @@ import com.example.mymovieslist.presentation.screens.FavoriteScreen
 import com.example.mymovieslist.presentation.screens.SearchScreen
 
 @Composable
-fun AppNavHost(
+internal fun AppNavHost(
     modifier: Modifier = Modifier,
     navController: NavHostController = rememberNavController(),
     startDestination: String = BottomNavItem.Home.route

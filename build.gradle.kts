@@ -4,6 +4,7 @@ import io.gitlab.arturbosch.detekt.DetektCreateBaselineTask
 plugins {
     alias(libs.plugins.ksp) apply false
     alias(libs.plugins.secrets) apply false
+    alias(libs.plugins.compose) apply false
     alias(libs.plugins.detekt)
 }
 

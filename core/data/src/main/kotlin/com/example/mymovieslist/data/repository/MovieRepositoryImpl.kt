@@ -8,7 +8,7 @@ import javax.inject.Inject
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
-class MovieRepositoryImpl @Inject constructor(
+internal class MovieRepositoryImpl @Inject constructor(
     private val moviesDataSource: MoviesDataSource,
     private val movieMapper: MovieMapper,
 ) : MovieRepository {

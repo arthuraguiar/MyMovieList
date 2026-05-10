@@ -19,7 +19,7 @@ import kotlin.time.ExperimentalTime
 
 @ExperimentalCoroutinesApi
 @ExperimentalTime
-class MovieRepositoryTest {
+internal class MovieRepositoryTest {
 
     private lateinit var movieRepository: MovieRepository
     private lateinit var movieMapper: MovieMapper
