@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "658209998063",
+    "project_id": "mymovieslist-43809",
+    "storage_bucket": "mymovieslist-43809.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:658209998063:android:b4986ecd52424e1a52471a",
+        "android_client_info": {
+          "package_name": "br.com.mymovieslist"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDfMRg4oCUgyHautunkV3y5gB2CnBxuoQI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
