@@ -4,7 +4,7 @@ plugins {
 }
 
 configure<com.android.build.api.dsl.LibraryExtension> {
-    namespace = "com.example.domain"
+    namespace = "br.com.domain"
 }
 
 dependencies {

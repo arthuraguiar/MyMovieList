@@ -3,7 +3,7 @@ plugins {
 }
 
 configure<com.android.build.api.dsl.LibraryExtension> {
-    namespace = "com.example.common"
+    namespace = "br.com.mymovielist.common"
 }
 
 dependencies {

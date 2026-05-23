@@ -6,7 +6,7 @@ plugins {
 }
 
 configure<com.android.build.api.dsl.LibraryExtension> {
-    namespace = "com.example.theme"
+    namespace = "br.com.mymovielist.theme"
 
     buildTypes {
         release {
