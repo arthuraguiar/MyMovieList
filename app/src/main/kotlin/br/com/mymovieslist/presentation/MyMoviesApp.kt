@@ -14,7 +14,6 @@ import br.com.mymovieslist.presentation.navigation.BottomNavigation
 @Composable
 internal fun MyMoviesApp() {
     MyMoviesTheme {
-
         val navController = rememberNavController()
 
         Scaffold(

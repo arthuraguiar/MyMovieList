@@ -11,9 +11,9 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.test.runTest
-import org.junit.Assert.assertEquals
 import org.junit.Rule
 import kotlin.test.Test
+import kotlin.test.assertEquals
 import kotlin.time.ExperimentalTime
 
 @ExperimentalCoroutinesApi
@@ -34,13 +34,12 @@ internal class HomeViewModelTest {
     private val useCase: GetPopularMoviesListUseCase = mockk(relaxed = true)
     private lateinit var viewModel: HomeViewModel
 
-
     @Test
     fun `init should show error layout when error occurred`() = runTest {
         // Given
         val initState = HomeState()
         val errorState = HomeState(isErrorState = true)
-        coEvery { useCase.invoke(1) } returns flow { throw Throwable() }
+        coEvery { useCase.invoke(1) } returns flow { throw IllegalStateException("Simulated error") }
 
         // When
         viewModel = HomeViewModel(useCase, coroutinesTestRule.standardTestDispatcher)

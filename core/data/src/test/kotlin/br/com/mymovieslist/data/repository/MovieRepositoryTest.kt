@@ -2,19 +2,19 @@ package br.com.mymovieslist.data.repository
 
 import app.cash.turbine.test
 import br.com.domain.model.Movie
-import br.com.mymovieslist.data_remote.network.datasource.MoviesDataSource
-import br.com.mymovieslist.data.mapper.MovieMapper
 import br.com.domain.repository.MovieRepository
-import br.com.mymovieslist.data_remote.network.datasource.model.FetchPopularMoviesResponse
-import br.com.mymovieslist.data_remote.network.datasource.model.MovieResponse
+import br.com.mymovieslist.data.mapper.MovieMapper
+import br.com.mymovieslist.dataremote.network.datasource.MoviesDataSource
+import br.com.mymovieslist.dataremote.network.datasource.model.FetchPopularMoviesResponse
+import br.com.mymovieslist.dataremote.network.datasource.model.MovieResponse
 import io.mockk.coEvery
 import io.mockk.mockk
-import org.junit.Assert.assertEquals
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.test.runTest
 import org.junit.Before
-import org.junit.Test
+import kotlin.test.Test
+import kotlin.test.assertEquals
 import kotlin.time.ExperimentalTime
 
 @ExperimentalCoroutinesApi
@@ -47,7 +47,6 @@ internal class MovieRepositoryTest {
 
     @Before
     fun setUp() {
-
         movieMapper = MovieMapper()
         movieRepository = MovieRepositoryImpl(
             moviesDataSource = moviesDataSource,

@@ -33,17 +33,7 @@ fun RetryScreen(tryAgain: () -> Unit) {
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         Spacer(modifier = Modifier.weight(1f))
-        Column(horizontalAlignment = Alignment.CenterHorizontally) {
-            Image(
-                painterResource(drawable.error_drawable),
-                contentDescription = "",
-                contentScale = ContentScale.Crop
-            )
-            Text(
-                modifier = Modifier.padding(8.dp),
-                text = stringResource(id = string.ops_something_went_wrong)
-            )
-        }
+        ErrorMessage()
         Spacer(modifier = Modifier.weight(1f))
         Button(modifier = Modifier.fillMaxWidth(), onClick = tryAgain) {
             Text(
@@ -51,6 +41,21 @@ fun RetryScreen(tryAgain: () -> Unit) {
                 textAlign = TextAlign.Center
             )
         }
+    }
+}
+
+@Composable
+private fun ErrorMessage() {
+    Column(horizontalAlignment = Alignment.CenterHorizontally) {
+        Image(
+            painterResource(drawable.error_drawable),
+            contentDescription = "",
+            contentScale = ContentScale.Crop
+        )
+        Text(
+            modifier = Modifier.padding(8.dp),
+            text = stringResource(id = string.ops_something_went_wrong)
+        )
     }
 }
 

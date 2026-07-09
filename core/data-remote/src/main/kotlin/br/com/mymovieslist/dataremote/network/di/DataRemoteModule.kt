@@ -1,7 +1,7 @@
-package br.com.mymovieslist.data_remote.network.di
+package br.com.mymovieslist.dataremote.network.di
 
-import br.com.mymovieslist.data_remote.network.datasource.MoviesDataSource
-import br.com.mymovieslist.data_remote.network.datasource.MoviesDataSourceImpl
+import br.com.mymovieslist.dataremote.network.datasource.MoviesDataSource
+import br.com.mymovieslist.dataremote.network.datasource.MoviesDataSourceImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

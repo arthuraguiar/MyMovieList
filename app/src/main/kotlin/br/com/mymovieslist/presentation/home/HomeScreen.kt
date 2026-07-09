@@ -29,14 +29,14 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import coil.compose.SubcomposeAsyncImage
-import coil.request.ImageRequest
-import br.com.mymovieslist.R
-import br.com.mymovieslist.core.components.RetryScreen
 import br.com.domain.model.Movie
 import br.com.domain.model.MovieSection
 import br.com.mymovielist.theme.MyMoviesTheme
 import br.com.mymovielist.theme.md_theme_dark_onSurface
+import br.com.mymovieslist.R
+import br.com.mymovieslist.core.components.RetryScreen
+import coil.compose.SubcomposeAsyncImage
+import coil.request.ImageRequest
 
 @Composable
 fun HomeScreen(
@@ -44,7 +44,6 @@ fun HomeScreen(
     movieList: List<Movie>,
     retry: () -> Unit
 ) {
-
     when {
         loading -> ShowLoading()
         movieList.isEmpty() -> RetryScreen(retry)
@@ -72,7 +71,6 @@ private fun MovieHorizontalGrid(movies: List<Movie>) {
         verticalArrangement = Arrangement.spacedBy(8.dp),
         modifier = Modifier.height(400.dp)
     ) {
-
         items(movies) { movie ->
             MovieView(movie)
         }
@@ -119,19 +117,22 @@ private fun InflateImage(posterUrl: String) =
             .build(),
         contentDescription = null,
         contentScale = ContentScale.Fit,
-        loading = {
-            Box(
-                modifier = Modifier.fillMaxSize(),
-                contentAlignment = Alignment.Center,
-            ) {
-                Image(
-                    painter = painterResource(id = R.drawable.icon_film),
-                    contentDescription = null
-                )
-                CircularProgressIndicator()
-            }
-        }
+        loading = { ImageLoadingPlaceholder() }
     )
+
+@Composable
+private fun ImageLoadingPlaceholder() {
+    Box(
+        modifier = Modifier.fillMaxSize(),
+        contentAlignment = Alignment.Center,
+    ) {
+        Image(
+            painter = painterResource(id = R.drawable.icon_film),
+            contentDescription = null
+        )
+        CircularProgressIndicator()
+    }
+}
 
 @Composable
 private fun ShowLoading() {
@@ -144,18 +145,22 @@ private fun ShowLoading() {
     }
 }
 
+private const val PREVIEW_MOVIE_COUNT = 10
+
+private fun previewMovieList() = (0..PREVIEW_MOVIE_COUNT).map {
+    Movie(
+        title = "Puss in Boots: The Last Wish",
+        originalLanguage = "en",
+        releaseDate = "2022-12-07",
+        posterUrl = "https://image.tmdb.org/t/p/original/kuf6dutpsT0vSVehic3EZIqkOBt.jpg"
+    )
+}
+
 @Preview
 @Composable
 fun MovieListPreview() {
+    val movieList = previewMovieList()
     MyMoviesTheme {
-        val movieList = (0..10).map {
-            Movie(
-                title = "Puss in Boots: The Last Wish",
-                originalLanguage = "en",
-                releaseDate = "2022-12-07",
-                posterUrl = "https://image.tmdb.org/t/p/original/kuf6dutpsT0vSVehic3EZIqkOBt.jpg"
-            )
-        }
         MakeList(
             listOf(
                 MovieSection(
@@ -171,7 +176,7 @@ fun MovieListPreview() {
     }
 }
 
-//TODO map other api endpoints
+// TODO map other api endpoints
 private fun makeMovieSection(movies: List<Movie>) =
     mutableListOf(
         MovieSection(

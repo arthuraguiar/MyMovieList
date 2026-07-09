@@ -16,4 +16,5 @@ dependencies {
     testImplementation(libs.androidx.core.testing)
     testImplementation(libs.turbine)
     testImplementation(libs.junit)
+    testImplementation(libs.kotlin.test)
 }

@@ -11,7 +11,7 @@ plugins {
 }
 
 android {
-    compileSdk = 36
+    compileSdk = libs.versions.compileSdk.get().toInt()
 
     defaultConfig {
 

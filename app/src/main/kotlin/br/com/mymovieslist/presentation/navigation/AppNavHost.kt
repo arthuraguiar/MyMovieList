@@ -22,7 +22,6 @@ internal fun AppNavHost(
         startDestination = startDestination,
         modifier = modifier
     ) {
-
         composable(route = BottomNavItem.Home.route) {
             HomeRoute(hiltViewModel())
         }

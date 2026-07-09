@@ -1,8 +1,8 @@
 package br.com.mymovieslist.data.mapper
 
-import br.com.mymovieslist.data_remote.network.datasource.model.FetchPopularMoviesResponse
-import br.com.mymovieslist.data_remote.network.datasource.model.MovieResponse
 import br.com.domain.model.Movie
+import br.com.mymovieslist.dataremote.network.datasource.model.FetchPopularMoviesResponse
+import br.com.mymovieslist.dataremote.network.datasource.model.MovieResponse
 import javax.inject.Inject
 
 internal class MovieMapper @Inject constructor() {
@@ -22,10 +22,11 @@ internal class MovieMapper @Inject constructor() {
         )
     }
 
-    private fun buildPosterImageUrl(posterPath:String?): String?{
+    private fun buildPosterImageUrl(posterPath: String?): String? {
         return if (posterPath != null) {
             basePosterUrl.plus(posterPath)
-        } else
+        } else {
             null
+        }
     }
 }
