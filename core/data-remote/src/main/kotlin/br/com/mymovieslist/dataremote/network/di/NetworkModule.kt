@@ -1,20 +1,20 @@
-package br.com.mymovieslist.data_remote.network.di
+package br.com.mymovieslist.dataremote.network.di
 
-import br.com.mymovieslist.data_remote.BuildConfig
-import br.com.mymovieslist.data_remote.network.api.MovieService
-import br.com.mymovieslist.data_remote.network.interceptor.AuthInterceptor
+import br.com.mymovieslist.dataremote.BuildConfig
+import br.com.mymovieslist.dataremote.network.api.MovieService
+import br.com.mymovieslist.dataremote.network.interceptor.AuthInterceptor
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import javax.inject.Singleton
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.json.Json
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
+import javax.inject.Singleton
 
 @InstallIn(SingletonComponent::class)
 @Module

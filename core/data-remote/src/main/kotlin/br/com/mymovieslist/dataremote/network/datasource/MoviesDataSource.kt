@@ -1,6 +1,6 @@
-package br.com.mymovieslist.data_remote.network.datasource
+package br.com.mymovieslist.dataremote.network.datasource
 
-import br.com.mymovieslist.data_remote.network.datasource.model.FetchPopularMoviesResponse
+import br.com.mymovieslist.dataremote.network.datasource.model.FetchPopularMoviesResponse
 import kotlinx.coroutines.flow.Flow
 
 interface MoviesDataSource {

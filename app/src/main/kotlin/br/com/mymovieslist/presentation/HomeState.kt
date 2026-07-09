@@ -1,7 +1,7 @@
 package br.com.mymovieslist.presentation
 
-import br.com.mymovieslist.core.viewmodel.state.ScreenState
 import br.com.domain.model.Movie
+import br.com.mymovieslist.core.viewmodel.state.ScreenState
 
 data class HomeState(
     val isLoading: Boolean = false,
@@ -23,7 +23,7 @@ data class HomeState(
         )
     }
 
-    fun getLoadingState(isLoading: Boolean): HomeState{
+    fun getLoadingState(isLoading: Boolean): HomeState {
         return this.copy(
             isLoading = isLoading,
             isErrorState = false,

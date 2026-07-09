@@ -1,3 +1,5 @@
+@file:Suppress("MagicNumber")
+
 package br.com.mymovielist.theme
 
 import androidx.compose.material3.darkColorScheme
@@ -30,7 +32,6 @@ val md_theme_dark_inverseOnSurface = Color(0xFF121212)
 val md_theme_dark_inverseSurface = Color(0xFFECE0DF)
 val md_theme_dark_inversePrimary = Color(0xFFBF0031)
 val md_theme_dark_surfaceTint = Color(0xFFBB86FC)
-
 
 val ColorPalette = darkColorScheme(
     primary = md_theme_dark_primary,

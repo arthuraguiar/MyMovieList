@@ -27,18 +27,23 @@ fun FavoriteScreen() {
         verticalArrangement = Arrangement.SpaceEvenly,
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
-        Column(horizontalAlignment = Alignment.CenterHorizontally) {
-            Image(
-                painterResource(drawable.error_drawable),
-                contentDescription = "",
-                contentScale = ContentScale.Crop
-            )
-            Text(
-                modifier = Modifier.padding(24.dp),
-                color = Color.White,
-                style = MaterialTheme.typography.bodyMedium,
-                text = stringResource(id = string.under_construction)
-            )
-        }
+        UnderConstructionMessage()
+    }
+}
+
+@Composable
+private fun UnderConstructionMessage() {
+    Column(horizontalAlignment = Alignment.CenterHorizontally) {
+        Image(
+            painterResource(drawable.error_drawable),
+            contentDescription = "",
+            contentScale = ContentScale.Crop
+        )
+        Text(
+            modifier = Modifier.padding(24.dp),
+            color = Color.White,
+            style = MaterialTheme.typography.bodyMedium,
+            text = stringResource(id = string.under_construction)
+        )
     }
 }

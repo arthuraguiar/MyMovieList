@@ -1,5 +1,10 @@
 package br.com.extensions
 
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.FlowCollector
+import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.flow
+import retrofit2.HttpException
 import java.io.InterruptedIOException
 import java.net.ConnectException
 import java.net.SocketException
@@ -7,11 +12,6 @@ import java.net.SocketTimeoutException
 import java.net.UnknownHostException
 import java.util.concurrent.TimeoutException
 import kotlin.experimental.ExperimentalTypeInference
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.FlowCollector
-import kotlinx.coroutines.flow.catch
-import kotlinx.coroutines.flow.flow
-import retrofit2.HttpException
 
 @OptIn(ExperimentalTypeInference::class)
 fun <T> flowOf(block: suspend FlowCollector<T>.() -> T): Flow<T> =

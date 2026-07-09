@@ -7,7 +7,6 @@ import br.com.mymovieslist.presentation.viewmodel.HomeViewModel
 
 @Composable
 internal fun HomeRoute(viewModel: HomeViewModel) {
-
     val state by viewModel.screenState.collectAsStateWithLifecycle()
 
     HomeScreen(

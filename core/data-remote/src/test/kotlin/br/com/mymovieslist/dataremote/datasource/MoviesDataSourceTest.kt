@@ -1,21 +1,21 @@
-package br.com.mymovieslist.data_remote.datasource
+package br.com.mymovieslist.dataremote.datasource
 
 import app.cash.turbine.test
 import br.com.extensions.RequestExceptions
-import br.com.mymovieslist.data_remote.network.api.MovieService
-import br.com.mymovieslist.data_remote.network.datasource.MoviesDataSource
-import br.com.mymovieslist.data_remote.network.datasource.MoviesDataSourceImpl
-import br.com.mymovieslist.data_remote.network.datasource.model.FetchPopularMoviesResponse
-import br.com.mymovieslist.data_remote.network.datasource.model.MovieResponse
+import br.com.mymovieslist.dataremote.network.api.MovieService
+import br.com.mymovieslist.dataremote.network.datasource.MoviesDataSource
+import br.com.mymovieslist.dataremote.network.datasource.MoviesDataSourceImpl
+import br.com.mymovieslist.dataremote.network.datasource.model.FetchPopularMoviesResponse
+import br.com.mymovieslist.dataremote.network.datasource.model.MovieResponse
 import io.mockk.coEvery
 import io.mockk.mockk
-import org.junit.Assert.assertEquals
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import org.junit.Before
-import org.junit.Test
 import kotlinx.coroutines.test.runTest
+import org.junit.Before
 import retrofit2.HttpException
 import java.net.SocketTimeoutException
+import kotlin.test.Test
+import kotlin.test.assertEquals
 import kotlin.time.ExperimentalTime
 
 @ExperimentalTime
@@ -43,7 +43,6 @@ internal class MoviesDataSourceTest {
             )
         )
     )
-
 
     @Test
     fun `fetchPopularMovie should throw NoConnectionException when service receives SocketTimeoutException`() =
@@ -103,6 +102,3 @@ internal class MoviesDataSourceTest {
             }
         }
 }
-
-
-

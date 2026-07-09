@@ -7,7 +7,7 @@ plugins {
 
 configure<com.android.build.api.dsl.LibraryExtension> {
 
-    namespace = "br.com.mymovieslist.data_remote"
+    namespace = "br.com.mymovieslist.dataremote"
 
     buildFeatures {
         buildConfig = true
@@ -30,4 +30,5 @@ dependencies {
     testImplementation(libs.androidx.core.testing)
     testImplementation(libs.turbine)
     testImplementation(libs.junit)
+    testImplementation(libs.kotlin.test)
 }

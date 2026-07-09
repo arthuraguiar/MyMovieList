@@ -8,7 +8,6 @@ internal fun Project.configureKotlinAndroid(
     commonExtension: CommonExtension,
 ) {
     commonExtension.apply {
-
         compileSdk = libs.findVersion("compileSdk").get().toString().toInt()
 
         defaultConfig.apply {

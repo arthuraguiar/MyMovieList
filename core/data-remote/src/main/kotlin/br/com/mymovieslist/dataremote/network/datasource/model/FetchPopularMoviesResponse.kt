@@ -1,4 +1,4 @@
-package br.com.mymovieslist.data_remote.network.datasource.model
+package br.com.mymovieslist.dataremote.network.datasource.model
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable

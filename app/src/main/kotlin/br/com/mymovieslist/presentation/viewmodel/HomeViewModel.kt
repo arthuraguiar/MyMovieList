@@ -1,18 +1,18 @@
 package br.com.mymovieslist.presentation.viewmodel
 
 import androidx.lifecycle.viewModelScope
-import br.com.mymovieslist.core.viewmodel.BaseViewModel
 import br.com.domain.usecase.GetPopularMoviesListUseCase
 import br.com.mymovieslist.core.di.IoDispatcher
+import br.com.mymovieslist.core.viewmodel.BaseViewModel
 import br.com.mymovieslist.presentation.HomeState
 import dagger.hilt.android.lifecycle.HiltViewModel
-import javax.inject.Inject
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.onCompletion
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 @HiltViewModel
 internal class HomeViewModel @Inject constructor(

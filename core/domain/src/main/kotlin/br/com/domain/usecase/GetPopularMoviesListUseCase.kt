@@ -2,8 +2,8 @@ package br.com.domain.usecase
 
 import br.com.domain.model.Movie
 import br.com.domain.repository.MovieRepository
-import javax.inject.Inject
 import kotlinx.coroutines.flow.Flow
+import javax.inject.Inject
 
 class GetPopularMoviesListUseCase @Inject constructor(
     private val movieRepository: MovieRepository
