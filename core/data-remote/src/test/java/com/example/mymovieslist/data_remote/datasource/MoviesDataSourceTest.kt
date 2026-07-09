@@ -1,12 +1,12 @@
-package com.example.mymovieslist.data_remote.datasource
+package br.com.mymovieslist.data_remote.datasource
 
 import app.cash.turbine.test
-import com.example.common.extensions.RequestExceptions
-import com.example.mymovieslist.data_remote.network.api.MovieService
-import com.example.mymovieslist.data_remote.network.datasource.MoviesDataSource
-import com.example.mymovieslist.data_remote.network.datasource.MoviesDataSourceImpl
-import com.example.mymovieslist.data_remote.network.datasource.model.FetchPopularMoviesResponse
-import com.example.mymovieslist.data_remote.network.datasource.model.MovieResponse
+import br.com.extensions.RequestExceptions
+import br.com.mymovieslist.data_remote.network.api.MovieService
+import br.com.mymovieslist.data_remote.network.datasource.MoviesDataSource
+import br.com.mymovieslist.data_remote.network.datasource.MoviesDataSourceImpl
+import br.com.mymovieslist.data_remote.network.datasource.model.FetchPopularMoviesResponse
+import br.com.mymovieslist.data_remote.network.datasource.model.MovieResponse
 import io.mockk.coEvery
 import io.mockk.mockk
 import org.junit.Assert.assertEquals
@@ -20,7 +20,7 @@ import kotlin.time.ExperimentalTime
 
 @ExperimentalTime
 @ExperimentalCoroutinesApi
-class MoviesDataSourceTest {
+internal class MoviesDataSourceTest {
 
     private val service: MovieService = mockk(relaxed = true)
     private lateinit var moviesDataSource: MoviesDataSource
@@ -50,7 +50,6 @@ class MoviesDataSourceTest {
         runTest {
             // Given
             val exception = socketTimeoutException
-            val expected = RequestExceptions.NoConnectionException
             coEvery {
                 service.fetchPopularMovies(1)
             } throws exception
@@ -61,7 +60,7 @@ class MoviesDataSourceTest {
             // Then
             result.test {
                 val error = awaitError()
-                assertEquals(error, expected)
+                assert(error is RequestExceptions.NoConnectionException)
             }
         }
 

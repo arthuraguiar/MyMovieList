@@ -1,11 +1,10 @@
 plugins {
     id("config.android.library")
-    id("org.jetbrains.kotlin.android")
     id("config.android.hilt")
 }
 
-android {
-    namespace = "com.example.mymovieslist.data"
+configure<com.android.build.api.dsl.LibraryExtension> {
+    namespace = "br.com.mymovieslist.data"
 }
 
 dependencies {

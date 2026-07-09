@@ -1,10 +1,9 @@
 plugins {
     id("config.android.library")
-    id("org.jetbrains.kotlin.android")
 }
 
-android {
-    namespace = "com.example.common"
+configure<com.android.build.api.dsl.LibraryExtension> {
+    namespace = "br.com.mymovielist.common"
 }
 
 dependencies {

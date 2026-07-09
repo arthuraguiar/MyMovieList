@@ -6,7 +6,8 @@ plugins {
     id("config.android.hilt")
     kotlin("plugin.serialization")
     alias(libs.plugins.secrets)
-    id("org.jetbrains.kotlin.plugin.compose") version "2.2.20"
+    alias(libs.plugins.google.services)
+    id("config.compose.app")
 }
 
 android {
@@ -14,7 +15,7 @@ android {
 
     defaultConfig {
 
-        applicationId = "com.example.mymovieslist"
+        applicationId = "br.com.mymovieslist"
         minSdk = 23
         targetSdk = 36
         versionCode = 1
@@ -35,10 +36,6 @@ android {
         }
     }
 
-    buildFeatures {
-        compose = true
-    }
-
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.11"
     }
@@ -56,7 +53,7 @@ android {
             isDebuggable = true
         }
     }
-    namespace = "com.example.mymovieslist"
+    namespace = "br.com.mymovieslist"
 }
 
 secrets {
@@ -86,6 +83,8 @@ dependencies {
     implementation(libs.coil)
     implementation(libs.accompanist.swiperefresh)
     implementation(libs.accompanist.systemuicontroller)
+    implementation(platform(libs.google.firebase.boom))
+    implementation(libs.fireabse.analytics)
 
     testImplementation(libs.mockk)
     testImplementation(libs.kotlinx.coroutines.test)
