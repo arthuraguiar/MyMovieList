@@ -19,7 +19,7 @@ configure<com.android.build.api.dsl.LibraryExtension> {
     }
 
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.11"
+        kotlinCompilerExtensionVersion = "1.5.15"
     }
 }
 
