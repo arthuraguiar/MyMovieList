@@ -7,7 +7,7 @@ import androidx.compose.runtime.Composable
 fun MyMoviesTheme(content: @Composable () -> Unit) {
     MaterialTheme(
         colorScheme = ColorPalette,
-        typography = Typography,
+        typography = myMoviesTypography(),
         content = content
     )
 }

@@ -8,7 +8,6 @@ internal fun Project.configureKotlinMultiplatformTargets(
     extension: KotlinMultiplatformExtension,
 ) {
     extension.apply {
-        iosX64()
         iosArm64()
         iosSimulatorArm64()
     }
@@ -25,7 +24,6 @@ internal fun Project.configureKotlinMultiplatformAppTargets(
                 jvmTarget.set(JvmTarget.JVM_17)
             }
         }
-        iosX64()
         iosArm64()
         iosSimulatorArm64()
     }
