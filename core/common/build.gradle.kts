@@ -1,17 +1,18 @@
 plugins {
-    id("config.android.library")
+    id("config.kmp.library")
 }
 
-configure<com.android.build.api.dsl.LibraryExtension> {
-    namespace = "br.com.mymovielist.common"
-}
+kotlin {
+    android {
+        namespace = "br.com.mymovielist.common"
+        compileSdk = libs.versions.compileSdk.get().toInt()
+        minSdk = libs.versions.minSdk.get().toInt()
+    }
 
-dependencies {
-
-    implementation(libs.androidx.ktx)
-    implementation(libs.retrofit)
-    implementation(libs.kotlinx.coroutines.android)
-    implementation(project(mapOf("path" to ":core:domain")))
-
-    testImplementation(libs.junit)
+    sourceSets {
+        commonMain.dependencies {
+            implementation(libs.kotlinx.coroutines.core)
+            implementation(libs.ktor.client.core)
+        }
+    }
 }

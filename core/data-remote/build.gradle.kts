@@ -1,34 +1,123 @@
+import java.util.Properties
+import org.gradle.api.file.DirectoryProperty
+import org.gradle.api.file.RegularFileProperty
+import org.gradle.api.provider.Property
+import org.gradle.api.tasks.Input
+import org.gradle.api.tasks.InputFile
+import org.gradle.api.tasks.OutputDirectory
+import org.gradle.api.tasks.PathSensitive
+import org.gradle.api.tasks.PathSensitivity
+import org.gradle.api.tasks.TaskAction
+
 plugins {
-    id("config.android.library")
-    id("config.android.hilt")
+    id("config.kmp.library")
     kotlin("plugin.serialization")
-    alias(libs.plugins.secrets)
+    alias(libs.plugins.ktorfit)
+    alias(libs.plugins.ksp)
 }
 
-configure<com.android.build.api.dsl.LibraryExtension> {
+kotlin {
+    android {
+        namespace = "br.com.mymovieslist.dataremote"
+        compileSdk = libs.versions.compileSdk.get().toInt()
+        minSdk = libs.versions.minSdk.get().toInt()
+        withHostTestBuilder {}.configure {}
+    }
 
-    namespace = "br.com.mymovieslist.dataremote"
-
-    buildFeatures {
-        buildConfig = true
+    sourceSets {
+        commonMain.dependencies {
+            api(projects.core.common)
+            implementation(libs.kotlinx.coroutines.core)
+            implementation(libs.kotlinx.serialization.json)
+            implementation(libs.koin.core)
+            implementation(libs.ktorfit.lib)
+            implementation(libs.ktor.client.core)
+            implementation(libs.ktor.client.content.negotiation)
+            implementation(libs.ktor.serialization.kotlinx.json)
+            implementation(libs.ktor.client.logging)
+        }
+        androidMain.dependencies {
+            implementation(libs.ktor.client.okhttp)
+        }
+        iosMain.dependencies {
+            implementation(libs.ktor.client.darwin)
+        }
+        getByName("androidHostTest").dependencies {
+            implementation(libs.junit)
+            implementation(libs.mockk)
+            implementation(libs.kotlinx.coroutines.test)
+            implementation(libs.turbine)
+            implementation(libs.kotlin.test)
+        }
     }
 }
 
-secrets {
-    defaultPropertiesFileName = "secrets.defaults.properties"
+dependencies {
+    add("kspCommonMainMetadata", libs.ktorfit.ksp)
+    add("kspAndroid", libs.ktorfit.ksp)
+    add("kspIosX64", libs.ktorfit.ksp)
+    add("kspIosArm64", libs.ktorfit.ksp)
+    add("kspIosSimulatorArm64", libs.ktorfit.ksp)
 }
 
-dependencies {
-    implementation(libs.retrofit)
-    implementation(libs.logging.interceptor)
-    implementation(libs.retrofit2.kotlinx.serialization.converter)
-    implementation(libs.kotlinx.serialization.json)
-    implementation(libs.kotlinx.coroutines.android)
-    api(projects.core.common)
-    testImplementation(libs.mockk)
-    testImplementation(libs.kotlinx.coroutines.test)
-    testImplementation(libs.androidx.core.testing)
-    testImplementation(libs.turbine)
-    testImplementation(libs.junit)
-    testImplementation(libs.kotlin.test)
+@CacheableTask
+abstract class GenerateSecretsTask : DefaultTask() {
+
+    @get:InputFile
+    @get:PathSensitive(PathSensitivity.RELATIVE)
+    abstract val secretsFile: RegularFileProperty
+
+    @get:Input
+    abstract val packageName: Property<String>
+
+    @get:OutputDirectory
+    abstract val outputDir: DirectoryProperty
+
+    @TaskAction
+    fun generate() {
+        val properties = Properties().apply {
+            secretsFile.get().asFile.inputStream().use { load(it) }
+        }
+        val packageDir = outputDir.get().dir(packageName.get().replace(".", "/")).asFile
+        packageDir.mkdirs()
+        // Values in secrets(.defaults).properties already include their own quotes,
+        // matching the convention the previous Android secrets-gradle-plugin setup used.
+        packageDir.resolve("Secrets.kt").writeText(
+            "package ${packageName.get()}\n\n" +
+                "internal object Secrets {\n" +
+                "    const val API_KEY = ${properties.getProperty("API_KEY")}\n" +
+                "    const val API_URL = ${properties.getProperty("API_URL")}\n" +
+                "}\n"
+        )
+    }
+}
+
+val secretsInputFile = rootProject.file("secrets.properties").takeIf { it.exists() }
+    ?: rootProject.file("secrets.defaults.properties")
+
+val generateSecrets = tasks.register<GenerateSecretsTask>("generateSecrets") {
+    secretsFile.set(secretsInputFile)
+    packageName.set("br.com.mymovieslist.dataremote")
+    outputDir.set(layout.buildDirectory.dir("generated/source/secrets/commonMain/kotlin"))
+}
+
+kotlin {
+    sourceSets.commonMain {
+        kotlin.srcDir(generateSecrets.map { it.outputDir })
+        // Ktorfit's KSP processor generates createMovieService() for the commonMain metadata
+        // target too (kspCommonMainMetadata dependency above), but doesn't wire its output
+        // into commonMain's own source set automatically, so it's added explicitly here.
+        kotlin.srcDir(layout.buildDirectory.dir("generated/ksp/metadata/commonMain/kotlin"))
+    }
+}
+
+// Task dependency is added by name (lazily) rather than via tasks.named(), because the new
+// AGP com.android.kotlin.multiplatform.library plugin registers KSP's per-target compile
+// tasks later than this script's configuration/afterEvaluate phase.
+tasks.configureEach {
+    if (name.startsWith("compile") || name.startsWith("ksp")) {
+        if (name != "kspCommonMainKotlinMetadata") {
+            dependsOn("kspCommonMainKotlinMetadata")
+        }
+    }
 }

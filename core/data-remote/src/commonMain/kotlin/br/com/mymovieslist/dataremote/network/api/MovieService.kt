@@ -1,8 +1,8 @@
 package br.com.mymovieslist.dataremote.network.api
 
 import br.com.mymovieslist.dataremote.network.datasource.model.FetchPopularMoviesResponse
-import retrofit2.http.GET
-import retrofit2.http.Query
+import de.jensklingenberg.ktorfit.http.GET
+import de.jensklingenberg.ktorfit.http.Query
 
 private const val PAGE = "page"
 

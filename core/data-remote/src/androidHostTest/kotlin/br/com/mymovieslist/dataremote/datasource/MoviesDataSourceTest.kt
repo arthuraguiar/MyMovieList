@@ -7,13 +7,16 @@ import br.com.mymovieslist.dataremote.network.datasource.MoviesDataSource
 import br.com.mymovieslist.dataremote.network.datasource.MoviesDataSourceImpl
 import br.com.mymovieslist.dataremote.network.datasource.model.FetchPopularMoviesResponse
 import br.com.mymovieslist.dataremote.network.datasource.model.MovieResponse
+import io.ktor.client.plugins.ResponseException
+import io.ktor.client.statement.HttpResponse
+import io.ktor.http.HttpStatusCode
 import io.mockk.coEvery
+import io.mockk.every
 import io.mockk.mockk
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
-import org.junit.Before
-import retrofit2.HttpException
-import java.net.SocketTimeoutException
+import kotlinx.io.IOException
+import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.time.ExperimentalTime
@@ -25,13 +28,16 @@ internal class MoviesDataSourceTest {
     private val service: MovieService = mockk(relaxed = true)
     private lateinit var moviesDataSource: MoviesDataSource
 
-    @Before
+    @BeforeTest
     fun setUp() {
         moviesDataSource = MoviesDataSourceImpl(service)
     }
 
-    private val socketTimeoutException = SocketTimeoutException()
-    private val httpException: HttpException = mockk(relaxed = true)
+    private val ioException = IOException("No connection")
+    private val httpResponse: HttpResponse = mockk(relaxed = true) {
+        every { status } returns HttpStatusCode.NotFound
+    }
+    private val responseException = ResponseException(httpResponse, "Not Found")
 
     private val fetchPopularMoviesResponse = FetchPopularMoviesResponse(
         results = listOf(
@@ -45,10 +51,10 @@ internal class MoviesDataSourceTest {
     )
 
     @Test
-    fun `fetchPopularMovie should throw NoConnectionException when service receives SocketTimeoutException`() =
+    fun `fetchPopularMovie should throw NoConnectionException when service receives IOException`() =
         runTest {
             // Given
-            val exception = socketTimeoutException
+            val exception = ioException
             coEvery {
                 service.fetchPopularMovies(1)
             } throws exception
@@ -64,11 +70,14 @@ internal class MoviesDataSourceTest {
         }
 
     @Test
-    fun `fetchPopularMovie should throw HttpError when service receives HttpException`() =
+    fun `fetchPopularMovie should throw HttpError when service receives ResponseException`() =
         runTest {
             // Given
-            val exception = httpException
-            val expected = RequestExceptions.HttpError(exception.message(), exception.code())
+            val exception = responseException
+            val expected = RequestExceptions.HttpError(
+                errorMessage = exception.message.orEmpty(),
+                code = exception.response.status.value
+            )
             coEvery {
                 service.fetchPopularMovies(1)
             } throws exception
