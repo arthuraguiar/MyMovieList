@@ -21,6 +21,7 @@ dependencies {
     compileOnly(libs.build.logic.android.gradlePlugin)
     compileOnly(libs.build.logic.kotlin.gradlePlugin)
     compileOnly(libs.compose.gradlePlugin)
+    compileOnly(libs.compose.multiplatform.gradlePlugin)
 }
 
 gradlePlugin {
@@ -44,6 +45,19 @@ gradlePlugin {
         register("appComposePlugin") {
             id = "config.compose.app"
             implementationClass = "AndroidAppComposePlugin"
+        }
+
+        register("kmpLibrary") {
+            id = "config.kmp.library"
+            implementationClass = "KmpLibraryConventionPlugin"
+        }
+        register("kmpComposeLibrary") {
+            id = "config.kmp.compose.library"
+            implementationClass = "KmpComposeLibraryConventionPlugin"
+        }
+        register("kmpComposeApp") {
+            id = "config.kmp.compose.app"
+            implementationClass = "KmpComposeAppConventionPlugin"
         }
     }
 }
