@@ -39,6 +39,13 @@ android {
 }
 
 kotlin {
+    targets.withType<org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget> {
+        binaries.framework {
+            baseName = "ComposeApp"
+            isStatic = true
+        }
+    }
+
     sourceSets {
         commonMain.dependencies {
             implementation(projects.theme)
