@@ -1,9 +1,9 @@
 import java.util.Properties
+import org.gradle.api.file.ConfigurableFileCollection
 import org.gradle.api.file.DirectoryProperty
-import org.gradle.api.file.RegularFileProperty
 import org.gradle.api.provider.Property
 import org.gradle.api.tasks.Input
-import org.gradle.api.tasks.InputFile
+import org.gradle.api.tasks.InputFiles
 import org.gradle.api.tasks.OutputDirectory
 import org.gradle.api.tasks.PathSensitive
 import org.gradle.api.tasks.PathSensitivity
@@ -62,9 +62,12 @@ dependencies {
 @CacheableTask
 abstract class GenerateSecretsTask : DefaultTask() {
 
-    @get:InputFile
+    // Applied in order, each overriding keys from the previous one - mirrors the old Android
+    // secrets-gradle-plugin, which let a personal local.properties override the committed
+    // defaults, and an optional secrets.properties override both.
+    @get:InputFiles
     @get:PathSensitive(PathSensitivity.RELATIVE)
-    abstract val secretsFile: RegularFileProperty
+    abstract val secretsFiles: ConfigurableFileCollection
 
     @get:Input
     abstract val packageName: Property<String>
@@ -74,13 +77,14 @@ abstract class GenerateSecretsTask : DefaultTask() {
 
     @TaskAction
     fun generate() {
-        val properties = Properties().apply {
-            secretsFile.get().asFile.inputStream().use { load(it) }
+        val properties = Properties()
+        secretsFiles.files.filter { it.exists() }.forEach { file ->
+            file.inputStream().use { properties.load(it) }
         }
         val packageDir = outputDir.get().dir(packageName.get().replace(".", "/")).asFile
         packageDir.mkdirs()
-        // Values in secrets(.defaults).properties already include their own quotes,
-        // matching the convention the previous Android secrets-gradle-plugin setup used.
+        // Values in the properties files already include their own quotes, matching the
+        // convention the previous Android secrets-gradle-plugin setup used.
         packageDir.resolve("Secrets.kt").writeText(
             "package ${packageName.get()}\n\n" +
                 "internal object Secrets {\n" +
@@ -91,11 +95,12 @@ abstract class GenerateSecretsTask : DefaultTask() {
     }
 }
 
-val secretsInputFile = rootProject.file("secrets.properties").takeIf { it.exists() }
-    ?: rootProject.file("secrets.defaults.properties")
-
 val generateSecrets = tasks.register<GenerateSecretsTask>("generateSecrets") {
-    secretsFile.set(secretsInputFile)
+    secretsFiles.from(
+        rootProject.file("secrets.defaults.properties"),
+        rootProject.file("local.properties"),
+        rootProject.file("secrets.properties"),
+    )
     packageName.set("br.com.mymovieslist.dataremote")
     outputDir.set(layout.buildDirectory.dir("generated/source/secrets/commonMain/kotlin"))
 }
