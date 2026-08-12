@@ -3,9 +3,8 @@ package br.com.mymovieslist.data.mapper
 import br.com.domain.model.Movie
 import br.com.mymovieslist.dataremote.network.datasource.model.FetchPopularMoviesResponse
 import br.com.mymovieslist.dataremote.network.datasource.model.MovieResponse
-import javax.inject.Inject
 
-internal class MovieMapper @Inject constructor() {
+internal class MovieMapper {
 
     private val basePosterUrl = "https://image.tmdb.org/t/p/original"
 

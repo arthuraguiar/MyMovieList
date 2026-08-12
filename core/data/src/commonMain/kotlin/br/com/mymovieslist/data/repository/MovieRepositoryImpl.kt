@@ -6,9 +6,8 @@ import br.com.mymovieslist.data.mapper.MovieMapper
 import br.com.mymovieslist.dataremote.network.datasource.MoviesDataSource
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
-import javax.inject.Inject
 
-internal class MovieRepositoryImpl @Inject constructor(
+internal class MovieRepositoryImpl(
     private val moviesDataSource: MoviesDataSource,
     private val movieMapper: MovieMapper,
 ) : MovieRepository {

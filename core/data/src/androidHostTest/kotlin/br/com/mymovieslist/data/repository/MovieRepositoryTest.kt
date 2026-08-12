@@ -12,7 +12,7 @@ import io.mockk.mockk
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.test.runTest
-import org.junit.Before
+import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.time.ExperimentalTime
@@ -45,7 +45,7 @@ internal class MovieRepositoryTest {
         )
     )
 
-    @Before
+    @BeforeTest
     fun setUp() {
         movieMapper = MovieMapper()
         movieRepository = MovieRepositoryImpl(
