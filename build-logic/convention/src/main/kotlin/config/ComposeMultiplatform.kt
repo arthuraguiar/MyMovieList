@@ -16,6 +16,8 @@ internal fun Project.configureComposeMultiplatform() {
         implementation(compose.materialIconsExtended)
         implementation(compose.ui)
         implementation(compose.components.resources)
-        implementation(compose.components.uiToolingPreview)
+        implementation(
+            "org.jetbrains.compose.ui:ui-tooling-preview:${libs.findVersion("compose-multiplatform").get()}"
+        )
     }
 }

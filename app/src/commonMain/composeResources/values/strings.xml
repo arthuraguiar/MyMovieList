@@ -1,0 +1,5 @@
+<resources>
+    <string name="retry">Retry</string>
+    <string name="ops_something_went_wrong">Ops... Something Went Wrong</string>
+    <string name="under_construction">Under construction</string>
+</resources>

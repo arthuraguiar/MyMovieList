@@ -3,7 +3,6 @@ import io.gitlab.arturbosch.detekt.DetektCreateBaselineTask
 
 plugins {
     alias(libs.plugins.ksp) apply false
-    alias(libs.plugins.secrets) apply false
     alias(libs.plugins.compose) apply false
     alias(libs.plugins.google.services) apply false
     alias(libs.plugins.ktorfit) apply false
@@ -29,7 +28,6 @@ buildscript {
         classpath(libs.build.logic.android.gradlePlugin)
         classpath(libs.build.logic.kotlin.gradlePlugin)
         classpath(libs.kotlin.serialization)
-        classpath(libs.hilt.android.plugin)
     }
 }
 

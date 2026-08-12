@@ -1,13 +1,6 @@
-import org.jetbrains.kotlin.gradle.dsl.JvmTarget
-
 plugins {
-    id("com.android.application")
-    kotlin("android")
-    id("config.android.hilt")
-    kotlin("plugin.serialization")
-    alias(libs.plugins.secrets)
+    id("config.kmp.compose.app")
     alias(libs.plugins.google.services)
-    id("config.compose.app")
 }
 
 android {
@@ -29,17 +22,6 @@ android {
         targetCompatibility = JavaVersion.VERSION_17
     }
 
-    kotlin {
-        compilerOptions {
-            jvmTarget.set(JvmTarget.JVM_17)
-            freeCompilerArgs = listOf("-XXLanguage:+PropertyParamAnnotationDefaultTargetMode")
-        }
-    }
-
-    composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.11"
-    }
-
     buildTypes {
         getByName("release") {
             isMinifyEnabled = false
@@ -56,41 +38,44 @@ android {
     namespace = "br.com.mymovieslist"
 }
 
-secrets {
-    defaultPropertiesFileName = "secrets.defaults.properties"
+kotlin {
+    sourceSets {
+        commonMain.dependencies {
+            implementation(projects.theme)
+            implementation(projects.core.domain)
+            implementation(projects.core.common)
+            implementation(projects.core.dataRemote)
+            implementation(projects.core.data)
+
+            implementation(libs.kotlinx.coroutines.core)
+            implementation(libs.androidx.navigation.compose)
+            implementation(libs.androidx.lifecycle.viewmodel.compose)
+
+            implementation(libs.koin.core)
+            implementation(libs.koin.compose)
+            implementation(libs.koin.compose.viewmodel)
+
+            implementation(libs.coil.compose)
+            implementation(libs.coil.network.ktor3)
+        }
+        androidMain.dependencies {
+            implementation(libs.androidx.ktx)
+            implementation(libs.androidx.appcompat)
+            implementation(libs.androidx.activity.compose)
+            implementation(libs.kotlinx.coroutines.android)
+            implementation(libs.koin.android)
+            implementation(libs.fireabse.analytics)
+        }
+        getByName("androidUnitTest").dependencies {
+            implementation(libs.junit)
+            implementation(libs.mockk)
+            implementation(libs.kotlinx.coroutines.test)
+            implementation(libs.turbine)
+            implementation(libs.kotlin.test)
+        }
+    }
 }
 
 dependencies {
-
-    implementation(platform(libs.compose.boom))
-    implementation(libs.bundles.compose)
-
-    implementation(libs.androidx.ktx)
-    implementation(libs.androidx.appcompat)
-    implementation(libs.kotlinx.coroutines.android)
-
-    implementation(libs.androidx.navigation.compose)
-    implementation(libs.androidx.hilt.navigation.compose)
-    implementation(libs.androidx.activity.compose)
-    implementation(libs.androidx.lifecycle.viewmodel.compose)
-
-    implementation(projects.theme)
-    implementation(projects.core.domain)
-    implementation(projects.core.common)
-    implementation(projects.core.dataRemote)
-    implementation(projects.core.data)
-
-    implementation(libs.coil)
-    implementation(libs.accompanist.swiperefresh)
-    implementation(libs.accompanist.systemuicontroller)
-    implementation(platform(libs.google.firebase.boom))
-    implementation(libs.fireabse.analytics)
-
-    testImplementation(libs.mockk)
-    testImplementation(libs.kotlinx.coroutines.test)
-    testImplementation(libs.androidx.core.testing)
-    testImplementation(libs.turbine)
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    testImplementation(kotlin("test"))
+    "androidMainImplementation"(platform(libs.google.firebase.boom))
 }

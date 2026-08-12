@@ -25,7 +25,7 @@ complexity:
     thresholdInInterfaces: 50
     thresholdInObjects: 50
     thresholdInEnums: 10
-    excludes: ["**/src/androidTest*/java/**", "**/src/test/java/**", "**/src/androidTest*/kotlin/**", "**/src/test/kotlin/**", "**/src/androidHostTest*/kotlin/**", "**/src/androidDeviceTest*/kotlin/**", "**/src/commonTest/kotlin/**", "**/src/iosTest/kotlin/**"]
+    excludes: ["**/src/androidTest*/java/**", "**/src/test/java/**", "**/src/androidTest*/kotlin/**", "**/src/test/kotlin/**", "**/src/androidHostTest*/kotlin/**", "**/src/androidDeviceTest*/kotlin/**", "**/src/androidUnitTest*/kotlin/**", "**/src/androidInstrumentedTest*/kotlin/**", "**/src/commonTest/kotlin/**", "**/src/iosTest/kotlin/**"]
 
 coroutines:
   active: true
@@ -39,11 +39,11 @@ forbidden:
   UndocumentedConstructorArgument:
     active: true
     requireDoc: false
-    excludes: ["**/src/androidTest*/java/**", "**/src/test/java/**", "**/src/androidTest*/kotlin/**", "**/src/test/kotlin/**", "**/src/androidHostTest*/kotlin/**", "**/src/androidDeviceTest*/kotlin/**", "**/src/commonTest/kotlin/**", "**/src/iosTest/kotlin/**"]
+    excludes: ["**/src/androidTest*/java/**", "**/src/test/java/**", "**/src/androidTest*/kotlin/**", "**/src/test/kotlin/**", "**/src/androidHostTest*/kotlin/**", "**/src/androidDeviceTest*/kotlin/**", "**/src/androidUnitTest*/kotlin/**", "**/src/androidInstrumentedTest*/kotlin/**", "**/src/commonTest/kotlin/**", "**/src/iosTest/kotlin/**"]
   UndocumentedFunctionArgument:
     active: true
     requireDoc: false
-    excludes: ["**/src/androidTest*/java/**", "**/src/test/java/**", "**/src/androidTest*/kotlin/**", "**/src/test/kotlin/**", "**/src/androidHostTest*/kotlin/**", "**/src/androidDeviceTest*/kotlin/**", "**/src/commonTest/kotlin/**", "**/src/iosTest/kotlin/**"]
+    excludes: ["**/src/androidTest*/java/**", "**/src/test/java/**", "**/src/androidTest*/kotlin/**", "**/src/test/kotlin/**", "**/src/androidHostTest*/kotlin/**", "**/src/androidDeviceTest*/kotlin/**", "**/src/androidUnitTest*/kotlin/**", "**/src/androidInstrumentedTest*/kotlin/**", "**/src/commonTest/kotlin/**", "**/src/iosTest/kotlin/**"]
 
 performance:
   active: true
@@ -111,7 +111,7 @@ style:
     active: true
   MaxLineLength:
     active: true
-    excludes: ["**/src/androidTest*/java/**", "**/src/test/java/**", "**/src/androidTest*/kotlin/**", "**/src/test/kotlin/**", "**/src/androidHostTest*/kotlin/**", "**/src/androidDeviceTest*/kotlin/**", "**/src/commonTest/kotlin/**", "**/src/iosTest/kotlin/**"]
+    excludes: ["**/src/androidTest*/java/**", "**/src/test/java/**", "**/src/androidTest*/kotlin/**", "**/src/test/kotlin/**", "**/src/androidHostTest*/kotlin/**", "**/src/androidDeviceTest*/kotlin/**", "**/src/androidUnitTest*/kotlin/**", "**/src/androidInstrumentedTest*/kotlin/**", "**/src/commonTest/kotlin/**", "**/src/iosTest/kotlin/**"]
   MayBeConst:
     active: true
   ModifierOrder:
@@ -122,7 +122,7 @@ style:
     active: true
   OptionalUnit:
     active: true
-    excludes: "**/src/test/java/**, **/src/test/kotlin/**, **/src/androidHostTest*/kotlin/**, **/src/commonTest/kotlin/**, **/src/iosTest/kotlin/**"
+    excludes: "**/src/test/java/**, **/src/test/kotlin/**, **/src/androidHostTest*/kotlin/**, **/src/androidUnitTest*/kotlin/**, **/src/commonTest/kotlin/**, **/src/iosTest/kotlin/**"
   PreferToOverPairSyntax:
     active: true
   RedundantExplicitType:
@@ -176,7 +176,7 @@ naming:
     ignoreAnnotated:
       - 'Compose'
     functionPattern: '[a-zA-Z][a-zA-Z0-9]*'
-    excludes: ['**/test/**', '**/androidTest/**', '**/androidHostTest/**', '**/androidDeviceTest/**', '**/commonTest/**', '**/iosTest/**']
+    excludes: ['**/test/**', '**/androidTest/**', '**/androidHostTest/**', '**/androidDeviceTest/**', '**/androidUnitTest/**', '**/androidInstrumentedTest/**', '**/commonTest/**', '**/iosTest/**']
 
 formatting:
   active: true
@@ -260,7 +260,7 @@ formatting:
     active: true
   SpacingBetweenDeclarationsWithAnnotations:
     active: true
-    excludes: ["**/src/androidTest*/java/**", "**/src/test/java/**", "**/src/androidTest*/kotlin/**", "**/src/test/kotlin/**", "**/src/androidHostTest*/kotlin/**", "**/src/androidDeviceTest*/kotlin/**", "**/src/commonTest/kotlin/**", "**/src/iosTest/kotlin/**"]
+    excludes: ["**/src/androidTest*/java/**", "**/src/test/java/**", "**/src/androidTest*/kotlin/**", "**/src/test/kotlin/**", "**/src/androidHostTest*/kotlin/**", "**/src/androidDeviceTest*/kotlin/**", "**/src/androidUnitTest*/kotlin/**", "**/src/androidInstrumentedTest*/kotlin/**", "**/src/commonTest/kotlin/**", "**/src/iosTest/kotlin/**"]
   SpacingBetweenDeclarationsWithComments:
     active: true
   StringTemplate:
