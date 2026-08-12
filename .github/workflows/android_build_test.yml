@@ -1,4 +1,4 @@
-name: Android Build & Test
+name: Build & Test
 
 on:
   workflow_dispatch:
@@ -8,20 +8,21 @@ on:
       - develop
 
 jobs:
-  build:
+  android:
 
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v4
 
       - name: Set Up JDK
-        uses: actions/setup-java@v1
+        uses: actions/setup-java@v4
         with:
+          distribution: temurin
           java-version: 17
 
       - name: Run Unit Tests
-        run: ./gradlew test
+        run: ./gradlew testDebugUnitTest testAndroidHostTest
 
       - name: Detekt Verification
         run: ./gradlew detektAll
@@ -33,5 +34,29 @@ jobs:
           sarif_file: build/reports/detekt/detekt.sarif
           category: lint
 
-      - name: Build Project
-        run: ./gradlew assemble
+      - name: Build Android App
+        run: ./gradlew :app:assembleDebug
+
+  ios:
+
+    runs-on: macos-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set Up JDK
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+
+      - name: Run Shared Tests on iOS Simulator
+        run: ./gradlew :app:iosSimulatorArm64Test
+
+      - name: Build iOS App
+        run: |
+          xcodebuild build \
+            -project iosApp/iosApp.xcodeproj \
+            -scheme iosApp \
+            -destination 'generic/platform=iOS Simulator' \
+            CODE_SIGNING_ALLOWED=NO

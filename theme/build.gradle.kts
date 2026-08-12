@@ -1,38 +1,22 @@
-import org.jetbrains.kotlin.gradle.dsl.JvmTarget
-
 plugins {
-    id("config.android.library")
-    id("config.compose.library")
-}
-
-configure<com.android.build.api.dsl.LibraryExtension> {
-    namespace = "br.com.mymovielist.theme"
-
-    buildTypes {
-        release {
-            isMinifyEnabled = false
-        }
-    }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
-    }
-
-    composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.11"
-    }
+    id("config.kmp.library")
+    id("config.kmp.compose.library")
 }
 
 kotlin {
-    compilerOptions {
-        jvmTarget.set(JvmTarget.JVM_17)
+    android {
+        namespace = "br.com.mymovielist.theme"
+        compileSdk = libs.versions.compileSdk.get().toInt()
+        minSdk = libs.versions.minSdk.get().toInt()
+        androidResources {
+            enable = true
+        }
     }
-}
 
-dependencies {
-    implementation(libs.androidx.appcompat)
-    implementation(libs.compose.material.android)
-    implementation(libs.compose.material3)
-    implementation(libs.accompanist.swiperefresh)
-    implementation(libs.accompanist.systemuicontroller)
+    sourceSets {
+        androidMain.dependencies {
+            implementation(libs.androidx.appcompat)
+            implementation(libs.compose.material.android)
+        }
+    }
 }

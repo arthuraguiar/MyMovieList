@@ -1,21 +1,28 @@
 plugins {
-    id("config.android.library")
-    id("config.android.hilt")
+    id("config.kmp.library")
 }
 
-configure<com.android.build.api.dsl.LibraryExtension> {
-    namespace = "br.com.mymovieslist.data"
-}
+kotlin {
+    android {
+        namespace = "br.com.mymovieslist.data"
+        compileSdk = libs.versions.compileSdk.get().toInt()
+        minSdk = libs.versions.minSdk.get().toInt()
+        withHostTestBuilder {}.configure {}
+    }
 
-dependencies {
-
-    implementation(libs.kotlinx.coroutines.android)
-    implementation(projects.core.dataRemote)
-    implementation(projects.core.domain)
-    testImplementation(libs.mockk)
-    testImplementation(libs.kotlinx.coroutines.test)
-    testImplementation(libs.androidx.core.testing)
-    testImplementation(libs.turbine)
-    testImplementation(libs.junit)
-    testImplementation(libs.kotlin.test)
+    sourceSets {
+        commonMain.dependencies {
+            implementation(projects.core.domain)
+            implementation(projects.core.dataRemote)
+            implementation(libs.kotlinx.coroutines.core)
+            implementation(libs.koin.core)
+        }
+        getByName("androidHostTest").dependencies {
+            implementation(libs.junit)
+            implementation(libs.mockk)
+            implementation(libs.kotlinx.coroutines.test)
+            implementation(libs.turbine)
+            implementation(libs.kotlin.test)
+        }
+    }
 }
