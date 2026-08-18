@@ -198,3 +198,5 @@ fabric.properties
 build-logic/.kotlin/sessions/
 
 .kotlin/metadata/kotlinTransformedMetadataLibraries/
+
+.kotlin/sessions/
