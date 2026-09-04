@@ -6,7 +6,7 @@ minSdk = "23"
 targetSdk = "36"
 
 kotlin = "2.4.10"
-gradle = "9.3.1"
+gradle = "9.4.0"
 
 activity-compose = "1.13.0"
 appcompat = "1.8.0"
@@ -21,12 +21,12 @@ turbine = "1.2.1"
 detekt = "1.23.8"
 material = "1.14.0"
 google-services = "4.5.0"
-firebase-boom = "34.17.0"
+firebase-boom = "34.18.0"
 koin = "4.2.2"
 ktor = "3.5.2"
 ktorfit = "2.7.5"
-compose-multiplatform = "1.11.1"
-coil3 = "3.5.0"
+compose-multiplatform = "1.12.0"
+coil3 = "3.6.2"
 
 [libraries]
 
